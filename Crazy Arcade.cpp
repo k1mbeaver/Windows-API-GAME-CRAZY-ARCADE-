@@ -1,7 +1,7 @@
 ﻿// Crazy Arcade.cpp : 애플리케이션에 대한 진입점을 정의합니다.
 //
 
-#include "framework.h"
+#include "stdafx.h"
 #include "Crazy Arcade.h"
 
 #define MAX_LOADSTRING 100
@@ -19,7 +19,8 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
-int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
+// wWinMain은 __stdcall 방식으로 실행된다.
+int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 객체를 실제로 만들어 내는것을 Instance, HINSTANCE
     _In_opt_ HINSTANCE hPrevInstance,
     _In_ LPWSTR    lpCmdLine,
     _In_ int       nCmdShow)
@@ -59,6 +60,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     */
 
     //수정된 메시지 루프입니다:
+    // 수정한 이유는 무한 루프를 타고
     while (true)
     {
         if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) // 메시지 루프 PeekMessage : 스레드 메시지 큐에 저장된 메시지들을 가져온다.
@@ -101,19 +103,20 @@ ATOM MyRegisterClass(HINSTANCE hInstance) // 윈도우 클래스를 등록
 
     wcex.cbSize = sizeof(WNDCLASSEX);
 
-    wcex.style = CS_HREDRAW | CS_VREDRAW;
-    wcex.lpfnWndProc = WndProc; // 콜백 함수 포인터 지정, WndProc() 함수는 메시지 처리 콜백 함수
+    wcex.style = CS_HREDRAW | CS_VREDRAW; // 가로, 세로
+    wcex.lpfnWndProc = WndProc; // 콜백 함수 포인터 지정, WndProc() 함수는 메시지 처리 콜백 함수, 큐(Queue) => 선입선출, 메시지에 따른 사용자 정의 기능을 만들 수 있어야 한다.
+    //WndProc를 함수 포인터로 준 이유 ? : 포인터를 이용해 주소에 접근하여서 값을 변경할 수 있기 때문이다.
     wcex.cbClsExtra = 0;
     wcex.cbWndExtra = 0;
     wcex.hInstance = hInstance;
-    wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_CRAZYARCADE));
-    wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
-    wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
-    wcex.lpszMenuName = MAKEINTRESOURCEW(IDC_CRAZYARCADE);
-    wcex.lpszClassName = szWindowClass;
-    wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+    wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_CRAZYARCADE)); // 예를 들어 바탕화면에 있을 때 그 프로그램을 표현하는 그림
+    wcex.hCursor = LoadCursor(nullptr, IDC_ARROW); // 실행 했을 때 프로그램 안에서 마우스 모양 현재는 ARROW
+    wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1); // 배경화면
+    wcex.lpszMenuName = NULL; // 메뉴 ( 파일, 도움말 ) MAKEINTRESOURCEW(IDC_CRAZYARCADE), 이거 같은 경우에는 안쓸 거니까 = NULL;
+    wcex.lpszClassName = szWindowClass; // 레지스터에 등록할 클래스 이름
+    wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL)); // 왼쪽 상단 작은 그림
 
-    return RegisterClassExW(&wcex);
+    return RegisterClassExW(&wcex); // 레지스터에 등록
 }
 
 //
