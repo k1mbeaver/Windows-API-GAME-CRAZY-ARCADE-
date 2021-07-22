@@ -3,6 +3,8 @@
 
 #include "stdafx.h"
 #include "Crazy Arcade.h"
+#include "Define.h"
+#include "GameCore.h"
 
 #define MAX_LOADSTRING 100
 
@@ -10,8 +12,8 @@
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
-HWND	g_hWnd; // 기본 창 클래스 이름입니다.
 DWORD dwTime = GetTickCount();					// 
+HWND g_hWnd;
 
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -43,8 +45,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 객체를 실제로 만들어
 
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_CRAZYARCADE));
     MSG msg; // 메시지 구조체 변수 선언
-   // GameCore GameCore;
-   // GameCore.Initialize();
+    GameCore GameCore;
+    GameCore.Initialize();
 
     // 기본 메시지 루프입니다:
 

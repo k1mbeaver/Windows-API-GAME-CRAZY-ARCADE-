@@ -5,6 +5,8 @@
 #define BLACK        RGB(0, 0, 0)
 #define WHITE        RGB(255, 255, 255)
 
+#pragma comment(lib, "msimg32.lib")
+
 
 #define IDS_APP_TITLE			103
 #define IDR_MAINFRAME			128

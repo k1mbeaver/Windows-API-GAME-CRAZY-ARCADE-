@@ -13,15 +13,16 @@ GameCore::~GameCore()
 void GameCore::Initialize()
 {
 	nCurrent = 0; // 0 = main, 1 = GameStart, 2 = GameMenu, 3 = GameOver
-	myHDC = GetDC();
+	myHDC = GetDC(g_hWnd);
+	myDbBuf.Initialize();
 }
 
-void GameCore::Prograss()
+void GameCore::Progress()
 {
 
 }
 
 void GameCore::Render()
 {
-
+	myDbBuf.Render();
 }
