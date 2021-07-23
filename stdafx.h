@@ -23,3 +23,10 @@
 #include <string>
 #include <functional>
 using namespace std;
+
+// 전역 변수 선언
+struct Vector2
+{
+    int myX;
+    int myY;
+};
