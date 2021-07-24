@@ -73,19 +73,21 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 객체를 실제로 만들어
             {
                 break;
             }
+
+            
             if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
             {
                 TranslateMessage(&msg); // 키보드 이벤트를 적절하게 바꿔주는 역할
                 DispatchMessage(&msg); // 메시지를 처리할 프로시저(WndProc)에 메시지를 넘겨주는 역할
-            }
-            else
+            }        
+        }
+        else // 여기에 안들어가짐
+        {
+            if (dwTime + 10 < GetTickCount64())
             {
-                if (dwTime + 10 < GetTickCount64())
-                {
-                    dwTime = GetTickCount64();
-                    GameCore.Progress();
-                    GameCore.Render();
-                }
+                dwTime = GetTickCount64();
+                GameCore.Progress();
+                GameCore.Render();
             }
         }
     }

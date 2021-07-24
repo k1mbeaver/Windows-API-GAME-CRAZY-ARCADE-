@@ -6,20 +6,18 @@ extern HINSTANCE hInst;                                // 현재 인스턴스입니다.
 extern HWND g_hWnd;
 extern RECT crt;
 
-class BackGround
+class Player
 {
 private:
 	HWND myHWND;
 	HDC myDC;
 	HBITMAP hbitmap;
 	HBITMAP holdbitmap;
-	BITMAP bit;
-	int bx, by;
 	bool myActivation = false;
 	int nConnection = 0;
 public:
-	BackGround();
-	~BackGround();
+	Player();
+	~Player();
 
 	void Initialize(HDC hdc);
 	void Progress();

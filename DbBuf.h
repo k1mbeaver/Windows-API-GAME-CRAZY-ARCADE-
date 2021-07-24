@@ -13,7 +13,6 @@ private:
 	HDC hDCMain;
 	HDC hdcBuffer; // 메모리에 그려줄 dc
 	HBITMAP hdcBmp; // hDCMain이 사용하는 빈 종이
-	HBITMAP myBitmap; // hdcBuffer가 사용하는 빈 종이
 	Vector2 myXY;
 public:
 	DbBuf();
@@ -23,5 +22,5 @@ public:
 	void Progress(); // 처리
 	void Render(); // 그리기
 	void Destroy(); // 메모리 삭제
-	void ImageDraw(HDC I_hdc, int fX, int fY);
+	HDC ReturnBackDC();
 };
