@@ -6,7 +6,7 @@ extern HINSTANCE hInst;                                // 현재 인스턴스입니다.
 extern HWND g_hWnd;
 extern RECT crt;
 
-class Player
+class Shadow
 {
 private:
 	HWND myHWND;
@@ -18,8 +18,8 @@ private:
 	bool myActivation = false;
 	int nConnection = 0;
 public:
-	Player();
-	~Player();
+	Shadow();
+	~Shadow();
 
 	void Initialize(HDC hdc);
 	void Progress();

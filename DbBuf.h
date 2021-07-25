@@ -22,5 +22,6 @@ public:
 	void Progress(); // 처리
 	void Render(); // 그리기
 	void Destroy(); // 메모리 삭제
-	HDC ReturnBackDC();
+	HDC ReturnBackDC(); // 백버퍼 제공
+	void DeleteScreen(); // 현재 그림 삭제
 };

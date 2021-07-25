@@ -22,9 +22,9 @@ void BackGround::Render(HDC hdc)
 	bx = bit.bmWidth;
 	by = bit.bmHeight;
 
-	BitBlt(hdc, 0, 0, 1424, 720, myDC, 0, 0, SRCCOPY);
+	BitBlt(hdc, 0, 0, bx, by, myDC, 0, 0, SRCCOPY);
 
-	SelectObject(myDC, holdbitmap);
-	DeleteObject(hbitmap);
-	DeleteDC(myDC);
+	//SelectObject(myDC, holdbitmap);
+	//DeleteObject(hbitmap);
+	//DeleteDC(myDC);
 }

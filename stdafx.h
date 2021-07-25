@@ -30,3 +30,5 @@ struct Vector2
     int myX;
     int myY;
 };
+
+extern POINT ptMouse;

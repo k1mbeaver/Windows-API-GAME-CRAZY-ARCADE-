@@ -14,6 +14,7 @@ DWORD dwTime = GetTickCount();					//
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
 HWND g_hWnd;
 RECT crt;                                       // Client 너비, 높이를 구하기 위한
+POINT ptMouse = { 0,0 };
 
 
 
@@ -194,6 +195,22 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         EndPaint(hWnd, &ps);
     }
     break;
+    case WM_MOUSEMOVE:
+    {
+        ptMouse.x = LOWORD(lParam);
+        ptMouse.y = HIWORD(lParam);
+        break;
+    }
+    case WM_KEYDOWN:
+    {
+        switch (wParam)
+        {
+        case VK_ESCAPE:
+            PostQuitMessage(0);
+            break;
+        }
+        break;
+    }
     case WM_DESTROY:
         PostQuitMessage(0);
         break;

@@ -1,12 +1,13 @@
 #pragma once
 #include "stdafx.h"
 #include "Define.h"
+#include "KeyManager.h"
 
 extern HINSTANCE hInst;                                // 현재 인스턴스입니다.
 extern HWND g_hWnd;
 extern RECT crt;
 
-class Player
+class Login
 {
 private:
 	HWND myHWND;
@@ -14,14 +15,18 @@ private:
 	HBITMAP hbitmap;
 	HBITMAP holdbitmap;
 	BITMAP bit;
+	RECT clickStart;
+	KeyManager myKey;
+	bool checkStart;
 	int bx, by;
 	bool myActivation = false;
 	int nConnection = 0;
+	POINT ptMouse;
 public:
-	Player();
-	~Player();
+	Login();
+	~Login();
 
 	void Initialize(HDC hdc);
-	void Progress();
+	int Progress(int &m_nCurrent);
 	void Render(HDC hdc);
 };

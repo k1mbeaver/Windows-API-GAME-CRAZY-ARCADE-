@@ -44,12 +44,8 @@ void DbBuf::Render()
 	myhWnd = g_hWnd;
 	GetClientRect(myhWnd, &crt); // 너비를 구하기 위함, crt.right, crt.bottom 사용
 
-	HDC hdc = GetDC(myhWnd);
-	/*
-	PatBlt(hdcBuffer, 0, 0, crt.right, crt.bottom, BLACKNESS); 
-	// 패턴 방식 초기화 함수 : 해당 DC의 비트맵 영역을 패턴 형태로 초기화 하는 데 사용 ( 패턴 : 브러쉬 ), 지정한 사각영역을 현재 DC에 선택된 브러쉬로 채움
-	// 초기화를 하고 이미지를 뿌림
-	*/
+	hDCMain = GetDC(myhWnd);
+
 	BitBlt(hDCMain, 0, 0, crt.right, crt.bottom, hdcBuffer, 0, 0, SRCCOPY);
 	// 고속 복사 함수 : 메모리 DC의 비트맵을 현재 DC에 고속복사하는 함수
 	// 백버퍼에 저장함
@@ -66,4 +62,11 @@ void DbBuf::Destroy()
 HDC DbBuf::ReturnBackDC()
 {
 	return hdcBuffer;
+}
+
+void DbBuf::DeleteScreen()
+{
+	PatBlt(hdcBuffer, 0, 0, crt.right, crt.bottom, BLACKNESS);
+	// 패턴 방식 초기화 함수 : 해당 DC의 비트맵 영역을 패턴 형태로 초기화 하는 데 사용 ( 패턴 : 브러쉬 ), 지정한 사각영역을 현재 DC에 선택된 브러쉬로 채움
+	// 초기화를 하고 이미지를 뿌림
 }

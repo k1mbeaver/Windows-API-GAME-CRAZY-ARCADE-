@@ -4,6 +4,10 @@
 #include "DbBuf.h"
 #include "background.h"
 #include "Player.h"
+#include "Shadow.h"
+#include "Mark.h"
+#include "Login.h"
+#include "Lobby.h"
 
 //나머지 게임에 관련된 클래스가 있는 헤더를 추가한다.
 extern HINSTANCE hInst;                                // 현재 인스턴스입니다.
@@ -18,8 +22,13 @@ private:
 	DbBuf myDbBuf;
 	BackGround myBackGround;
 	Player myPlayer;
+	Shadow myShadow;
+	Mark myMark;
+	Login myLogin;
+	Lobby myLobby;
 	Vector2 myXY;
-	int nCurrent = 0; // 처음 실행했을 때 Initialize() 초기화를 위한 변수
+	int nCurrent = 0;
+	int nInitNum = 0;
 
 public:
 	GameCore();
