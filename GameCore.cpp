@@ -58,8 +58,6 @@ void GameCore::Render()
 	else if (nCurrent == 1)
 	{
 		myLobby.Render(myDbBuf.ReturnBackDC());
-		myShadow.Render(myDbBuf.ReturnBackDC());
-		myPlayer.Render(myDbBuf.ReturnBackDC());
 	}
 
 	else if (nCurrent == 2)

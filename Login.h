@@ -21,7 +21,6 @@ private:
 	int bx, by;
 	bool myActivation = false;
 	int nConnection = 0;
-	POINT ptMouse;
 public:
 	Login();
 	~Login();

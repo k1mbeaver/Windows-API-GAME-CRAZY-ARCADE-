@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Define.h"
 #include "KeyManager.h"
+#include "BitmapImage.h"
 
 extern HINSTANCE hInst;                                // 현재 인스턴스입니다.
 extern HWND g_hWnd;
@@ -10,8 +11,9 @@ extern RECT crt;
 class Lobby
 {
 private:
+	//map<string, BitmapImage*> BazziList;
 	HWND myHWND;
-	HDC myDC;
+	HDC myDC1, myDC2;
 	HBITMAP hbitmap1, hbitmap2;
 	HBITMAP holdbitmap1, holdbitmap2;
 	BITMAP bit;

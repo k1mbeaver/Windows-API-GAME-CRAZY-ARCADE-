@@ -22,7 +22,7 @@ void Shadow::Render(HDC hdc)
 	bx = bit.bmWidth;
 	by = bit.bmHeight;
 
-	TransparentBlt(hdc, 280, 200, bx, by, myDC, 0, 0, bx, by, RGB(255, 0, 255));
+	TransparentBlt(hdc, myXY.myX+10, myXY.myY+60, bx, by, myDC, 0, 0, bx, by, RGB(255, 0, 255));
 
 	//SelectObject(myDC, holdbitmap);
 	//DeleteObject(hbitmap);

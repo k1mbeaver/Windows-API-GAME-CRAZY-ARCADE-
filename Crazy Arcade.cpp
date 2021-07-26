@@ -15,6 +15,7 @@ HINSTANCE hInst;                                // 현재 인스턴스입니다.
 HWND g_hWnd;
 RECT crt;                                       // Client 너비, 높이를 구하기 위한
 POINT ptMouse = { 0,0 };
+Vector2 myXY;
 
 
 
@@ -205,6 +206,21 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
         switch (wParam)
         {
+        case VK_LEFT:
+            myXY.myX -= 10.f;
+            break;
+        case VK_UP:
+
+            myXY.myY -= 10.f;
+            break;
+        case VK_RIGHT:
+
+            myXY.myX += 10.f;
+            break;
+        case VK_DOWN:
+
+            myXY.myY += 10.f;
+            break;
         case VK_ESCAPE:
             PostQuitMessage(0);
             break;

@@ -2,6 +2,8 @@
 
 Login::Login() 
 {
+	SetRect(&clickStart, 608, 61, 784, 268);
+	//왼쪽 위 608, 61 왼쪽 아래 608, 268 오른쪽 아래 784, 268 오른쪽 위 784, 61
 }
 Login::~Login() {}
 
@@ -17,10 +19,13 @@ void Login::Initialize(HDC hdc)
 
 int Login::Progress(int &m_nCurrent)
 {
-	if (myKey.isOnceKeyDown(VK_LBUTTON))
+	if (PtInRect(&clickStart, ptMouse))
 	{
-		m_nCurrent++;
-		return 1;
+		if (myKey.isOnceKeyDown(VK_LBUTTON))
+		{
+			m_nCurrent++;
+			return 1;
+		}
 	}
 
 	return 0;

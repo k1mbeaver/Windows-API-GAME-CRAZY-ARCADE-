@@ -27,8 +27,9 @@ using namespace std;
 // 전역 변수 선언
 struct Vector2
 {
-    int myX;
-    int myY;
+    float myX;
+    float myY;
 };
 
 extern POINT ptMouse;
+extern Vector2 myXY;

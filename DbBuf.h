@@ -13,7 +13,6 @@ private:
 	HDC hDCMain;
 	HDC hdcBuffer; // 메모리에 그려줄 dc
 	HBITMAP hdcBmp; // hDCMain이 사용하는 빈 종이
-	Vector2 myXY;
 public:
 	DbBuf();
 	~DbBuf();

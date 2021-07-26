@@ -22,7 +22,7 @@ void Player::Render(HDC hdc)
 	bx = bit.bmWidth;
 	by = bit.bmHeight;
 
-	TransparentBlt(hdc, 270, 140, bx, by, myDC, 0, 0, bx, by, RGB(255, 0, 255));
+	TransparentBlt(hdc, myXY.myX, myXY.myY, bx, by, myDC, 0, 0, bx, by, RGB(255, 0, 255));
 
 	//SelectObject(myDC, holdbitmap);
 	//DeleteObject(hbitmap);

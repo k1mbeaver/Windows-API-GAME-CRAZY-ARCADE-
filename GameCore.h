@@ -26,7 +26,6 @@ private:
 	Mark myMark;
 	Login myLogin;
 	Lobby myLobby;
-	Vector2 myXY;
 	int nCurrent = 0;
 	int nInitNum = 0;
 
