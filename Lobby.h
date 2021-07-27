@@ -3,6 +3,7 @@
 #include "Define.h"
 #include "KeyManager.h"
 #include "BitmapImage.h"
+#include "Structure.h"
 
 extern HINSTANCE hInst;                                // 현재 인스턴스입니다.
 extern HWND g_hWnd;
@@ -11,7 +12,6 @@ extern RECT crt;
 class Lobby
 {
 private:
-	//map<string, BitmapImage*> BazziList;
 	HWND myHWND;
 	HDC myDC1, myDC2;
 	HBITMAP hbitmap1, hbitmap2;
@@ -20,6 +20,7 @@ private:
 	KeyManager myKey;
 	RECT clickStart;
 	bool checkStart;
+	int FrameX = 0, FrameY = 0;
 	int bx, by;
 	bool myActivation = false;
 	int nConnection = 0;

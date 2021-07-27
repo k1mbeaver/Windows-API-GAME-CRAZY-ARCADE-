@@ -33,3 +33,7 @@ struct Vector2
 
 extern POINT ptMouse;
 extern Vector2 myXY;
+extern DWORD currentTime;
+extern float dDT;
+extern float fFrameDelay;
+extern int nPlayerWay, nWay;

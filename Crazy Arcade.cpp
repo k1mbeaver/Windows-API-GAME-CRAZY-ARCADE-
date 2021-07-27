@@ -16,6 +16,12 @@ HWND g_hWnd;
 RECT crt;                                       // Client 너비, 높이를 구하기 위한
 POINT ptMouse = { 0,0 };
 Vector2 myXY;
+DWORD currentTime = GetTickCount64();
+DWORD prevTime = GetTickCount64();
+float dDT = 0.0f;
+float fFrameDelay = 0.0f;
+int nPlayerWay = 0; // 캐릭터 방향
+
 
 
 
@@ -83,13 +89,17 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 객체를 실제로 만들어
                 DispatchMessage(&msg); // 메시지를 처리할 프로시저(WndProc)에 메시지를 넘겨주는 역할
             }        
         }
-        else // 여기에 안들어가짐
+        else
         {
             if (dwTime + 10 < GetTickCount64())
             {
                 dwTime = GetTickCount64();
                 GameCore.Progress();
                 GameCore.Render();
+
+                dDT = currentTime / 1000.0f;
+                currentTime = GetTickCount64() - prevTime;
+                prevTime = GetTickCount64();
             }
         }
     }
@@ -208,22 +218,22 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
         case VK_LEFT:
             myXY.myX -= 10.f;
+            nPlayerWay = VK_LEFT;
             break;
         case VK_UP:
-
             myXY.myY -= 10.f;
+            nPlayerWay = VK_UP;
             break;
         case VK_RIGHT:
-
             myXY.myX += 10.f;
+            nPlayerWay = VK_RIGHT;
             break;
         case VK_DOWN:
-
             myXY.myY += 10.f;
+            nPlayerWay = VK_DOWN;
             break;
-        case VK_ESCAPE:
-            PostQuitMessage(0);
-            break;
+        default:
+            nPlayerWay = 0;
         }
         break;
     }

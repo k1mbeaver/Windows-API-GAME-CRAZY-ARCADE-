@@ -15,6 +15,7 @@ void Lobby::Initialize(HDC hdc)
 	holdbitmap1 = (HBITMAP)SelectObject(myDC1, hbitmap1);
 	hbitmap2 = (HBITMAP)LoadImage(NULL, L"C:\\Users\\USER\\Desktop\\연구실 공부\\허승찬 선배님 스터디\\크레이지 아케이드\\Crazy Arcade\\Crazy Arcade\\Image\\player\\jump.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
 	holdbitmap2 = (HBITMAP)SelectObject(myDC2, hbitmap2);
+
 	myActivation = false;
 	nConnection = 0;
 }
@@ -45,7 +46,19 @@ void Lobby::Render(HDC hdc)
 	bx = bit.bmWidth;
 	by = bit.bmHeight;
 
-	TransparentBlt(hdc, 270, 150, bx, by, myDC2, 0, 0, bx, by, RGB(255, 0, 255));
+	TransparentBlt(hdc, 270, 140, bx / 8, by, myDC2, FrameX, 0, bx / 8, by, RGB(255, 0, 255));
+
+	fFrameDelay += dDT;
+	if (fFrameDelay > 0.5f)
+	{
+		fFrameDelay = 0;
+		FrameX += 64;
+
+		if (FrameX >= 512)
+		{
+			FrameX = 0;
+		}
+	}
 	
 
 	//SelectObject(myDC, holdbitmap1);

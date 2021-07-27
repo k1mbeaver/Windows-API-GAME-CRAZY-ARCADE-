@@ -10,11 +10,13 @@ class Player
 {
 private:
 	HWND myHWND;
-	HDC myDC;
-	HBITMAP hbitmap;
-	HBITMAP holdbitmap;
-	BITMAP bit;
-	int bx, by;
+	HDC myDownDC, myUpDC, myLeftDC, myRightDC;
+	HBITMAP Downbit, Upbit, Leftbit, Rightbit;
+	HBITMAP Downold, Upold, Leftold, Rightold;
+	BITMAP UpDownbit, LeftRightbit;
+	int UDFrameX, LRFrameX;
+	int UpDownX, UpDownY;
+	int LeftRightX, LeftRightY;
 	bool myActivation = false;
 	int nConnection = 0;
 public:
