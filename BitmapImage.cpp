@@ -24,7 +24,7 @@ HDC란???
 BitmapImage::BitmapImage()
     : m_imageInfo(nullptr)
     , m_fileName(nullptr)
-    , m_isTrans(NULL)
+    , isTrans(NULL)
     , m_blendImage(nullptr)
 {
 }
@@ -92,6 +92,9 @@ HRESULT BitmapImage::init(const DWORD resID, int width, int height, bool isTrans
     // 파일 이름
     m_fileName = nullptr;
 
+    // 투명키 컬러 세팅
+    isTrans = false;
+
     ReleaseDC(g_hWnd, hdc); // DC해제
 
                            // 리소스를 얻어오는 데 실패했을 경우
@@ -122,7 +125,7 @@ HRESULT BitmapImage::init(const char* fileName, int width, int height, bool isTr
     m_imageInfo->loadType = LOAD_FILE;
     m_imageInfo->resID = 0;
     m_imageInfo->hMemDC = CreateCompatibleDC(hdc);
-    m_imageInfo->hBit = (HBITMAP)LoadImage(_hInstance, fileName, IMAGE_BITMAP, width, height, LR_LOADFROMFILE);
+    m_imageInfo->hBit = (HBITMAP)LoadImage(hInst, (LPCWSTR)fileName, IMAGE_BITMAP, width, height, LR_LOADFROMFILE);
     m_imageInfo->hOBit = (HBITMAP)SelectObject(m_imageInfo->hMemDC, m_imageInfo->hBit);
     m_imageInfo->width = width;
     m_imageInfo->height = height;
@@ -131,6 +134,9 @@ HRESULT BitmapImage::init(const char* fileName, int width, int height, bool isTr
     size_t len = strlen(fileName);
     m_fileName = new char[len + 1];
     strcpy_s(m_fileName, len + 1, fileName);
+
+    // 투명키 컬러 세팅
+    isTrans = false;
 
     ReleaseDC(g_hWnd, hdc); // DC해제
 
@@ -162,19 +168,18 @@ HRESULT BitmapImage::init(const char* fileName, int width, int height, int frame
     m_imageInfo->loadType = LOAD_FILE;
     m_imageInfo->resID = 0;
     m_imageInfo->hMemDC = CreateCompatibleDC(hdc);
-    m_imageInfo->hBit = (HBITMAP)LoadImage(hInst, fileName, IMAGE_BITMAP, width, height, LR_LOADFROMFILE);
+    m_imageInfo->hBit = (HBITMAP)LoadImage(hInst, (LPCWSTR)fileName, IMAGE_BITMAP, width, height, LR_LOADFROMFILE);
     m_imageInfo->hOBit = (HBITMAP)SelectObject(m_imageInfo->hMemDC, m_imageInfo->hBit);
     m_imageInfo->width = width;
     m_imageInfo->height = height;
-    m_imageInfo->maxFrameX = frameX - 1;
-    m_imageInfo->maxFrameY = frameY - 1;
-    m_imageInfo->frameWidth = width / frameX;
-    m_imageInfo->frameHeight = height / frameY;
 
     // 파일 이름
     size_t len = strlen(fileName);
     m_fileName = new char[len + 1];
     strcpy_s(m_fileName, len + 1, fileName);
+
+    // 투명키 컬러 세팅
+    isTrans = false;
 
     ReleaseDC(g_hWnd, hdc); // DC해제
 
@@ -205,21 +210,20 @@ HRESULT BitmapImage::init(const char* fileName, int x, int y, int width, int hei
     m_imageInfo->loadType = LOAD_FILE;
     m_imageInfo->resID = 0;
     m_imageInfo->hMemDC = CreateCompatibleDC(hdc);
-    m_imageInfo->hBit = (HBITMAP)LoadImage(hInst, fileName, IMAGE_BITMAP, width, height, LR_LOADFROMFILE);
+    m_imageInfo->hBit = (HBITMAP)LoadImage(hInst, (LPCWSTR)fileName, IMAGE_BITMAP, width, height, LR_LOADFROMFILE);
     m_imageInfo->hOBit = (HBITMAP)SelectObject(m_imageInfo->hMemDC, m_imageInfo->hBit);
     m_imageInfo->x = static_cast<float>(x) - (width / frameX / 2.f);
     m_imageInfo->y = static_cast<float>(y) - (height / frameY / 2.f);
     m_imageInfo->width = width;
     m_imageInfo->height = height;
-    m_imageInfo->maxFrameX = frameX - 1;
-    m_imageInfo->maxFrameY = frameY - 1;
-    m_imageInfo->frameWidth = width / frameX;
-    m_imageInfo->frameHeight = height / frameY;
 
     // 파일 이름
     size_t len = strlen(fileName);
     m_fileName = new char[len + 1];
     strcpy_s(m_fileName, len + 1, fileName);
+
+    // 투명키 컬러 세팅
+    isTrans = false;
 
     ReleaseDC(g_hWnd, hdc); // DC해제
 
@@ -252,14 +256,14 @@ void BitmapImage::release()
 void BitmapImage::render(HDC hdc)
 {
     // 배경색 없앨거냐
-    if (m_isTrans)
+    if (isTrans)
     {
         // GdiTransparentBlt - 비트맵을 불러올 때 특정 색을 제외하고 복사하는 함수
         // 인자값
         // 복사될 장소의 DC, 복사될 좌표의 시작점 X와 Y, 복사될 이미지의 가로와 세로 크기
         // 복사될 대상의 DC, 복사시작지점의  X와 Y, 복사영역의 가로와 세로크기,
         // 복사할 때의 제외할 색상
-        GdiTransparentBlt(
+        TransparentBlt(
             hdc,
             0,
             0,
@@ -268,7 +272,8 @@ void BitmapImage::render(HDC hdc)
             m_imageInfo->hMemDC,
             0, 0, m_imageInfo->width,
             m_imageInfo->height,
-            m_transColor);
+            RGB(255, 0, 255)
+            );
     }
     //배경색 안날리고 원본이미지 그대로 뽑아낼거냐
     else
@@ -291,14 +296,14 @@ void BitmapImage::render(HDC hdc)
 void BitmapImage::render(HDC hdc, int destX, int destY)
 {
     // 배경색 없앨거냐
-    if (m_isTrans)
+    if (isTrans)
     {
         // GdiTransparentBlt - 비트맵을 불러올 때 특정 색을 제외하고 복사하는 함수
         // 인자값
         // 복사될 장소의 DC, 복사될 좌표의 시작점 X와 Y, 복사될 이미지의 가로와 세로 크기
         // 복사될 대상의 DC, 복사시작지점의  X와 Y, 복사영역의 가로와 세로크기,
         // 복사할 때의 제외할 색상
-        GdiTransparentBlt(
+        TransparentBlt(
             hdc,
             destX,
             destY,
@@ -309,7 +314,8 @@ void BitmapImage::render(HDC hdc, int destX, int destY)
             0,
             m_imageInfo->width,
             m_imageInfo->height,
-            m_transColor);
+            RGB(255, 0, 255)
+        );
     }
     //배경색 안날리고 원본이미지 그대로 뽑아낼거냐
     else
@@ -331,9 +337,9 @@ void BitmapImage::render(HDC hdc, int destX, int destY)
 
 void BitmapImage::render(HDC hdc, int destX, int destY, int sourX, int sourY, int sourWidth, int sourHeight)
 {
-    if (m_isTrans)
+    if (isTrans)
     {
-        GdiTransparentBlt(hdc, destX, destY, sourWidth, sourHeight, m_imageInfo->hMemDC, sourX, sourY, sourWidth, sourHeight, m_transColor);
+        TransparentBlt(hdc, destX, destY, sourWidth, sourHeight, m_imageInfo->hMemDC, sourX, sourY, sourWidth, sourHeight, RGB(255, 0, 255));
     }
 }
 
@@ -342,12 +348,12 @@ void BitmapImage::renderStretch(HDC hdc, int destX, int destY, int destWidth, in
     StretchBlt(hdc, destX, destY, destWidth, destHeight, m_imageInfo->hMemDC, sourX, sourY, sourWidth, sourHeight, SRCCOPY);
 }
 
-
+/*
 void BitmapImage::alphaRender(HDC hdc, BYTE alpha)
 {
     m_blendFunc.SourceConstantAlpha = alpha;
 
-    if (m_isTrans)
+    if (isTrans)
     {
         //출력해야 될 DC에 그려져 있는 내용을 blend에 그려준다
         BitBlt(m_blendImage->hMemDC, 0, 0, m_imageInfo->width, m_imageInfo->height, hdc, 0, 0, SRCCOPY);
@@ -413,96 +419,8 @@ void BitmapImage::alphaRender(HDC hdc, int destX, int destY, int sourX, int sour
     }
 
 }
+*/
 
-void BitmapImage::frameRender(HDC hdc, int destX, int destY)
-{
-    if (m_isTrans)
-    {
-        // GdiTransparentBlt - 비트맵을 불러올 때 특정 색을 제외하고 복사하는 함수
-        // 인자값
-        // 복사될 장소의 DC, 복사될 좌표의 시작점 X와 Y, 복사될 이미지의 가로와 세로 크기
-        // 복사될 대상의 DC, 복사시작지점의  X와 Y, 복사영역의 가로와 세로크기,
-        // 복사할 때의 제외할 색상
-        GdiTransparentBlt(
-            hdc,
-            destX,
-            destY,
-            m_imageInfo->frameWidth,
-            m_imageInfo->frameHeight,
-            m_imageInfo->hMemDC, // 복사될 대상 DC
-            m_imageInfo->currentFrameX * m_imageInfo->frameWidth, // 복사 시작지점의 x
-            m_imageInfo->currentFrameY * m_imageInfo->frameHeight, // 복사 시작지점의 y
-            m_imageInfo->frameWidth, // 복사 영역 가로 크기
-            m_imageInfo->frameHeight, // 복사 영역 세로 크기
-            m_transColor);
-    }
-    //배경색 안날리고 원본이미지 그대로 뽑아낼거냐
-    else
-    {
-        // SRCCOPY - 복사해주는 놈, 가로세로를 재정의 해서 복사함
-        // DC간 영역끼리 고속 복사하는 녀석
-        BitBlt(
-            hdc,
-            destX,
-            destY,
-            m_imageInfo->frameWidth,
-            m_imageInfo->frameHeight,
-            m_imageInfo->hMemDC,
-            m_imageInfo->currentFrameX * m_imageInfo->frameWidth,
-            m_imageInfo->currentFrameY * m_imageInfo->frameHeight,
-            SRCCOPY);
-    }
-}
-
-void BitmapImage::frameRender(HDC hdc, int destX, int destY, int currentFrameX, int currentFrameY)
-{
-    m_imageInfo->currentFrameX = currentFrameX;
-    m_imageInfo->currentFrameY = currentFrameY;
-
-    if (currentFrameX > m_imageInfo->maxFrameX)
-    {
-        m_imageInfo->currentFrameX = m_imageInfo->maxFrameX;
-    }
-    if (currentFrameY > m_imageInfo->maxFrameY)
-    {
-        m_imageInfo->currentFrameY = m_imageInfo->maxFrameY;
-    }
-
-    //배경색 없앨거냐
-    if (m_isTrans)
-    {
-        //GdiTransparentBlt : 비트맵을 불러올때 특정 색을 제외하고 복사하는 함수
-        //인자값 :  복사될 장소의 DC, 복사될 좌표의 시작점 X와 Y, 복사될 이미지의 가로크기와 세로크기, 복사될 대상의 DC, 복사시작지점 X와Y, 복사 영역의 가로크기, 세로크기, 복사할때의 제외할 색상
-        GdiTransparentBlt(
-            hdc,
-            destX,
-            destY,
-            m_imageInfo->frameWidth,
-            m_imageInfo->frameHeight,
-            m_imageInfo->hMemDC,	//복사될 대상 DC
-            m_imageInfo->currentFrameX * m_imageInfo->frameWidth, //복사 시작지점
-            m_imageInfo->currentFrameY * m_imageInfo->frameHeight, //복사 시작지점
-            m_imageInfo->frameWidth, //복사 영역 가로크기
-            m_imageInfo->frameHeight, //복사 영역 세로크기
-            m_transColor);
-    }
-    //배경색 안날리고 원본이미지 그대로 뽑아낼거냐
-    else
-    {
-        // SRCCOPY: 복사해주는 놈, 가로세로를 재정의 해서 복사함
-        // DC간 영역끼리 고속복사 하는 녀석
-        BitBlt(
-            hdc,
-            destX,
-            destY,
-            m_imageInfo->frameWidth,
-            m_imageInfo->frameHeight,
-            m_imageInfo->hMemDC,
-            m_imageInfo->currentFrameX * m_imageInfo->frameWidth,
-            m_imageInfo->currentFrameY * m_imageInfo->frameHeight,
-            SRCCOPY);
-    }
-}
 
 void BitmapImage::loopRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY)
 {

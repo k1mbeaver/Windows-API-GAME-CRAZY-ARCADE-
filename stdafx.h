@@ -24,6 +24,18 @@
 #include <functional>
 using namespace std;
 
+//내가 만든 헤더
+#include "structure.h"
+#include "ImageManager.h"
+
+// SAFE DELETE
+#define SAFE_DELETE(p)          {if(p)  {delete   (p);   (p)=NULL;}}
+#define SAFE_DELETE_ARRAY(p)    {if(p)  {delete[] (p);   (p)=NULL;}}
+#define SAFE_RELEASE(p)         {if(p)  {(p)->release(); (p)=NULL;}}
+
+//싱글톤
+#define IMAGEMANAGER ImageManager::getSingleton()
+
 // 전역 변수 선언
 struct Vector2
 {

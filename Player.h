@@ -1,6 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "Define.h"
+#include "BitmapImage.h"
 
 extern HINSTANCE hInst;                                // 현재 인스턴스입니다.
 extern HWND g_hWnd;

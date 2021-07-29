@@ -15,6 +15,7 @@ void GameCore::Initialize()
 {
 	nCurrent = 0; // 0 = main, 1 = GameStart, 2 = GameMenu, 3 = GameOver
 	myHDC = GetDC(g_hWnd);
+	myImageManager.Initialize();
 	myLogin.Initialize(myHDC);
 	myLobby.Initialize(myHDC);
 	myBackGround.Initialize(myHDC);

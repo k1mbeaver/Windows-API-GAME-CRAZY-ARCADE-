@@ -41,6 +41,8 @@ void Lobby::Render(HDC hdc)
 	by = bit.bmHeight;
 
 	TransparentBlt(hdc, 0, 0, bx, by, myDC1, 0, 0, bx, by, RGB(255, 0, 255));
+
+	IMAGEMANAGER->render("BazzyRight1", hdc, 0, 0);
 	
 	GetObject(hbitmap2, sizeof(BITMAP), &bit);
 	bx = bit.bmWidth;
