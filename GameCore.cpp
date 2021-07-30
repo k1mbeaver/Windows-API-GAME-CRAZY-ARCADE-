@@ -15,7 +15,6 @@ void GameCore::Initialize()
 {
 	nCurrent = 0; // 0 = main, 1 = GameStart, 2 = GameMenu, 3 = GameOver
 	myHDC = GetDC(g_hWnd);
-	myImageManager.Initialize();
 	myLogin.Initialize(myHDC);
 	myLobby.Initialize(myHDC);
 	myBackGround.Initialize(myHDC);
@@ -59,6 +58,8 @@ void GameCore::Render()
 	else if (nCurrent == 1)
 	{
 		myLobby.Render(myDbBuf.ReturnBackDC());
+		myShadow.Render(myDbBuf.ReturnBackDC(), 270, 140);
+		myPlayer.Render(myDbBuf.ReturnBackDC(), 270, 140);
 	}
 
 	else if (nCurrent == 2)

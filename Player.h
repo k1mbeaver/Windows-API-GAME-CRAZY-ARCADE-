@@ -1,30 +1,30 @@
 #pragma once
 #include "stdafx.h"
 #include "Define.h"
-#include "BitmapImage.h"
-
-extern HINSTANCE hInst;                                // 현재 인스턴스입니다.
+extern HINSTANCE hInst;                              
 extern HWND g_hWnd;
 extern RECT crt;
-
 class Player
 {
 private:
 	HWND myHWND;
-	HDC myDownDC, myUpDC, myLeftDC, myRightDC;
-	HBITMAP Downbit, Upbit, Leftbit, Rightbit;
-	HBITMAP Downold, Upold, Leftold, Rightold;
-	BITMAP UpDownbit, LeftRightbit;
-	int UDFrameX, LRFrameX;
-	int UpDownX, UpDownY;
-	int LeftRightX, LeftRightY;
+	HDC myDC;
+	BITMAP bit;
+	int bx, by;
+	HDC myDownDC, myUpDC, myLeftDC, myRightDC, myJumpDC;
+	HBITMAP Downbit, Upbit, Leftbit, Rightbit, Jumpbit;
+	HBITMAP Downold, Upold, Leftold, Rightold, Jumpold;
+	BITMAP UpDownbit, LeftRightbit, Jumpbitmap;
+	int UDFrameX, LRFrameX, JumpFrameX;
+	int UpDownX, UpDownY, JumpX;
+	int LeftRightX, LeftRightY, JumpY;
 	bool myActivation = false;
 	int nConnection = 0;
 public:
 	Player();
 	~Player();
-
 	void Initialize(HDC hdc);
 	void Progress();
 	void Render(HDC hdc);
+	void Render(HDC hdc, int nX, int nY);
 };

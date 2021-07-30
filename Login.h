@@ -3,7 +3,7 @@
 #include "Define.h"
 #include "KeyManager.h"
 
-extern HINSTANCE hInst;                                // 현재 인스턴스입니다.
+extern HINSTANCE hInst;                               
 extern HWND g_hWnd;
 extern RECT crt;
 
@@ -26,6 +26,6 @@ public:
 	~Login();
 
 	void Initialize(HDC hdc);
-	int Progress(int &m_nCurrent);
+	int Progress(int& m_nCurrent);
 	void Render(HDC hdc);
 };

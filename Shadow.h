@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "Define.h"
 
-extern HINSTANCE hInst;                                // 현재 인스턴스입니다.
+extern HINSTANCE hInst;                            
 extern HWND g_hWnd;
 extern RECT crt;
 
@@ -24,4 +24,5 @@ public:
 	void Initialize(HDC hdc);
 	void Progress();
 	void Render(HDC hdc);
+	void Render(HDC hdc, int nX, int nY);
 };
