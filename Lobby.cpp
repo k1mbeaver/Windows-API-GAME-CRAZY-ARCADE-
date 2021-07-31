@@ -34,3 +34,4 @@ void Lobby::Render(HDC hdc)
 	by = bit.bmHeight;
 	TransparentBlt(hdc, 0, 0, bx, by, myDC1, 0, 0, bx, by, RGB(255, 0, 255));
 }
+

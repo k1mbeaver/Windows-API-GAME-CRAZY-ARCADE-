@@ -20,8 +20,9 @@ void Player::Initialize(HDC hdc)
 	Rightold = (HBITMAP)SelectObject(myRightDC, Rightbit);
 	Jumpbit = (HBITMAP)LoadImage(NULL, L"C:\\Users\\USER\\Desktop\\연구실 공부\\허승찬 선배님 스터디\\크레이지 아케이드\\Crazy Arcade ver2\\Crazy Arcade ver2\\Image\\player\\jump.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	Jumpold = (HBITMAP)SelectObject(myJumpDC, Jumpbit);
-	myActivation = false;
-	nConnection = 0;
+	GetObject(Downbit, sizeof(BITMAP), &UpDownbit);
+	GetObject(Leftbit, sizeof(BITMAP), &LeftRightbit);
+	GetObject(Jumpbit, sizeof(BITMAP), &Jumpbitmap);
 }
 
 void Player::Progress()
@@ -30,31 +31,23 @@ void Player::Progress()
 
 void Player::Render(HDC hdc)
 {
-	GetObject(Downbit, sizeof(BITMAP), &UpDownbit);
-	UpDownX = UpDownbit.bmWidth;
-	UpDownY = UpDownbit.bmHeight;
-
-	GetObject(Leftbit, sizeof(BITMAP), &LeftRightbit);
-	LeftRightX = LeftRightbit.bmWidth;
-	LeftRightY = LeftRightbit.bmHeight;
-
 	if (nPlayerWay == 0)
 	{
-		TransparentBlt(hdc, myXY.myX, myXY.myY, UpDownX / 8, UpDownY, myDownDC, 0, 0, UpDownX / 8, UpDownY, RGB(255, 0, 255));
+		TransparentBlt(hdc, myXY.myX, myXY.myY, getPlayerUpDownX() / 8, getPlayerUpDownY(), myDownDC, 0, 0, getPlayerUpDownX() / 8, getPlayerUpDownY(), RGB(255, 0, 255));
 	}
 	switch (nPlayerWay)
 	{
 	case VK_LEFT:
-		TransparentBlt(hdc, myXY.myX, myXY.myY, LeftRightX / 6, LeftRightY, myLeftDC, LRFrameX, 0, LeftRightX / 6, LeftRightY, RGB(255, 0, 255));
+		TransparentBlt(hdc, myXY.myX, myXY.myY, getPlayerLeftRightX() / 6, getPlayerLeftRightY(), myLeftDC, LRFrameX, 0, getPlayerLeftRightX() / 6, getPlayerLeftRightY(), RGB(255, 0, 255));
 		break;
 	case VK_UP:
-		TransparentBlt(hdc, myXY.myX, myXY.myY, UpDownX / 8, UpDownY, myUpDC, UDFrameX, 0, UpDownX / 8, UpDownY, RGB(255, 0, 255));
+		TransparentBlt(hdc, myXY.myX, myXY.myY, getPlayerUpDownX() / 8, getPlayerUpDownY(), myUpDC, UDFrameX, 0, getPlayerUpDownX() / 8, getPlayerUpDownY(), RGB(255, 0, 255));
 		break;
 	case VK_RIGHT:
-		TransparentBlt(hdc, myXY.myX, myXY.myY, LeftRightX / 6, LeftRightY, myRightDC, LRFrameX, 0, LeftRightX / 6, LeftRightY, RGB(255, 0, 255));
+		TransparentBlt(hdc, myXY.myX, myXY.myY, getPlayerLeftRightX() / 6, getPlayerLeftRightY(), myRightDC, LRFrameX, 0, getPlayerLeftRightX() / 6, getPlayerLeftRightY(), RGB(255, 0, 255));
 		break;
 	case VK_DOWN:
-		TransparentBlt(hdc, myXY.myX, myXY.myY, UpDownX / 8, UpDownY, myDownDC, UDFrameX, 0, UpDownX / 8, UpDownY, RGB(255, 0, 255));
+		TransparentBlt(hdc, myXY.myX, myXY.myY, getPlayerUpDownX() / 8, getPlayerUpDownY(), myDownDC, UDFrameX, 0, getPlayerUpDownX() / 8, getPlayerUpDownY(), RGB(255, 0, 255));
 		break;
 	}
 
@@ -78,11 +71,7 @@ void Player::Render(HDC hdc)
 
 void Player::Render(HDC hdc, int nX, int nY)
 {
-	GetObject(Jumpbit, sizeof(BITMAP), &Jumpbitmap);
-	JumpX = Jumpbitmap.bmWidth;
-	JumpY = Jumpbitmap.bmHeight;
-
-	TransparentBlt(hdc, nX, nY, JumpX / 8, JumpY, myJumpDC, JumpFrameX, 0, JumpX / 8, JumpY, RGB(255, 0, 255));
+	TransparentBlt(hdc, nX, nY, getPlayerJumpX() / 8, getPlayerJumpY(), myJumpDC, JumpFrameX, 0, getPlayerJumpX() / 8, getPlayerJumpY(), RGB(255, 0, 255));
 
 	fFrameDelay += dDT;
 	if (fFrameDelay > 0.5f)
@@ -95,4 +84,40 @@ void Player::Render(HDC hdc, int nX, int nY)
 		}
 
 	}
+}
+
+int Player::getPlayerUpDownX()
+{
+	UpDownX = UpDownbit.bmWidth;
+	return UpDownX;
+}
+
+int Player::getPlayerUpDownY()
+{
+	UpDownY = UpDownbit.bmHeight;
+	return UpDownY;
+}
+
+int Player::getPlayerLeftRightX()
+{
+	LeftRightX = LeftRightbit.bmWidth;
+	return LeftRightX;
+}
+
+int Player::getPlayerLeftRightY()
+{
+	LeftRightY = LeftRightbit.bmHeight;
+	return LeftRightY;
+}
+
+int Player::getPlayerJumpX()
+{
+	JumpX = Jumpbitmap.bmWidth;
+	return JumpX;
+}
+
+int Player::getPlayerJumpY()
+{
+	JumpY = Jumpbitmap.bmHeight;
+	return JumpY;
 }

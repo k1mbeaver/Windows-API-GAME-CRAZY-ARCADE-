@@ -21,6 +21,8 @@ void GameCore::Initialize()
 	myShadow.Initialize(myHDC);
 	myMark.Initialize(myHDC);
 	myPlayer.Initialize(myHDC);
+	myBlock.Initialize(myHDC);
+	myStatue.Initialize(myHDC);
 	myDbBuf.Initialize();
 }
 
@@ -65,6 +67,8 @@ void GameCore::Render()
 	else if (nCurrent == 2)
 	{
 		myBackGround.Render(myDbBuf.ReturnBackDC());
+		myBlock.Render(myDbBuf.ReturnBackDC());
+		myStatue.Render(myDbBuf.ReturnBackDC());
 		myShadow.Render(myDbBuf.ReturnBackDC());
 		myMark.Render(myDbBuf.ReturnBackDC());
 		myPlayer.Render(myDbBuf.ReturnBackDC());

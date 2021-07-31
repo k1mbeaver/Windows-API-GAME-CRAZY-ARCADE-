@@ -27,4 +27,10 @@ public:
 	void Progress();
 	void Render(HDC hdc);
 	void Render(HDC hdc, int nX, int nY);
+	int getPlayerUpDownX();
+	int getPlayerUpDownY();
+	int getPlayerLeftRightX();
+	int getPlayerLeftRightY();
+	int getPlayerJumpX();
+	int getPlayerJumpY();
 };
