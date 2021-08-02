@@ -9,7 +9,7 @@ void Lobby::Initialize(HDC hdc)
 {
 	myDC1 = CreateCompatibleDC(hdc);
 	myDC2 = CreateCompatibleDC(hdc);
-	hbitmap1 = (HBITMAP)LoadImage(NULL, L"C:\\Users\\USER\\Desktop\\연구실 공부\\허승찬 선배님 스터디\\크레이지 아케이드\\Crazy Arcade ver2\\Crazy Arcade ver2\\Image\\lobbyBackGround.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
+	hbitmap1 = (HBITMAP)LoadImage(NULL, "C:\\Users\\USER\\Desktop\\연구실 공부\\허승찬 선배님 스터디\\크레이지 아케이드\\Crazy Arcade ver2\\Crazy Arcade ver2\\Image\\lobbyBackGround.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
 	holdbitmap1 = (HBITMAP)SelectObject(myDC1, hbitmap1);
 
 	myActivation = false;

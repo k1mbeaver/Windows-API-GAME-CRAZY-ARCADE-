@@ -15,6 +15,7 @@ private:
 	HBITMAP Downbit, Upbit, Leftbit, Rightbit, Jumpbit;
 	HBITMAP Downold, Upold, Leftold, Rightold, Jumpold;
 	BITMAP UpDownbit, LeftRightbit, Jumpbitmap;
+	RECT PlayerUDRECT, PlayerRLRECT;
 	int UDFrameX, LRFrameX, JumpFrameX;
 	int UpDownX, UpDownY, JumpX;
 	int LeftRightX, LeftRightY, JumpY;
@@ -33,4 +34,5 @@ public:
 	int getPlayerLeftRightY();
 	int getPlayerJumpX();
 	int getPlayerJumpY();
+	RECT getPlayerRECT();
 };

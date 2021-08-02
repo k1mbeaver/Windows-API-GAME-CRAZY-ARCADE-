@@ -10,6 +10,7 @@
 #include "Lobby.h"
 #include "Block.h"
 #include "Statue.h"
+#include "Collison.h"
 
 //나머지 게임에 관련된 클래스가 있는 헤더를 추가한다.
 extern HINSTANCE hInst;                                // 현재 인스턴스입니다.
@@ -30,6 +31,7 @@ private:
 	Lobby myLobby;
 	Block myBlock;
 	Statue myStatue;
+	Collison myCollison;
 	int nCurrent = 0;
 	int nInitNum = 0;
 

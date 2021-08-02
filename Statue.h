@@ -15,6 +15,7 @@ private:
 	HBITMAP Stone1old, Stone2old, Stone3old, Statue1old, Statue2old, Statue3old;
 	BITMAP StoneBitmap, Statue1Bitmap, Statue2Bitmap, Statue3Bitmap;
 	int nStoneX, nStoneY, nStatue1X, nStatue1Y, nStatue2X, nStatue2Y, nStatue3X, nStatue3Y;
+	RECT StatueRect;
 	bool myActivation = false;
 	int nConnection = 0;
 public:
@@ -32,4 +33,5 @@ public:
 	int getStatue2Y();
 	int getStatue3X();
 	int getStatue3Y();
+	RECT getStatue3RECT();
 };

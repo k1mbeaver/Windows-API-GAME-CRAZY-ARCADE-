@@ -10,15 +10,15 @@ void Player::Initialize(HDC hdc)
 	myLeftDC = CreateCompatibleDC(hdc);
 	myRightDC = CreateCompatibleDC(hdc);
 	myJumpDC = CreateCompatibleDC(hdc);
-	Downbit = (HBITMAP)LoadImage(NULL, L"C:\\Users\\USER\\Desktop\\연구실 공부\\허승찬 선배님 스터디\\크레이지 아케이드\\Crazy Arcade ver2\\Crazy Arcade ver2\\Image\\player\\down.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	Downbit = (HBITMAP)LoadImage(NULL, "C:\\Users\\USER\\Desktop\\연구실 공부\\허승찬 선배님 스터디\\크레이지 아케이드\\Crazy Arcade ver2\\Crazy Arcade ver2\\Image\\player\\down.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	Downold = (HBITMAP)SelectObject(myDownDC, Downbit);
-	Upbit = (HBITMAP)LoadImage(NULL, L"C:\\Users\\USER\\Desktop\\연구실 공부\\허승찬 선배님 스터디\\크레이지 아케이드\\Crazy Arcade ver2\\Crazy Arcade ver2\\Image\\player\\Up.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	Upbit = (HBITMAP)LoadImage(NULL, "C:\\Users\\USER\\Desktop\\연구실 공부\\허승찬 선배님 스터디\\크레이지 아케이드\\Crazy Arcade ver2\\Crazy Arcade ver2\\Image\\player\\Up.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	Upold = (HBITMAP)SelectObject(myUpDC, Upbit);
-	Leftbit = (HBITMAP)LoadImage(NULL, L"C:\\Users\\USER\\Desktop\\연구실 공부\\허승찬 선배님 스터디\\크레이지 아케이드\\Crazy Arcade ver2\\Crazy Arcade ver2\\Image\\player\\Left.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	Leftbit = (HBITMAP)LoadImage(NULL, "C:\\Users\\USER\\Desktop\\연구실 공부\\허승찬 선배님 스터디\\크레이지 아케이드\\Crazy Arcade ver2\\Crazy Arcade ver2\\Image\\player\\Left.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	Leftold = (HBITMAP)SelectObject(myLeftDC, Leftbit);
-	Rightbit = (HBITMAP)LoadImage(NULL, L"C:\\Users\\USER\\Desktop\\연구실 공부\\허승찬 선배님 스터디\\크레이지 아케이드\\Crazy Arcade ver2\\Crazy Arcade ver2\\Image\\player\\Right.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	Rightbit = (HBITMAP)LoadImage(NULL, "C:\\Users\\USER\\Desktop\\연구실 공부\\허승찬 선배님 스터디\\크레이지 아케이드\\Crazy Arcade ver2\\Crazy Arcade ver2\\Image\\player\\Right.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	Rightold = (HBITMAP)SelectObject(myRightDC, Rightbit);
-	Jumpbit = (HBITMAP)LoadImage(NULL, L"C:\\Users\\USER\\Desktop\\연구실 공부\\허승찬 선배님 스터디\\크레이지 아케이드\\Crazy Arcade ver2\\Crazy Arcade ver2\\Image\\player\\jump.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	Jumpbit = (HBITMAP)LoadImage(NULL, "C:\\Users\\USER\\Desktop\\연구실 공부\\허승찬 선배님 스터디\\크레이지 아케이드\\Crazy Arcade ver2\\Crazy Arcade ver2\\Image\\player\\jump.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	Jumpold = (HBITMAP)SelectObject(myJumpDC, Jumpbit);
 	GetObject(Downbit, sizeof(BITMAP), &UpDownbit);
 	GetObject(Leftbit, sizeof(BITMAP), &LeftRightbit);
@@ -120,4 +120,14 @@ int Player::getPlayerJumpY()
 {
 	JumpY = Jumpbitmap.bmHeight;
 	return JumpY;
+}
+
+RECT Player::getPlayerRECT()
+{
+	PlayerUDRECT.left = myXY.myX;
+	PlayerUDRECT.top = myXY.myY;
+	PlayerUDRECT.right = getPlayerUpDownX() / 8;
+	PlayerUDRECT.bottom = getPlayerUpDownY();
+
+	return PlayerUDRECT;
 }

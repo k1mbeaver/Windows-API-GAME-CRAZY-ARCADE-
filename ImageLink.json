@@ -1,0 +1,58 @@
+{
+	"BazziDown"
+	{
+		"BazziDown1" : { "ImageLink" : "Image\\player\\down\\down1.bmp" },
+		"BazziDown2" : { "ImageLink" : "Image\\player\\down\\down2.bmp" },
+		"BazziDown3" : { "ImageLink" : "Image\\player\\down\\down3.bmp" },
+		"BazziDown4" : { "ImageLink" : "Image\\player\\down\\down4.bmp" },
+		"BazziDown5" : { "ImageLink" : "Image\\player\\down\\down5.bmp" },
+		"BazziDown6" : { "ImageLink" : "Image\\player\\down\\down6.bmp" },
+		"BazziDown7" : { "ImageLink" : "Image\\player\\down\\down7.bmp" },
+		"BazziDown8" : { "ImageLink" : "Image\\player\\down\\down8.bmp" }
+	},
+
+	"BazziUp"
+	{
+		"BazziUp1" : { "ImageLink" : "Image\\player\\up\\up1.bmp" },
+		"BazziUp2" : { "ImageLink" : "Image\\player\\up\\up2.bmp" },
+		"BazziUp3" : { "ImageLink" : "Image\\player\\up\\up3.bmp" },
+		"BazziUp4" : { "ImageLink" : "Image\\player\\up\\up4.bmp" },
+		"BazziUp5" : { "ImageLink" : "Image\\player\\up\\up5.bmp" },
+		"BazziUp6" : { "ImageLink" : "Image\\player\\up\\up6.bmp" },
+		"BazziUp7" : { "ImageLink" : "Image\\player\\up\\up7.bmp" },
+		"BazziUp8" : { "ImageLink" : "Image\\player\\up\\up8.bmp" }
+	},
+
+	"BazziRight"
+	{
+		"BazziRight1" : { "ImageLink" : "Image\\player\\right\\right1.bmp" },
+		"BazziRight2" : { "ImageLink" : "Image\\player\\right\\right2.bmp" },
+		"BazziRight3" : { "ImageLink" : "Image\\player\\right\\right3.bmp" },
+		"BazziRight4" : { "ImageLink" : "Image\\player\\right\\right4.bmp" },
+		"BazziRight5" : { "ImageLink" : "Image\\player\\right\\right5.bmp" },
+		"BazziRight6" : { "ImageLink" : "Image\\player\\right\\right6.bmp" }
+	},
+
+	"BazziLeft"
+	{
+		"BazziLeft1" : { "ImageLink" : "Image\\player\\left\\left1.bmp" },
+		"BazziLeft2" : { "ImageLink" : "Image\\player\\left\\left2.bmp" },
+		"BazziLeft3" : { "ImageLink" : "Image\\player\\left\\left3.bmp" },
+		"BazziLeft4" : { "ImageLink" : "Image\\player\\left\\left4.bmp" },
+		"BazziLeft5" : { "ImageLink" : "Image\\player\\left\\left5.bmp" },
+		"BazziLeft6" : { "ImageLink" : "Image\\player\\left\\left6.bmp" }
+	},
+
+	"BazziJump"
+	{
+		"BazziJump1" : { "ImageLink" : "Image\\player\\jump\\jump1.bmp" },
+		"BazziJump2" : { "ImageLink" : "Image\\player\\jump\\jump2.bmp" },
+		"BazziJump3" : { "ImageLink" : "Image\\player\\jump\\jump3.bmp" },
+		"BazziJump4" : { "ImageLink" : "Image\\player\\jump\\jump4.bmp" },
+		"BazziJump5" : { "ImageLink" : "Image\\player\\jump\\jump5.bmp" },
+		"BazziJump6" : { "ImageLink" : "Image\\player\\jump\\jump6.bmp" },
+		"BazziJump7" : { "ImageLink" : "Image\\player\\jump\\jump7.bmp" },
+		"BazziJumo8" : { "ImageLink" : "Image\\player\\jump\\jump8.bmp" }
+	},
+
+}
