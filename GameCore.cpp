@@ -15,6 +15,7 @@ void GameCore::Initialize()
 {
 	nCurrent = 0; // 0 = main, 1 = GameStart, 2 = GameMenu, 3 = GameOver
 	myHDC = GetDC(g_hWnd);
+	myImage.Initialize();
 	myLogin.Initialize(myHDC);
 	myLobby.Initialize(myHDC);
 	myBackGround.Initialize(myHDC);
@@ -56,6 +57,7 @@ void GameCore::Render()
 	if (nCurrent == 0)
 	{
 		myLogin.Render(myDbBuf.ReturnBackDC());
+		myImage.Render("BazziDown1", myDbBuf.ReturnBackDC());
 	}
 
 	else if (nCurrent == 1)

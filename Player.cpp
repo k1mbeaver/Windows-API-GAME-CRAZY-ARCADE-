@@ -4,6 +4,7 @@ Player::~Player() {}
 
 void Player::Initialize(HDC hdc)
 {
+	parseJson.Initialize();
 	myDC = CreateCompatibleDC(hdc);
 	myDownDC = CreateCompatibleDC(hdc);
 	myUpDC = CreateCompatibleDC(hdc);
@@ -23,6 +24,12 @@ void Player::Initialize(HDC hdc)
 	GetObject(Downbit, sizeof(BITMAP), &UpDownbit);
 	GetObject(Leftbit, sizeof(BITMAP), &LeftRightbit);
 	GetObject(Jumpbit, sizeof(BITMAP), &Jumpbitmap);
+	filename = parseJson.getMyObjectLink("BazziJump1");
+	nFileWidth = parseJson.getMyObjectWidth("BazziJump1");
+	nFileHeight = parseJson.getMyObjectHeight("BazziJump1");
+	fX = parseJson.getMyObjectX("BazziJump1");
+	fY = parseJson.getMyObjectY("BazziJump1");
+	// 현재 파일경로 알아오는거 까지함
 }
 
 void Player::Progress()

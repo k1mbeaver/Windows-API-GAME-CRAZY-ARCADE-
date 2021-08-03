@@ -1,6 +1,8 @@
 #pragma once
 #include "stdafx.h"
 #include "Define.h"
+#include "myJson.h"
+
 extern HINSTANCE hInst;                              
 extern HWND g_hWnd;
 extern RECT crt;
@@ -9,6 +11,10 @@ class Player
 private:
 	HWND myHWND;
 	HDC myDC;
+	string filename;
+	int nFileWidth, nFileHeight;
+	const char* ch;
+	float fX, fY;
 	BITMAP bit;
 	int bx, by;
 	HDC myDownDC, myUpDC, myLeftDC, myRightDC, myJumpDC;
@@ -16,6 +22,7 @@ private:
 	HBITMAP Downold, Upold, Leftold, Rightold, Jumpold;
 	BITMAP UpDownbit, LeftRightbit, Jumpbitmap;
 	RECT PlayerUDRECT, PlayerRLRECT;
+	myJson parseJson;
 	int UDFrameX, LRFrameX, JumpFrameX;
 	int UpDownX, UpDownY, JumpX;
 	int LeftRightX, LeftRightY, JumpY;
