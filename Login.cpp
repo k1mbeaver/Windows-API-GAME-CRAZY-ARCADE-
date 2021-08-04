@@ -1,5 +1,6 @@
 #include "Login.h"
 
+
 Login::Login()
 {
 	SetRect(&clickStart, 608, 61, 784, 268);
@@ -9,8 +10,9 @@ Login::~Login() {}
 
 void Login::Initialize(HDC hdc)
 {
+	parseJson.Initialize();
 	myDC = CreateCompatibleDC(hdc);
-	hbitmap = (HBITMAP)LoadImage(NULL, "C:\\Users\\USER\\Desktop\\연구실 공부\\허승찬 선배님 스터디\\크레이지 아케이드\\Crazy Arcade ver2\\Crazy Arcade ver2\\Image\\loginBackGround.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
+	hbitmap = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("loginBackGround").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
 	holdbitmap = (HBITMAP)SelectObject(myDC, hbitmap);
 	myActivation = false;
 	nConnection = 0;

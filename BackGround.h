@@ -2,6 +2,7 @@
 #pragma once
 #include "stdafx.h"
 #include "Define.h"
+#include "myJson.h"
 
 extern HINSTANCE hInst;                             
 extern HWND g_hWnd;
@@ -14,6 +15,7 @@ private:
 	HDC myDC;
 	HBITMAP hbitmap;
 	HBITMAP holdbitmap;
+	myJson parseJson;
 	BITMAP bit;
 	int bx, by;
 	bool myActivation = false;

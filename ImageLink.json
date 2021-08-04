@@ -1,5 +1,5 @@
 {
-
+	"BazziDown" : [{ "ImageLink" : "Image\\player\\down.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140}],
 	"BazziDown1" : [{ "ImageLink" : "Image\\player\\down\\down1.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140}],
 	"BazziDown2" : [{ "ImageLink" : "Image\\player\\down\\down2.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140 }],
 	"BazziDown3" : [{ "ImageLink" : "Image\\player\\down\\down3.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140 }],
@@ -9,36 +9,36 @@
 	"BazziDown7" : [{ "ImageLink" : "Image\\player\\down\\down7.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140 }],
 	"BazziDown8" : [{ "ImageLink" : "Image\\player\\down\\down8.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140 }],
 
-
-	"BazziUp1" : { "ImageLink" : "Image\\player\\up\\up1.bmp", "Width" : 64, "Height" : 76  },
-	"BazziUp2" : { "ImageLink" : "Image\\player\\up\\up2.bmp", "Width" : 64, "Height" : 76  },
-	"BazziUp3" : { "ImageLink" : "Image\\player\\up\\up3.bmp", "Width" : 64, "Height" : 76  },
-	"BazziUp4" : { "ImageLink" : "Image\\player\\up\\up4.bmp", "Width" : 64, "Height" : 76  },
-	"BazziUp5" : { "ImageLink" : "Image\\player\\up\\up5.bmp", "Width" : 64, "Height" : 76  },
-	"BazziUp6" : { "ImageLink" : "Image\\player\\up\\up6.bmp", "Width" : 64, "Height" : 76  },
-	"BazziUp7" : { "ImageLink" : "Image\\player\\up\\up7.bmp", "Width" : 64, "Height" : 76  },
-	"BazziUp8" : { "ImageLink" : "Image\\player\\up\\up8.bmp", "Width" : 64, "Height" : 76  },
-
-
-
-	"BazziRight1" : { "ImageLink" : "Image\\player\\right\\right1.bmp", "Width" : 64, "Height" : 76 },
-	"BazziRight2" : { "ImageLink" : "Image\\player\\right\\right2.bmp", "Width" : 64, "Height" : 76  },
-	"BazziRight3" : { "ImageLink" : "Image\\player\\right\\right3.bmp", "Width" : 64, "Height" : 76  },
-	"BazziRight4" : { "ImageLink" : "Image\\player\\right\\right4.bmp", "Width" : 64, "Height" : 76  },
-	"BazziRight5" : { "ImageLink" : "Image\\player\\right\\right5.bmp", "Width" : 64, "Height" : 76  },
-	"BazziRight6" : { "ImageLink" : "Image\\player\\right\\right6.bmp", "Width" : 64, "Height" : 76  },
+	"BazziUp" : [{ "ImageLink" : "Image\\player\\up.bmp", "Width" : 64, "Height" : 76  }],
+	"BazziUp1" : [{ "ImageLink" : "Image\\player\\up\\up1.bmp", "Width" : 64, "Height" : 76  }],
+	"BazziUp2" : [{ "ImageLink" : "Image\\player\\up\\up2.bmp", "Width" : 64, "Height" : 76  }],
+	"BazziUp3" : [{ "ImageLink" : "Image\\player\\up\\up3.bmp", "Width" : 64, "Height" : 76  }],
+	"BazziUp4" : [{ "ImageLink" : "Image\\player\\up\\up4.bmp", "Width" : 64, "Height" : 76  }],
+	"BazziUp5" : [{ "ImageLink" : "Image\\player\\up\\up5.bmp", "Width" : 64, "Height" : 76  }],
+	"BazziUp6" : [{ "ImageLink" : "Image\\player\\up\\up6.bmp", "Width" : 64, "Height" : 76  }],
+	"BazziUp7" : [{ "ImageLink" : "Image\\player\\up\\up7.bmp", "Width" : 64, "Height" : 76  }],
+	"BazziUp8" : [{ "ImageLink" : "Image\\player\\up\\up8.bmp", "Width" : 64, "Height" : 76  }],
 
 
+	"BazziRight" : [{ "ImageLink" : "Image\\player\\right.bmp", "Width" : 64, "Height" : 76 }],
+	"BazziRight1" : [{ "ImageLink" : "Image\\player\\right\\right1.bmp", "Width" : 64, "Height" : 76 }],
+	"BazziRight2" : [{ "ImageLink" : "Image\\player\\right\\right2.bmp", "Width" : 64, "Height" : 76  }],
+	"BazziRight3" : [{ "ImageLink" : "Image\\player\\right\\right3.bmp", "Width" : 64, "Height" : 76  }],
+	"BazziRight4" : [{ "ImageLink" : "Image\\player\\right\\right4.bmp", "Width" : 64, "Height" : 76  }],
+	"BazziRight5" : [{ "ImageLink" : "Image\\player\\right\\right5.bmp", "Width" : 64, "Height" : 76  }],
+	"BazziRight6" : [{ "ImageLink" : "Image\\player\\right\\right6.bmp", "Width" : 64, "Height" : 76  }],
 
-	"BazziLeft1" : { "ImageLink" : "Image\\player\\left\\left1.bmp", "Width" : 64, "Height" : 76 },
-	"BazziLeft2" : { "ImageLink" : "Image\\player\\left\\left2.bmp", "Width" : 64, "Height" : 76 },
-	"BazziLeft3" : { "ImageLink" : "Image\\player\\left\\left3.bmp", "Width" : 64, "Height" : 76 },
-	"BazziLeft4" : { "ImageLink" : "Image\\player\\left\\left4.bmp", "Width" : 64, "Height" : 76 },
-	"BazziLeft5" : { "ImageLink" : "Image\\player\\left\\left5.bmp", "Width" : 64, "Height" : 76 },
-	"BazziLeft6" : { "ImageLink" : "Image\\player\\left\\left6.bmp", "Width" : 64, "Height" : 76 },
+
+    "BazziLeft" : [{ "ImageLink" : "Image\\player\\left.bmp", "Width" : 64, "Height" : 76 }],
+	"BazziLeft1" : [{ "ImageLink" : "Image\\player\\left\\left1.bmp", "Width" : 64, "Height" : 76 }],
+	"BazziLeft2" : [{ "ImageLink" : "Image\\player\\left\\left2.bmp", "Width" : 64, "Height" : 76 }],
+	"BazziLeft3" : [{ "ImageLink" : "Image\\player\\left\\left3.bmp", "Width" : 64, "Height" : 76 }],
+	"BazziLeft4" : [{ "ImageLink" : "Image\\player\\left\\left4.bmp", "Width" : 64, "Height" : 76 }],
+	"BazziLeft5" : [{ "ImageLink" : "Image\\player\\left\\left5.bmp", "Width" : 64, "Height" : 76 }],
+	"BazziLeft6" : [{ "ImageLink" : "Image\\player\\left\\left6.bmp", "Width" : 64, "Height" : 76 }],
 
 
-
+	"BazziJump" : [{ "ImageLink" : "Image\\player\\jump.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140}],
 	"BazziJump1" : [{ "ImageLink" : "Image\\player\\jump\\jump1.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140}],
 	"BazziJump2" : [{ "ImageLink" : "Image\\player\\jump\\jump2.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140}],
 	"BazziJump3" : [{ "ImageLink" : "Image\\player\\jump\\jump3.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140}],
@@ -46,5 +46,9 @@
 	"BazziJump5" : [{ "ImageLink" : "Image\\player\\jump\\jump5.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140}],
 	"BazziJump6" : [{ "ImageLink" : "Image\\player\\jump\\jump6.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140}],
 	"BazziJump7" : [{ "ImageLink" : "Image\\player\\jump\\jump7.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140}],
-	"BazziJumo8" : [{ "ImageLink" : "Image\\player\\jump\\jump8.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140}]
+	"BazziJump8" : [{ "ImageLink" : "Image\\player\\jump\\jump8.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140}],
+
+	"lobbyBackGround" : [{ "ImageLink" : "Image\\lobbybackground\\lobbyBackGround.bmp"}],
+	"loginBackGround" : [{ "ImageLink" : "Image\\loginbackground\\loginBackGround.bmp"}],
+	"BackGround" : [{ "ImageLink" : "Image\\background\\BackGround.bmp"}]
 }

@@ -7,12 +7,13 @@ class myJson
 private:
 public:
 	string str;
+	string strObject;
 	bool parsingRet;
 	Json::Reader reader;
 	Json::Value root;
 
 	void Initialize();
-	string getMyObjectLink(const char* chFileName);
+	string& getMyObjectLink(const char* chFileName);
 	int getMyObjectWidth(const char* chFileName);
 	int getMyObjectHeight(const char* chFileName);
 	float getMyObjectX(const char* chFileName);

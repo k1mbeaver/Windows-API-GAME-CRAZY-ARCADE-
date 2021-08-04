@@ -13,7 +13,6 @@ private:
 	HDC myDC;
 	string filename;
 	int nFileWidth, nFileHeight;
-	const char* ch;
 	float fX, fY;
 	BITMAP bit;
 	int bx, by;
@@ -41,5 +40,5 @@ public:
 	int getPlayerLeftRightY();
 	int getPlayerJumpX();
 	int getPlayerJumpY();
-	RECT getPlayerRECT();
+	RECT& getPlayerRECT();
 };

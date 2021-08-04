@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Define.h"
 #include "KeyManager.h"
+#include "myJson.h"
 
 extern HINSTANCE hInst;                               
 extern HWND g_hWnd;
@@ -17,6 +18,7 @@ private:
 	BITMAP bit;
 	RECT clickStart;
 	KeyManager myKey;
+	myJson parseJson;
 	bool checkStart;
 	int bx, by;
 	bool myActivation = false;

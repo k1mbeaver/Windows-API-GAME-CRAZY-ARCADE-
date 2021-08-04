@@ -1,7 +1,7 @@
 #include "Collison.h"
 
 // 사각형끼리 충돌시 밀어내기!
-void Collison::SetNotInterSect(RECT pRect, RECT pHold)
+void Collison::SetNotInterSect(RECT& pRect, RECT pHold)
 {
 	RECT rcInter; // 교차 영역을 얻을 변수 선언
 
@@ -45,7 +45,7 @@ void Collison::SetNotInterSect(RECT pRect, RECT pHold)
 
 			else if (rcInter.right == pHold.right)
 			{
-				// 충돌 가로 폭만큼 우로 밀어준다.
+				// 충돌 가로 폭만큼 우로 밀어 준다.
 				pRect.left += nInterW;
 				pRect.right += nInterW;
 			}

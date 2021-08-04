@@ -91,8 +91,8 @@ RECT Statue::getStatue3RECT()
 {
 	StatueRect.left = 560;
 	StatueRect.top = 0;
-	StatueRect.right = getStatue3X();
-	StatueRect.bottom = getStatue3Y();
+	StatueRect.right = StatueRect.left + getStatue3X();
+	StatueRect.bottom = StatueRect.top + getStatue3Y();
 
 	return StatueRect;
 }

@@ -10,9 +10,9 @@ void myJson::Initialize()
 
 }
 
-string myJson::getMyObjectLink(const char* chFileName)
+string& myJson::getMyObjectLink(const char* chFileName)
 {
-	string strObject;
+	strObject = "\0";
 
 	Json::Value myobject = root[chFileName];
 
