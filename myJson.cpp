@@ -2,7 +2,7 @@
 
 void myJson::Initialize()
 {
-	ifstream ist("ImageLink.json");
+	ifstream ist("Image\\ImageLink.json");
 	for (char chP; ist >> chP;)
 		str += chP;
 
@@ -26,7 +26,7 @@ string& myJson::getMyObjectLink(const char* chFileName)
 
 int myJson::getMyObjectWidth(const char* chFileName)
 {
-	int nObject = 0;
+	nObject = 0;
 
 	Json::Value myobject = root[chFileName];
 
@@ -40,7 +40,7 @@ int myJson::getMyObjectWidth(const char* chFileName)
 
 int myJson::getMyObjectHeight(const char* chFileName)
 {
-	int nObject = 0;
+	nObject = 0;
 
 	Json::Value myobject = root[chFileName];
 
@@ -54,7 +54,7 @@ int myJson::getMyObjectHeight(const char* chFileName)
 
 float myJson::getMyObjectX(const char* chFileName)
 {
-	float fObject = 0;
+	fObject = 0;
 
 	Json::Value myobject = root[chFileName];
 
@@ -64,17 +64,103 @@ float myJson::getMyObjectX(const char* chFileName)
 	}
 
 	return fObject;
+
 }
 
 float myJson::getMyObjectY(const char* chFileName)
 {
-	float fObject = 0;
+	fObject = 0;
 
 	Json::Value myobject = root[chFileName];
 
 	for (Json::ValueIterator it = myobject.begin(); it != myobject.end(); it++)
 	{
 		fObject = (*it)["LocateY"].asFloat();
+	}
+
+	return fObject;
+}
+
+int myJson::getMyObjectBottomRect(const char* chFileName)
+{
+	nObject = 0;
+
+	Json::Value myobject = root[chFileName];
+
+	for (Json::ValueIterator it = myobject.begin(); it != myobject.end(); it++)
+	{
+		nObject = (*it)["BottomRect"].asInt();
+	}
+
+	return nObject;
+}
+
+int myJson::getMyObjectTopRect(const char* chFileName)
+{
+	nObject = 0;
+
+	Json::Value myobject = root[chFileName];
+
+	for (Json::ValueIterator it = myobject.begin(); it != myobject.end(); it++)
+	{
+		nObject = (*it)["TopRect"].asInt();
+	}
+
+	return nObject;
+}
+
+int myJson::getMyObjectBetweenX(const char* chFileName)
+{
+	nObject = 0;
+
+	Json::Value myobject = root[chFileName];
+
+	for (Json::ValueIterator it = myobject.begin(); it != myobject.end(); it++)
+	{
+		nObject = (*it)["BetweenX"].asInt();
+	}
+
+	return nObject;
+}
+
+int myJson::getMyObjectBetweenY(const char* chFileName)
+{
+	nObject = 0;
+
+	Json::Value myobject = root[chFileName];
+
+	for (Json::ValueIterator it = myobject.begin(); it != myobject.end(); it++)
+	{
+		nObject = (*it)["BetweenY"].asInt();
+	}
+
+	return nObject;
+}
+
+float myJson::getMyObjectX2(const char* chFileName)
+{
+	fObject = 0;
+
+	Json::Value myobject = root[chFileName];
+
+	for (Json::ValueIterator it = myobject.begin(); it != myobject.end(); it++)
+	{
+		fObject = (*it)["LocateX2"].asFloat();
+	}
+
+	return fObject;
+
+}
+
+float myJson::getMyObjectY2(const char* chFileName)
+{
+	fObject = 0;
+
+	Json::Value myobject = root[chFileName];
+
+	for (Json::ValueIterator it = myobject.begin(); it != myobject.end(); it++)
+	{
+		fObject = (*it)["LocateY2"].asFloat();
 	}
 
 	return fObject;

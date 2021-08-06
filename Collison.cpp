@@ -1,7 +1,7 @@
 #include "Collison.h"
 
 // 사각형끼리 충돌시 밀어내기!
-void Collison::SetNotInterSect(RECT& pRect, RECT pHold)
+Direction Collison::SetNotInterSect(RECT& pRect, RECT pHold) // 캐릭터 전용
 {
 	RECT rcInter; // 교차 영역을 얻을 변수 선언
 
@@ -19,16 +19,20 @@ void Collison::SetNotInterSect(RECT& pRect, RECT pHold)
 			if (rcInter.top == pHold.top)
 			{
 				// 충돌 수직 높이만큼 위로 밀어준다.
-				pRect.top -= nInterH;
-				pRect.bottom -= nInterH;
+				//pRect.top -= nInterH;
+				//pRect.bottom -= nInterH;
+				//myXY.myY -= nInterH;
+				return Up;
 			}
 
 			// 아래에서 충돌
 			if (rcInter.bottom == pHold.bottom)
 			{
 				// 충돌 수직 높이만큼 아래로 밀어준다.
-				pRect.top += nInterH;
-				pRect.bottom += nInterH;
+				//pRect.top += nInterH;
+				//pRect.bottom += nInterH;
+				//myXY.myY += nInterH;
+				return Down;
 			}
 		}
 
@@ -39,16 +43,22 @@ void Collison::SetNotInterSect(RECT& pRect, RECT pHold)
 			if (rcInter.left == pHold.left)
 			{
 				// 충돌 가로 폭만큼 좌로 밀어준다.
-				pRect.left -= nInterW;
-				pRect.right -= nInterW;
+				//pRect.left -= nInterW;
+				//pRect.right -= nInterW;
+				//myXY.myX -= nInterW;
+				return Left;
 			}
 
 			else if (rcInter.right == pHold.right)
 			{
 				// 충돌 가로 폭만큼 우로 밀어 준다.
-				pRect.left += nInterW;
-				pRect.right += nInterW;
+				//pRect.left += nInterW;
+				//pRect.right += nInterW;
+				//myXY.myX += nInterW;
+				return Right;
 			}
 		}
 	}
+
+	return None;
 }

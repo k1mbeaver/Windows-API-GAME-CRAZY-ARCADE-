@@ -22,11 +22,21 @@
 #include "dist/json/json.h"
 #include <fstream>
 using namespace std;
+
 // 전역 변수 선언
 struct Vector2
 {
     float myX;
     float myY;
+};
+
+enum Direction
+{
+    None,
+    Left,
+    Right,
+    Up,
+    Down
 };
 
 extern POINT ptMouse;

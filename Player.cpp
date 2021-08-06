@@ -6,50 +6,53 @@ void Player::Initialize(HDC hdc)
 {
 	parseJson.Initialize();
 	myDC = CreateCompatibleDC(hdc);
-	myDownDC = CreateCompatibleDC(hdc);
-	myUpDC = CreateCompatibleDC(hdc);
-	myLeftDC = CreateCompatibleDC(hdc);
-	myRightDC = CreateCompatibleDC(hdc);
-	myJumpDC = CreateCompatibleDC(hdc);
 	Downbit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("BazziDown").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	Downold = (HBITMAP)SelectObject(myDownDC, Downbit);
 	Upbit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("BazziUp").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	Upold = (HBITMAP)SelectObject(myUpDC, Upbit);
 	Leftbit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("BazziLeft").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	Leftold = (HBITMAP)SelectObject(myLeftDC, Leftbit);
 	Rightbit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("BazziRight").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	Rightold = (HBITMAP)SelectObject(myRightDC, Rightbit);
 	Jumpbit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("BazziJump").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	Jumpold = (HBITMAP)SelectObject(myJumpDC, Jumpbit);
-	GetObject(Downbit, sizeof(BITMAP), &UpDownbit);
-	GetObject(Leftbit, sizeof(BITMAP), &LeftRightbit);
-	GetObject(Jumpbit, sizeof(BITMAP), &Jumpbitmap);
-	// 현재 파일경로 알아오는거 까지함
+	Shadowbit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("Shadow").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 }
 
 void Player::Progress()
 {
 }
 
-void Player::Render(HDC hdc)
+void Player::Render(HDC hdc) // 게임 플레이 화면 용
 {
 	if (nPlayerWay == 0)
 	{
-		TransparentBlt(hdc, myXY.myX, myXY.myY, getPlayerUpDownX() / 8, getPlayerUpDownY(), myDownDC, 0, 0, getPlayerUpDownX() / 8, getPlayerUpDownY(), RGB(255, 0, 255));
+		Shadowold = (HBITMAP)SelectObject(myDC, Shadowbit);
+		TransparentBlt(hdc, myXY.myX + 10, myXY.myY + 60, getWidth("Shadow"), getHeight("Shadow"), myDC, 0, 0, getWidth("Shadow"), getHeight("Shadow"), RGB(255, 0, 255));
+		Downold = (HBITMAP)SelectObject(myDC, Downbit);
+		TransparentBlt(hdc, myXY.myX, myXY.myY, getWidth("BazziDown"), getHeight("BazziDown"), myDC, 0, 0, getWidth("BazziDown"), getHeight("BazziDown"), RGB(255, 0, 255));
 	}
 	switch (nPlayerWay)
 	{
 	case VK_LEFT:
-		TransparentBlt(hdc, myXY.myX, myXY.myY, getPlayerLeftRightX() / 6, getPlayerLeftRightY(), myLeftDC, LRFrameX, 0, getPlayerLeftRightX() / 6, getPlayerLeftRightY(), RGB(255, 0, 255));
+		Shadowold = (HBITMAP)SelectObject(myDC, Shadowbit);
+		TransparentBlt(hdc, myXY.myX + 10, myXY.myY + 60, getWidth("Shadow"), getHeight("Shadow"), myDC, 0, 0, getWidth("Shadow"), getHeight("Shadow"), RGB(255, 0, 255));
+		Leftold = (HBITMAP)SelectObject(myDC, Leftbit);
+		TransparentBlt(hdc, myXY.myX, myXY.myY, getWidth("BazziLeft"), getHeight("BazziLeft"), myDC, LRFrameX, 0, getWidth("BazziLeft"), getHeight("BazziLeft"), RGB(255, 0, 255));
 		break;
 	case VK_UP:
-		TransparentBlt(hdc, myXY.myX, myXY.myY, getPlayerUpDownX() / 8, getPlayerUpDownY(), myUpDC, UDFrameX, 0, getPlayerUpDownX() / 8, getPlayerUpDownY(), RGB(255, 0, 255));
+		Shadowold = (HBITMAP)SelectObject(myDC, Shadowbit);
+		TransparentBlt(hdc, myXY.myX + 10, myXY.myY + 60, getWidth("Shadow"), getHeight("Shadow"), myDC, 0, 0, getWidth("Shadow"), getHeight("Shadow"), RGB(255, 0, 255));
+		Upold = (HBITMAP)SelectObject(myDC, Upbit);
+		TransparentBlt(hdc, myXY.myX, myXY.myY, getWidth("BazziUp"), getHeight("BazziUp"), myDC, UDFrameX, 0, getWidth("BazziUp"), getHeight("BazziUp"), RGB(255, 0, 255));
 		break;
 	case VK_RIGHT:
-		TransparentBlt(hdc, myXY.myX, myXY.myY, getPlayerLeftRightX() / 6, getPlayerLeftRightY(), myRightDC, LRFrameX, 0, getPlayerLeftRightX() / 6, getPlayerLeftRightY(), RGB(255, 0, 255));
+		Shadowold = (HBITMAP)SelectObject(myDC, Shadowbit);
+		TransparentBlt(hdc, myXY.myX + 10, myXY.myY + 60, getWidth("Shadow"), getHeight("Shadow"), myDC, 0, 0, getWidth("Shadow"), getHeight("Shadow"), RGB(255, 0, 255));
+		Rightold = (HBITMAP)SelectObject(myDC, Rightbit);
+		TransparentBlt(hdc, myXY.myX, myXY.myY, getWidth("BazziRight"), getHeight("BazziRight"), myDC, LRFrameX, 0, getWidth("BazziRight"), getHeight("BazziRight"), RGB(255, 0, 255));
 		break;
 	case VK_DOWN:
-		TransparentBlt(hdc, myXY.myX, myXY.myY, getPlayerUpDownX() / 8, getPlayerUpDownY(), myDownDC, UDFrameX, 0, getPlayerUpDownX() / 8, getPlayerUpDownY(), RGB(255, 0, 255));
+		Shadowold = (HBITMAP)SelectObject(myDC, Shadowbit);
+		TransparentBlt(hdc, myXY.myX + 10, myXY.myY + 60, getWidth("Shadow"), getHeight("Shadow"), myDC, 0, 0, getWidth("Shadow"), getHeight("Shadow"), RGB(255, 0, 255));
+		Downold = (HBITMAP)SelectObject(myDC, Downbit);
+		TransparentBlt(hdc, myXY.myX, myXY.myY, getWidth("BazziDown"), getHeight("BazziDown"), myDC, UDFrameX, 0, getWidth("BazziDown"), getHeight("BazziDown"), RGB(255, 0, 255));
+
 		break;
 	}
 
@@ -71,9 +74,12 @@ void Player::Render(HDC hdc)
 	}
 }
 
-void Player::Render(HDC hdc, int nX, int nY)
+void Player::Render(HDC hdc, int nState) // 로비용
 {
-	TransparentBlt(hdc, nX, nY, getPlayerJumpX() / 8, getPlayerJumpY(), myJumpDC, JumpFrameX, 0, getPlayerJumpX() / 8, getPlayerJumpY(), RGB(255, 0, 255));
+	Shadowold = (HBITMAP)SelectObject(myDC, Shadowbit);
+	TransparentBlt(hdc, getX("BazziJump") + 10, getY("BazziJump") + 65, getWidth("Shadow"), getHeight("Shadow"), myDC, 0, 0, getWidth("Shadow"), getHeight("Shadow"), RGB(255, 0, 255));
+	Jumpold = (HBITMAP)SelectObject(myDC, Jumpbit);
+	TransparentBlt(hdc, getX("BazziJump"), getY("BazziJump"), getWidth("BazziJump"), getHeight("BazziJump"), myDC, JumpFrameX, 0, getWidth("BazziJump"), getHeight("BazziJump"), RGB(255, 0, 255));
 
 	fFrameDelay += dDT;
 	if (fFrameDelay > 0.5f)
@@ -88,48 +94,44 @@ void Player::Render(HDC hdc, int nX, int nY)
 	}
 }
 
-int Player::getPlayerUpDownX()
+int Player::getWidth(const char* chFileName)
 {
-	UpDownX = UpDownbit.bmWidth;
-	return UpDownX;
+	int nWidth;
+	nWidth = parseJson.getMyObjectWidth(chFileName);
+
+	return nWidth;
 }
 
-int Player::getPlayerUpDownY()
+int Player::getHeight(const char* chFileName)
 {
-	UpDownY = UpDownbit.bmHeight;
-	return UpDownY;
+	int nHeight;
+	nHeight = parseJson.getMyObjectHeight(chFileName);
+
+	return nHeight;
 }
 
-int Player::getPlayerLeftRightX()
+float Player::getX(const char* chFileName)
 {
-	LeftRightX = LeftRightbit.bmWidth;
-	return LeftRightX;
+	float fX;
+	fX = parseJson.getMyObjectX(chFileName);
+
+	return fX;
 }
 
-int Player::getPlayerLeftRightY()
+float Player::getY(const char* chFileName)
 {
-	LeftRightY = LeftRightbit.bmHeight;
-	return LeftRightY;
+	float fY;
+	fY = parseJson.getMyObjectY(chFileName);
+
+	return fY;
 }
 
-int Player::getPlayerJumpX()
+RECT& Player::getPlayerRECT(float fX, float fY)
 {
-	JumpX = Jumpbitmap.bmWidth;
-	return JumpX;
-}
+	PlayerRECT.left = fX;
+	PlayerRECT.top = fY;
+	PlayerRECT.right =  PlayerRECT.left + getWidth("BazziDown");
+	PlayerRECT.bottom = PlayerRECT.top + getHeight("BazziDown");
 
-int Player::getPlayerJumpY()
-{
-	JumpY = Jumpbitmap.bmHeight;
-	return JumpY;
-}
-
-RECT& Player::getPlayerRECT()
-{
-	PlayerUDRECT.left = myXY.myX;
-	PlayerUDRECT.top = myXY.myY;
-	PlayerUDRECT.right =  PlayerUDRECT.left + getPlayerUpDownX() / 8;
-	PlayerUDRECT.bottom = PlayerUDRECT.top + getPlayerUpDownY();
-
-	return PlayerUDRECT;
+	return PlayerRECT;
 }

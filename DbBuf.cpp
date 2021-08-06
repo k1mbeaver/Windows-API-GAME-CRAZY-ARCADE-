@@ -17,8 +17,8 @@ bool DbBuf::Initialize()
 	SelectObject(hdcBuffer, (HBITMAP)hdcBmp);
 	ReleaseDC(myhWnd, hDCMain); // 현재의 DC를 해제
 
-	myXY.myX = 10;
-	myXY.myY = 10;
+	myXY.myX = 500;
+	myXY.myY = 500;
 
 	SetTimer(myhWnd, 0, 10, NULL);
 
@@ -27,8 +27,7 @@ bool DbBuf::Initialize()
 
 void DbBuf::Progress()
 {
-	if (GetAsyncKeyState(VK_LEFT) & 0x8000) myXY.myX -= 1.0f;
-	else if (GetAsyncKeyState(VK_RIGHT) & 0x8000) myXY.myX += 1.0f;
+
 }
 
 void DbBuf::Render()

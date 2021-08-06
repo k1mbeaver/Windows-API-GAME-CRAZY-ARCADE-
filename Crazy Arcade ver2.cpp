@@ -15,7 +15,7 @@ HINSTANCE hInst;                                // 현재 인스턴스입니다.
 HWND g_hWnd;
 RECT crt;                                       // Client 너비, 높이를 구하기 위한
 POINT ptMouse = { 0,0 };
-Vector2 myXY;
+Vector2 myXY = { 100.0, 100.0 }; // 캐릭터의 키보드에 따른 좌표
 DWORD currentTime = GetTickCount64();
 DWORD prevTime = GetTickCount64();
 float dDT = 0.0f;

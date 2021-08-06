@@ -4,13 +4,12 @@
 #include "DbBuf.h"
 #include "background.h"
 #include "Player.h"
-#include "Shadow.h"
-#include "Mark.h"
 #include "Login.h"
 #include "Lobby.h"
 #include "Block.h"
 #include "Statue.h"
 #include "Collison.h"
+#include "ImageManager.h"
 #include "myJson.h"
 //#include "ImageManager.h"
 
@@ -27,15 +26,13 @@ private:
 	DbBuf myDbBuf;
 	BackGround myBackGround;
 	Player myPlayer;
-	Shadow myShadow;
-	Mark myMark;
 	Login myLogin;
 	Lobby myLobby;
 	Block myBlock;
 	Statue myStatue;
 	Collison myCollison;
+	//ImageManager myImageManager;
 	myJson parseJson;
-	//ImageManager myImage;
 	int nCurrent = 0;
 	int nInitNum = 0;
 

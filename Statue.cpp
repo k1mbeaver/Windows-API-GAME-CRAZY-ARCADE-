@@ -4,29 +4,16 @@ Statue::~Statue() {}
 
 void Statue::Initialize(HDC hdc)
 {
-	Stone1DC = CreateCompatibleDC(hdc);
-	Stone2DC = CreateCompatibleDC(hdc);
-	Stone3DC = CreateCompatibleDC(hdc);
-	Statue1DC = CreateCompatibleDC(hdc);
-	Statue2DC = CreateCompatibleDC(hdc);
-	Statue3DC = CreateCompatibleDC(hdc);
+	parseJson.Initialize();
 
-	Stone1bit = (HBITMAP)LoadImage(NULL, TEXT("Image//object//object_1.bmp"), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	Stone1old = (HBITMAP)SelectObject(Stone1DC, Stone1bit);
-	Stone2bit = (HBITMAP)LoadImage(NULL, TEXT("Image//object//object_2.bmp"), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	Stone2old = (HBITMAP)SelectObject(Stone2DC, Stone2bit);
-	Stone3bit = (HBITMAP)LoadImage(NULL, TEXT("Image//object//object_3.bmp"), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	Stone3old = (HBITMAP)SelectObject(Stone3DC, Stone3bit);
-	Statue1bit = (HBITMAP)LoadImage(NULL, TEXT("Image//object//object_4.bmp"), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	Statue1old = (HBITMAP)SelectObject(Statue1DC, Statue1bit);
-	Statue2bit = (HBITMAP)LoadImage(NULL, TEXT("Image//object//object_5.bmp"), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	Statue2old = (HBITMAP)SelectObject(Statue2DC, Statue2bit);
-	Statue3bit = (HBITMAP)LoadImage(NULL, TEXT("Image//object//object_6.bmp"), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	Statue3old = (HBITMAP)SelectObject(Statue3DC, Statue3bit);
-	GetObject(Stone1bit, sizeof(BITMAP), &StoneBitmap);
-	GetObject(Statue1bit, sizeof(BITMAP), &Statue1Bitmap);
-	GetObject(Statue2bit, sizeof(BITMAP), &Statue2Bitmap);
-	GetObject(Statue3bit, sizeof(BITMAP), &Statue3Bitmap);
+	myDC = CreateCompatibleDC(hdc);
+
+	Statue1bit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("Statue1").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	Statue1old = (HBITMAP)SelectObject(myDC, Statue1bit);
+	Statue2bit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("Statue2").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	Statue2old = (HBITMAP)SelectObject(myDC, Statue2bit);
+	Statue3bit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("Statue3").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	Statue3old = (HBITMAP)SelectObject(myDC, Statue3bit);
 }
 
 void Statue::Progress()
@@ -36,63 +23,69 @@ void Statue::Progress()
 void Statue::Render(HDC hdc)
 {
 	// 요 뒤에 부서지지 않는 돌들 넣기
-	
-	TransparentBlt(hdc, 102, 38, getStoneX(), getStoneY(), Stone1DC, 0, 0, getStoneX(), getStoneY(), RGB(255, 0, 255));
-	TransparentBlt(hdc, 154, 38, getStoneX(), getStoneY(), Stone1DC, 0, 0, getStoneX(), getStoneY(), RGB(255, 0, 255));
-	TransparentBlt(hdc, 570, 50, getStoneX(), getStoneY(), Stone1DC, 0, 0, getStoneX(), getStoneY(), RGB(255, 0, 255));
-	TransparentBlt(hdc, 620, 50, getStoneX(), getStoneY(), Stone1DC, 0, 0, getStoneX(), getStoneY(), RGB(255, 0, 255));
-	TransparentBlt(hdc, 560, 0, getStatue3X(), getStatue3Y(), Statue3DC, 0, 0, getStatue3X(), getStatue3Y(), RGB(255, 0, 255));
-	TransparentBlt(hdc, 0, 200, getStatue2X(), getStatue2Y(), Statue2DC, 0, 0, getStatue2X(), getStatue2Y(), RGB(255, 0, 255));
-	TransparentBlt(hdc, 1363, 200, getStatue1X(), getStatue1Y(), Statue1DC, 0, 0, getStatue1X(), getStatue1Y(), RGB(255, 0, 255));
+	Statue3old = (HBITMAP)SelectObject(myDC, Statue3bit);
+	TransparentBlt(hdc, getX("Statue3"), getY("Statue3"), getWidth("Statue3"), getHeight("Statue3"), myDC, 0, 0, getWidth("Statue3"), getHeight("Statue3"), RGB(255, 0, 255));
+	Statue2old = (HBITMAP)SelectObject(myDC, Statue2bit);
+	TransparentBlt(hdc, getX("Statue2"), getY("Statue2"), getWidth("Statue2"), getHeight("Statue2"), myDC, 0, 0, getWidth("Statue2"), getHeight("Statue2"), RGB(255, 0, 255));
+	Statue1old = (HBITMAP)SelectObject(myDC, Statue1bit);
+	TransparentBlt(hdc, getX("Statue1"), getY("Statue1"), getWidth("Statue1"), getHeight("Statue1"), myDC, 0, 0, getWidth("Statue1"), getHeight("Statue1"), RGB(255, 0, 255));
 }
 
-int Statue::getStoneX()
+
+int Statue::getWidth(const char* chFileName)
 {
-	nStoneX = StoneBitmap.bmWidth;
-	return nStoneX;
-}
-int Statue::getStoneY()
-{
-	nStoneY = StoneBitmap.bmHeight;
-	return nStoneY;
-}
-int Statue::getStatue1X()
-{
-	nStatue1X = Statue1Bitmap.bmWidth;
-	return nStatue1X;
-}
-int Statue::getStatue1Y()
-{
-	nStatue1Y = Statue1Bitmap.bmHeight;
-	return nStatue1Y;
-}
-int Statue::getStatue2X()
-{
-	nStatue2X = Statue2Bitmap.bmWidth;
-	return nStatue2X;
-}
-int Statue::getStatue2Y()
-{
-	nStatue2Y = Statue2Bitmap.bmHeight;
-	return nStatue2Y;
-}
-int Statue::getStatue3X()
-{
-	nStatue3X = Statue3Bitmap.bmWidth;
-	return nStatue3X;
-}
-int Statue::getStatue3Y()
-{
-	nStatue3Y = Statue3Bitmap.bmHeight;
-	return nStatue3Y;
+	int nWidth;
+	nWidth = parseJson.getMyObjectWidth(chFileName);
+
+	return nWidth;
 }
 
-RECT Statue::getStatue3RECT()
+int Statue::getHeight(const char* chFileName)
 {
-	StatueRect.left = 560;
-	StatueRect.top = 0;
-	StatueRect.right = StatueRect.left + getStatue3X();
-	StatueRect.bottom = StatueRect.top + getStatue3Y();
+	int nHeight;
+	nHeight = parseJson.getMyObjectHeight(chFileName);
+
+	return nHeight;
+}
+
+float Statue::getX(const char* chFileName)
+{
+	float fX;
+	fX = parseJson.getMyObjectX(chFileName);
+
+	return fX;
+}
+
+float Statue::getY(const char* chFileName)
+{
+	float fY;
+	fY = parseJson.getMyObjectY(chFileName);
+
+	return fY;
+}
+
+int Statue::getBottom(const char* chFileName)
+{
+	int nBottom;
+	nBottom = parseJson.getMyObjectBottomRect(chFileName);
+
+	return nBottom;
+}
+
+int Statue::getTop(const char* chFileName)
+{
+	int nTop;
+	nTop = parseJson.getMyObjectTopRect(chFileName);
+
+	return nTop;
+}
+
+RECT Statue::getStatueRECT(const char* chFileName)
+{
+	StatueRect.left = getX(chFileName); // 560
+	StatueRect.top = getTop(chFileName); // 149
+	StatueRect.right = StatueRect.left + getWidth(chFileName);
+	StatueRect.bottom = StatueRect.top + getBottom(chFileName); // + 53
 
 	return StatueRect;
 }

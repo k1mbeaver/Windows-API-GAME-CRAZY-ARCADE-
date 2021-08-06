@@ -8,10 +8,9 @@ Lobby::~Lobby() {}
 void Lobby::Initialize(HDC hdc)
 {
 	parseJson.Initialize();
-	myDC1 = CreateCompatibleDC(hdc);
-	myDC2 = CreateCompatibleDC(hdc);
-	hbitmap1 = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("lobbyBackGround").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
-	holdbitmap1 = (HBITMAP)SelectObject(myDC1, hbitmap1);
+	myDC = CreateCompatibleDC(hdc);
+	hbitmap = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("lobbyBackGround").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
+	holdbitmap = (HBITMAP)SelectObject(myDC, hbitmap);
 
 	myActivation = false;
 	nConnection = 0;
@@ -30,9 +29,9 @@ int Lobby::Progress(int& m_nCurrent)
 }
 void Lobby::Render(HDC hdc)
 {
-	GetObject(hbitmap1, sizeof(BITMAP), &bit);
+	GetObject(hbitmap, sizeof(BITMAP), &bit);
 	bx = bit.bmWidth;
 	by = bit.bmHeight;
-	TransparentBlt(hdc, 0, 0, bx, by, myDC1, 0, 0, bx, by, RGB(255, 0, 255));
+	TransparentBlt(hdc, 0, 0, bx, by, myDC, 0, 0, bx, by, RGB(255, 0, 255));
 }
 

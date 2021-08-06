@@ -13,9 +13,9 @@ class Lobby
 private:
 	//map<string, BitmapImage*> BazziList;
 	HWND myHWND;
-	HDC myDC1, myDC2;
-	HBITMAP hbitmap1, hbitmap2;
-	HBITMAP holdbitmap1, holdbitmap2;
+	HDC myDC;
+	HBITMAP hbitmap;
+	HBITMAP holdbitmap;
 	BITMAP bit;
 	KeyManager myKey;
 	RECT clickStart;

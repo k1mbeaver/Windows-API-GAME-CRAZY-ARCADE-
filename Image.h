@@ -1,6 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "Define.h"
+#include "myJson.h"
 
 extern HWND g_hWnd;
 extern HINSTANCE hInst;
@@ -9,39 +10,24 @@ class Image
 {
 	typedef struct tagImage
 	{
-		tagImage()
-		{
-			hMemDC = nullptr; // 메모리 DC
-			hBit = nullptr; // 비트맵 (새로운 비트맵 핸들)
-			hObit = nullptr; // 올드 비트맵 (기존 비트맵 핸들)
-			fX = 0; // x좌표
-			fY = 0; // y좌표
-			nWidth = 0; // 가로
-			nHeight = 0; // 세로
-			nCurrentFrameX = 0;
-			nCurrentFrameY = 0;
-			nMaxFrameX = 0;
-			nMaxFrameY = 0;
-			nFrameWidth = 0;
-			nFrameHeight = 0;
-		}
-		HDC hMemDC; // 메모리 DC
-		HBITMAP hBit; // 비트맵 (새로운 비트맵 핸들)
-		HBITMAP hObit; // 올드 비트맵 (기존 비트맵 핸들)
-		float fX; // x좌표
-		float fY; // y좌표
-		int nWidth; // 가로
-		int nHeight; // 세로
-		int nCurrentFrameX; // 현재 프레임 X
-		int nCurrentFrameY; // 현재 프레임 Y
-		int nMaxFrameX; // 최대 프레임 X
-		int nMaxFrameY; // 최대 프레임 Y
-		int nFrameWidth;
-		int nFrameHeight;
+		HDC hMemDC = NULL; // 메모리 DC
+		HBITMAP hBit = NULL; // 비트맵 (새로운 비트맵 핸들)
+		HBITMAP hObit = NULL; // 올드 비트맵 (기존 비트맵 핸들)
+		float fX = 0; // x좌표
+		float fY = 0; // y좌표
+		int nWidth = 0; // 가로
+		int nHeight = 0; // 세로
+		int nCurrentFrameX = 0; // 현재 프레임 X
+		int nCurrentFrameY = 0; // 현재 프레임 Y
+		int nMaxFrameX = 0; // 최대 프레임 X
+		int nMaxFrameY = 0; // 최대 프레임 Y
+		int nFrameWidth = 0;
+		int nFrameHeight = 0;
 	} IMAGE_INFO, *LPIMAGE_INFO;
 	LPIMAGE_INFO imageInformation; // 이미지 정보
 	string strFileName; // 이미지 경로 이름
 	bool isTrans; // TransParent 사용할건지
+	myJson parseJson;
 public:
 	Image();
 	~Image();
