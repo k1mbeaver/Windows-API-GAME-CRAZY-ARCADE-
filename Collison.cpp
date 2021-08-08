@@ -1,10 +1,9 @@
 #include "Collison.h"
 
+
 // 사각형끼리 충돌시 밀어내기!
 Direction Collison::SetNotInterSect(RECT& pRect, RECT pHold) // 캐릭터 전용
 {
-	RECT rcInter; // 교차 영역을 얻을 변수 선언
-
 	// 사각형이 충돌 했다면 if문이 실행되며, rcInter의 값(충돌 영역)이 구해진다.
 	if (IntersectRect(&rcInter, &pRect, &pHold))
 	{

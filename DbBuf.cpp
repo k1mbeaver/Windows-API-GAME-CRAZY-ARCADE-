@@ -17,9 +17,6 @@ bool DbBuf::Initialize()
 	SelectObject(hdcBuffer, (HBITMAP)hdcBmp);
 	ReleaseDC(myhWnd, hDCMain); // 현재의 DC를 해제
 
-	myXY.myX = 500;
-	myXY.myY = 500;
-
 	SetTimer(myhWnd, 0, 10, NULL);
 
 	return true;

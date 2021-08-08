@@ -165,6 +165,23 @@ float myJson::getMyObjectY2(const char* chFileName)
 
 	return fObject;
 }
+
+// 맵에 있는 블럭의 존재유무
+bool myJson::getMapExist(const char* chFileName, int nCount1, int nCount2)
+{
+	boolObject = false;
+
+	Json::Value myobject = root[chFileName];
+
+	for (Json::ValueIterator it = myobject.begin(); it != myobject.end(); it++)
+	{
+		boolObject = (*it)[nCount1][nCount2].asBool();
+	}
+
+	return boolObject;
+}
+
+// 맵에 있는 나머지들 구현, Json에 있는 맵 정보들 다 넣어보기
 /*
 string myJson::getObjectLink()
 {

@@ -6,6 +6,7 @@
 extern HINSTANCE hInst;                              
 extern HWND g_hWnd;
 extern RECT crt;
+extern RECT rcInter;
 class Player
 {
 private:
@@ -37,4 +38,5 @@ public:
 	float getX(const char* chFileName);
 	float getY(const char* chFileName);
 	RECT& getPlayerRECT(float fX, float fY);
+	void pushbackPlayer(Direction myDirection);
 };

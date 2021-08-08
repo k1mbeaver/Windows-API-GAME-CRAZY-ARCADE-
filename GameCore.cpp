@@ -46,7 +46,7 @@ void GameCore::Progress()
 
 	else if (nCurrent == 2)
 	{
-		myCollison.SetNotInterSect(myPlayer.getPlayerRECT(myXY.myX, myXY.myY), myStatue.getStatueRECT("Statue3"));
+		myPlayer.pushbackPlayer(myCollison.SetNotInterSect(myPlayer.getPlayerRECT(myXY.myX, myXY.myY), myStatue.getStatueRECT("Statue3")));
 	}
 }
 

@@ -18,6 +18,7 @@ POINT ptMouse = { 0,0 };
 Vector2 myXY = { 100.0, 100.0 }; // 캐릭터의 키보드에 따른 좌표
 DWORD currentTime = GetTickCount64();
 DWORD prevTime = GetTickCount64();
+RECT rcInter; // 충돌처리용 RECT
 float dDT = 0.0f;
 float fFrameDelay = 0.0f;
 int nPlayerWay = 0; // 캐릭터 방향

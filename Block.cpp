@@ -48,16 +48,22 @@ void Block::Render(HDC hdc)
 	TransparentBlt(hdc, getX("block4"), getY("block4"), getWidth("block4"), getHeight("block4"), myDC, 0, 0, getWidth("block4"), getHeight("block4"), RGB(255, 0, 255));
 
 	// stone3 DC 입력
-	Stone3old = (HBITMAP)SelectObject(myDC, Stone3bit);
-	for (int nIndex = 0; nIndex < 24; nIndex++)
+	Stone1old = (HBITMAP)SelectObject(myDC, Stone1bit);
+	for (int nIndex = 0; nIndex < 27; nIndex++)
+	{
+		TransparentBlt(hdc, getX("Stone1"), getY("Stone1") + getBetweenY("Stone1") * nIndex, getWidth("Stone1"), getHeight("Stone1"), myDC, 0, 0, getWidth("Stone1"), getHeight("Stone1"), RGB(255, 0, 255));
+	}
+	/*
+	for (int nIndex = 0; nIndex < 27; nIndex++)
 	{
 		TransparentBlt(hdc, getX("Stone3") + getBetweenX("Stone3") * nIndex, getY("Stone3"), getWidth("Stone3"), getHeight("Stone3"), myDC, 0, 0, getWidth("Stone3"), getHeight("Stone3"), RGB(255, 0, 255));
 	}
-	for (int nIndex = 0; nIndex < 24; nIndex++)
+	for (int nIndex = 0; nIndex < 27; nIndex++)
 	{
 		TransparentBlt(hdc, getX2("Stone3") + getBetweenX("Stone3") * nIndex, getY2("Stone3"), getWidth("Stone3"), getHeight("Stone3"), myDC, 0, 0, getWidth("Stone3"), getHeight("Stone3"), RGB(255, 0, 255));
 	}
-
+	*/
+	/*
 	// stone1 DC 입력
 	Stone1old = (HBITMAP)SelectObject(myDC, Stone1bit);
 	for (int nIndex = 0; nIndex < 16; nIndex++)
@@ -78,6 +84,7 @@ void Block::Render(HDC hdc)
 	{
 		TransparentBlt(hdc, (getX("Stone4") + (getBetweenX("Stone4") * nIndex)), getY("Stone4"), getWidth("Stone4"), getHeight("Stone4"), myDC, 0, 0, getWidth("Stone4"), getHeight("Stone4"), RGB(255, 0, 255));
 	}
+	*/
 	
 
 	/*

@@ -1,54 +1,808 @@
 {
-	"BazziDown" : [{ "ImageLink" : "Image\\player\\down.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140}],
-	"BazziDown1" : [{ "ImageLink" : "Image\\player\\down\\down1.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140}],
-	"BazziDown2" : [{ "ImageLink" : "Image\\player\\down\\down2.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140 }],
-	"BazziDown3" : [{ "ImageLink" : "Image\\player\\down\\down3.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140 }],
-	"BazziDown4" : [{ "ImageLink" : "Image\\player\\down\\down4.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140 }],
-	"BazziDown5" : [{ "ImageLink" : "Image\\player\\down\\down5.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140 }],
-	"BazziDown6" : [{ "ImageLink" : "Image\\player\\down\\down6.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140 }],
-	"BazziDown7" : [{ "ImageLink" : "Image\\player\\down\\down7.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140 }],
-	"BazziDown8" : [{ "ImageLink" : "Image\\player\\down\\down8.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140 }],
-
-	"BazziUp" : [{ "ImageLink" : "Image\\player\\up.bmp", "Width" : 64, "Height" : 76  }],
-	"BazziUp1" : [{ "ImageLink" : "Image\\player\\up\\up1.bmp", "Width" : 64, "Height" : 76  }],
-	"BazziUp2" : [{ "ImageLink" : "Image\\player\\up\\up2.bmp", "Width" : 64, "Height" : 76  }],
-	"BazziUp3" : [{ "ImageLink" : "Image\\player\\up\\up3.bmp", "Width" : 64, "Height" : 76  }],
-	"BazziUp4" : [{ "ImageLink" : "Image\\player\\up\\up4.bmp", "Width" : 64, "Height" : 76  }],
-	"BazziUp5" : [{ "ImageLink" : "Image\\player\\up\\up5.bmp", "Width" : 64, "Height" : 76  }],
-	"BazziUp6" : [{ "ImageLink" : "Image\\player\\up\\up6.bmp", "Width" : 64, "Height" : 76  }],
-	"BazziUp7" : [{ "ImageLink" : "Image\\player\\up\\up7.bmp", "Width" : 64, "Height" : 76  }],
-	"BazziUp8" : [{ "ImageLink" : "Image\\player\\up\\up8.bmp", "Width" : 64, "Height" : 76  }],
-
-
-	"BazziRight" : [{ "ImageLink" : "Image\\player\\right.bmp", "Width" : 64, "Height" : 76 }],
-	"BazziRight1" : [{ "ImageLink" : "Image\\player\\right\\right1.bmp", "Width" : 64, "Height" : 76 }],
-	"BazziRight2" : [{ "ImageLink" : "Image\\player\\right\\right2.bmp", "Width" : 64, "Height" : 76  }],
-	"BazziRight3" : [{ "ImageLink" : "Image\\player\\right\\right3.bmp", "Width" : 64, "Height" : 76  }],
-	"BazziRight4" : [{ "ImageLink" : "Image\\player\\right\\right4.bmp", "Width" : 64, "Height" : 76  }],
-	"BazziRight5" : [{ "ImageLink" : "Image\\player\\right\\right5.bmp", "Width" : 64, "Height" : 76  }],
-	"BazziRight6" : [{ "ImageLink" : "Image\\player\\right\\right6.bmp", "Width" : 64, "Height" : 76  }],
-
-
-    "BazziLeft" : [{ "ImageLink" : "Image\\player\\left.bmp", "Width" : 64, "Height" : 76 }],
-	"BazziLeft1" : [{ "ImageLink" : "Image\\player\\left\\left1.bmp", "Width" : 64, "Height" : 76 }],
-	"BazziLeft2" : [{ "ImageLink" : "Image\\player\\left\\left2.bmp", "Width" : 64, "Height" : 76 }],
-	"BazziLeft3" : [{ "ImageLink" : "Image\\player\\left\\left3.bmp", "Width" : 64, "Height" : 76 }],
-	"BazziLeft4" : [{ "ImageLink" : "Image\\player\\left\\left4.bmp", "Width" : 64, "Height" : 76 }],
-	"BazziLeft5" : [{ "ImageLink" : "Image\\player\\left\\left5.bmp", "Width" : 64, "Height" : 76 }],
-	"BazziLeft6" : [{ "ImageLink" : "Image\\player\\left\\left6.bmp", "Width" : 64, "Height" : 76 }],
-
-
-	"BazziJump" : [{ "ImageLink" : "Image\\player\\jump.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140}],
-	"BazziJump1" : [{ "ImageLink" : "Image\\player\\jump\\jump1.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140}],
-	"BazziJump2" : [{ "ImageLink" : "Image\\player\\jump\\jump2.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140}],
-	"BazziJump3" : [{ "ImageLink" : "Image\\player\\jump\\jump3.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140}],
-	"BazziJump4" : [{ "ImageLink" : "Image\\player\\jump\\jump4.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140}],
-	"BazziJump5" : [{ "ImageLink" : "Image\\player\\jump\\jump5.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140}],
-	"BazziJump6" : [{ "ImageLink" : "Image\\player\\jump\\jump6.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140}],
-	"BazziJump7" : [{ "ImageLink" : "Image\\player\\jump\\jump7.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140}],
-	"BazziJump8" : [{ "ImageLink" : "Image\\player\\jump\\jump8.bmp", "Width" : 64, "Height" : 76, "LocateX" : 270, "LocateY" : 140}],
-
-	"lobbyBackGround" : [{ "ImageLink" : "Image\\lobbybackground\\lobbyBackGround.bmp"}],
-	"loginBackGround" : [{ "ImageLink" : "Image\\loginbackground\\loginBackGround.bmp"}],
-	"BackGround" : [{ "ImageLink" : "Image\\background\\BackGround.bmp"}]
+	"BazziDown" : [
+		{
+			"ImageLink" : "Image\\player\\down.bmp",
+			"Width" : 64,
+			"Height" : 76,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"BazziDown1" : [
+		{
+			"ImageLink" : "Image\\player\\down\\down1.bmp",
+			"Width" : 64,
+			"Height" : 76,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"BazziDown2" : [
+		{
+			"ImageLink" : "Image\\player\\down\\down2.bmp",
+			"Width" : 64,
+			"Height" : 76,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"BazziDown3" : [
+		{
+			"ImageLink" : "Image\\player\\down\\down3.bmp",
+			"Width" : 64,
+			"Height" : 76,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"BazziDown4" : [
+		{
+			"ImageLink" : "Image\\player\\down\\down4.bmp",
+			"Width" : 64,
+			"Height" : 76,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"BazziDown5" : [
+		{
+			"ImageLink" : "Image\\player\\down\\down5.bmp",
+			"Width" : 64,
+			"Height" : 76,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"BazziDown6" : [
+		{
+			"ImageLink" : "Image\\player\\down\\down6.bmp",
+			"Width" : 64,
+			"Height" : 76,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"BazziDown7" : [
+		{
+			"ImageLink" : "Image\\player\\down\\down7.bmp",
+			"Width" : 64,
+			"Height" : 76,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"BazziDown8" : [
+		{
+			"ImageLink" : "Image\\player\\down\\down8.bmp",
+			"Width" : 64,
+			"Height" : 76,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"BazziUp" : [
+		{
+			"ImageLink" : "Image\\player\\up.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziUp1" : [
+		{
+			"ImageLink" : "Image\\player\\up\\up1.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziUp2" : [
+		{
+			"ImageLink" : "Image\\player\\up\\up2.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziUp3" : [
+		{
+			"ImageLink" : "Image\\player\\up\\up3.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziUp4" : [
+		{
+			"ImageLink" : "Image\\player\\up\\up4.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziUp5" : [
+		{
+			"ImageLink" : "Image\\player\\up\\up5.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziUp6" : [
+		{
+			"ImageLink" : "Image\\player\\up\\up6.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziUp7" : [
+		{
+			"ImageLink" : "Image\\player\\up\\up7.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziUp8" : [
+		{
+			"ImageLink" : "Image\\player\\up\\up8.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziRight" : [
+		{
+			"ImageLink" : "Image\\player\\right.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziRight1" : [
+		{
+			"ImageLink" : "Image\\player\\right\\right1.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziRight2" : [
+		{
+			"ImageLink" : "Image\\player\\right\\right2.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziRight3" : [
+		{
+			"ImageLink" : "Image\\player\\right\\right3.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziRight4" : [
+		{
+			"ImageLink" : "Image\\player\\right\\right4.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziRight5" : [
+		{
+			"ImageLink" : "Image\\player\\right\\right5.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziRight6" : [
+		{
+			"ImageLink" : "Image\\player\\right\\right6.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziLeft" : [
+		{
+			"ImageLink" : "Image\\player\\left.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziLeft1" : [
+		{
+			"ImageLink" : "Image\\player\\left\\left1.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziLeft2" : [
+		{
+			"ImageLink" : "Image\\player\\left\\left2.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziLeft3" : [
+		{
+			"ImageLink" : "Image\\player\\left\\left3.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziLeft4" : [
+		{
+			"ImageLink" : "Image\\player\\left\\left4.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziLeft5" : [
+		{
+			"ImageLink" : "Image\\player\\left\\left5.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziLeft6" : [
+		{
+			"ImageLink" : "Image\\player\\left\\left6.bmp",
+			"Width" : 64,
+			"Height" : 76
+		}
+	],
+	"BazziJump" : [
+		{
+			"ImageLink" : "Image\\player\\jump.bmp",
+			"Width" : 64,
+			"Height" : 80,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"BazziJump1" : [
+		{
+			"ImageLink" : "Image\\player\\jump\\jump1.bmp",
+			"Width" : 64,
+			"Height" : 76,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"BazziJump2" : [
+		{
+			"ImageLink" : "Image\\player\\jump\\jump2.bmp",
+			"Width" : 64,
+			"Height" : 76,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"BazziJump3" : [
+		{
+			"ImageLink" : "Image\\player\\jump\\jump3.bmp",
+			"Width" : 64,
+			"Height" : 76,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"BazziJump4" : [
+		{
+			"ImageLink" : "Image\\player\\jump\\jump4.bmp",
+			"Width" : 64,
+			"Height" : 76,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"BazziJump5" : [
+		{
+			"ImageLink" : "Image\\player\\jump\\jump5.bmp",
+			"Width" : 64,
+			"Height" : 76,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"BazziJump6" : [
+		{
+			"ImageLink" : "Image\\player\\jump\\jump6.bmp",
+			"Width" : 64,
+			"Height" : 76,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"BazziJump7" : [
+		{
+			"ImageLink" : "Image\\player\\jump\\jump7.bmp",
+			"Width" : 64,
+			"Height" : 76,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"BazziJump8" : [
+		{
+			"ImageLink" : "Image\\player\\jump\\jump8.bmp",
+			"Width" : 64,
+			"Height" : 76,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"lobbyBackGround" : [
+		{
+			"ImageLink" : "Image\\lobbybackground\\lobbyBackGround.bmp"
+		}
+	],
+	"loginBackGround" : [
+		{
+			"ImageLink" : "Image\\loginbackground\\loginBackGround.bmp"
+		}
+	],
+	"BackGround" : [
+		{
+			"ImageLink" : "Image\\background\\BackGround.bmp"
+		}
+	],
+	"block1" : [
+		{
+			"ImageLink" : "Image\\block\\block1.bmp",
+			"Break" : true,
+			"Width" : 68,
+			"Height" : 67,
+			"LocateX" : 305,
+			"LocateY" : 290,
+			"BetweenX" : 68,
+			"BetweenY" : 63
+		}
+	],
+	"block2" : [
+		{
+			"ImageLink" : "Image\\block\\block2.bmp",
+			"Break" : true,
+			"Width" : 68,
+			"Height" : 67,
+			"LocateX" : 305,
+			"LocateY" : 345,
+			"BetweenX" : 68,
+			"BetweenY" : 63
+		}
+	],
+	"block3" : [
+		{
+			"ImageLink" : "Image\\block\\block3.bmp",
+			"Break" : true,
+			"Width" : 68,
+			"Height" : 67,
+			"LocateX" : 305,
+			"LocateY" : 400,
+			"BetweenX" : 68,
+			"BetweenY" : 63
+		}
+	],
+	"block4" : [
+		{
+			"ImageLink" : "Image\\block\\block4.bmp",
+			"Break" : true,
+			"Width" : 68,
+			"Height" : 67,
+			"LocateX" : 305,
+			"LocateY" : 455,
+			"BetweenX" : 68,
+			"BetweenY" : 63
+		}
+	],
+	"Breakblock1" : [
+		{
+			"ImageLink" : "Image\\block\\blockpop1.bmp",
+			"Width" : 68,
+			"Height" : 67,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"Breakblock2" : [
+		{
+			"ImageLink" : "Image\\block\\blockpop2.bmp",
+			"Width" : 68,
+			"Height" : 67,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"Breakblock3" : [
+		{
+			"ImageLink" : "Image\\block\\blockpop3.bmp",
+			"Width" : 68,
+			"Height" : 67,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"Breakblock4" : [
+		{
+			"ImageLink" : "Image\\block\\blockpop4.bmp",
+			"Width" : 68,
+			"Height" : 67,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"Stone1" : [
+		{
+			"ImageLink" : "Image\\object\\object1.bmp",
+			"Break" : false,
+			"Width" : 55,
+			"Height" : 69,
+			"LocateX" : 0,
+			"LocateY" : 0,
+			"BetweenX" : 53,
+			"BetweenY" : 45
+		}
+	],
+	"Stone2" : [
+		{
+			"ImageLink" : "Image\\object\\object2.bmp",
+			"Break" : false,
+			"Width" : 55,
+			"Height" : 69,
+			"LocateX" : 1320,
+			"LocateY" : 0,
+			"BetweenX" : 53,
+			"BetweenY" : 45
+		}
+	],
+	"Stone3" : [
+		{
+			"ImageLink" : "Image\\object\\object3.bmp",
+			"Break" : false,
+			"Width" : 55,
+			"Height" : 69,
+			"LocateX" : 0,
+			"LocateY" : 0,
+			"LocateX2" : 90,
+			"LocateY2" : 678,
+			"BetweenX" : 52,
+			"BetweenY" : 45
+		}
+	],
+	"Stone4" : [
+		{
+			"ImageLink" : "Image\\object\\object7.bmp",
+			"Break" : false,
+			"Width" : 52,
+			"Height" : 52,
+			"LocateX" : 560,
+			"LocateY" : 205,
+			"BetweenX" : 52,
+			"BetweenY" : 45
+		}
+	],
+	"Statue1" : [
+		{
+			"ImageLink" : "Image\\object\\object4.bmp",
+			"Width" : 61,
+			"Height" : 170,
+			"LocateX" : 1363,
+			"LocateY" : 200,
+			"BottomRect" : 53
+		}
+	],
+	"Statue2" : [
+		{
+			"ImageLink" : "Image\\object\\object5.bmp",
+			"Width" : 57,
+			"Height" : 155,
+			"LocateX" : 0,
+			"LocateY" : 200,
+			"BottomRect" : 53
+		}
+	],
+	"Statue3" : [
+		{
+			"ImageLink" : "Image\\object\\object6.bmp",
+			"Width" : 213,
+			"Height" : 161,
+			"LocateX" : 560,
+			"LocateY" : 49,
+			"TopRect" : 149,
+			"BottomRect" : 53
+		}
+	],
+	"Shadow" : [
+		{
+			"ImageLink" : "Image\\player\\shadow.bmp",
+			"Width" : 42,
+			"Height" : 19,
+			"LocateX" : 270,
+			"LocateY" : 140
+		}
+	],
+	"Map" : [
+				[ // [0]
+					{
+						"Blockexist" : false,
+						"LocateX" : 0,
+						"LocateY" : 0,
+						"Break" : false,
+						"Block" : "",
+						"BreakBlock" : ""
+					},
+					{
+						"Blockexist" : true,
+						"Block" : "block1",
+						"LocateX" : 68,
+						"LocateY" : 0,
+						"Break" : true,
+						"BreakBlock" : "Breakblock1"
+					},
+					{
+						"Blockexist" : false,
+						"LocateX" : 136,
+						"LocateY" : 0,
+						"Break" : false,
+						"Block" : "",
+						"BreakBlock" : ""
+					},
+					{
+						"Blockexist" : true,
+						"Block" : "block1",
+						"LocateX" : 204,
+						"LocateY" : 0,
+						"Break" : true,
+						"BreakBlock" : "Breakblock1"
+					},
+					{
+						"Blockexist" : false,
+						"LocateX" : 272,
+						"LocateY" : 0,
+						"Break" : false,
+						"Block" : "",
+						"BreakBlock" : ""
+					},
+					{
+						"Blockexist" : false,
+						"LocateX" : 272,
+						"LocateY" : 0,
+						"Break" : false,
+						"Block" : "",
+						"BreakBlock" : ""
+					},
+					{
+						"Blockexist" : true,
+						"Block" : "block1",
+						"LocateX" : 340,
+						"LocateY" : 0,
+						"Break" : true,
+						"BreakBlock" : "Breakblock1"
+					},
+					{
+						"Blockexist" : false,
+						"LocateX" : 408,
+						"LocateY" : 0,
+						"Break" : false,
+						"Block" : "",
+						"BreakBlock" : ""
+					},
+							{
+						"Blockexist" : true,
+						"Block" : "block1",
+						"LocateX" : 476,
+						"LocateY" : 0,
+						"Break" : true,
+						"BreakBlock" : "Breakblock1"
+					},
+					{
+						"Blockexist" : false,
+						"LocateX" : 544,
+						"LocateY" : 0,
+						"Break" : false,
+						"Block" : "",
+						"BreakBlock" : ""
+					},
+					{
+						"Blockexist" : true,
+						"Block" : "block1",
+						"LocateX" : 612,
+						"LocateY" : 0,
+						"Break" : true,
+						"BreakBlock" : "Breakblock1"
+					},
+					{
+						"Blockexist" : false,
+						"LocateX" : 680,
+						"LocateY" : 0,
+						"Break" : false,
+						"Block" : "",
+						"BreakBlock" : ""
+					},
+					{
+						"Blockexist" : true,
+						"Block" : "block1",
+						"LocateX" : 748,
+						"LocateY" : 0,
+						"Break" : true,
+						"BreakBlock" : "Breakblock1"
+					},
+					{
+						"Blockexist" : false,
+						"LocateX" : 816,
+						"LocateY" : 0,
+						"Break" : false,
+						"Block" : "",
+						"BreakBlock" : ""
+					},
+					{
+						"Blockexist" : true,
+						"Block" : "block1",
+						"LocateX" : 884,
+						"LocateY" : 0,
+						"Break" : true,
+						"BreakBlock" : "Breakblock1"
+					},
+					{
+						"Blockexist" : false,
+						"LocateX" : 952,
+						"LocateY" : 0,
+						"Break" : false,
+						"Block" : "",
+						"BreakBlock" : ""
+					},
+					{
+						"Blockexist" : true,
+						"Block" : "block1",
+						"LocateX" : 1020,
+						"LocateY" : 0,
+						"Break" : true,
+						"BreakBlock" : "Breakblock1"
+					},
+					{
+						"Blockexist" : false,
+						"LocateX" : 1088,
+						"LocateY" : 0,
+						"Break" : false,
+						"Block" : "",
+						"BreakBlock" : ""
+					}
+				], // [1]
+				[
+					{
+						"Blockexist" : false,
+						"LocateX" : 0,
+						"LocateY" : 63,
+						"Break" : false,
+						"Block" : "",
+						"BreakBlock" : ""
+					},
+					{
+						"Blockexist" : true,
+						"Block" : "block1",
+						"LocateX" : 68,
+						"LocateY" : 63,
+						"Break" : true,
+						"BreakBlock" : "Breakblock1"
+					},
+					{
+						"Blockexist" : false,
+						"LocateX" : 136,
+						"LocateY" : 63,
+						"Break" : false,
+						"Block" : "",
+						"BreakBlock" : ""
+					},
+					{
+						"Blockexist" : true,
+						"Block" : "block1",
+						"LocateX" : 204,
+						"LocateY" : 63,
+						"Break" : true,
+						"BreakBlock" : "Breakblock1"
+					},
+					{
+						"Blockexist" : false,
+						"LocateX" : 272,
+						"LocateY" : 63,
+						"Break" : false,
+						"Block" : "",
+						"BreakBlock" : ""
+					},
+					{
+						"Blockexist" : false,
+						"LocateX" : 272,
+						"LocateY" : 63,
+						"Break" : false,
+						"Block" : "",
+						"BreakBlock" : ""
+					},
+					{
+						"Blockexist" : true,
+						"Block" : "block1",
+						"LocateX" : 340,
+						"LocateY" : 63,
+						"Break" : true,
+						"BreakBlock" : "Breakblock1"
+					},
+					{
+						"Blockexist" : false,
+						"LocateX" : 408,
+						"LocateY" : 63,
+						"Break" : false,
+						"Block" : "",
+						"BreakBlock" : ""
+					},
+							{
+						"Blockexist" : true,
+						"Block" : "block1",
+						"LocateX" : 476,
+						"LocateY" : 63,
+						"Break" : true,
+						"BreakBlock" : "Breakblock1"
+					},
+					{
+						"Blockexist" : false,
+						"LocateX" : 544,
+						"LocateY" : 63,
+						"Break" : false,
+						"Block" : "",
+						"BreakBlock" : ""
+					},
+					{
+						"Blockexist" : true,
+						"Block" : "block1",
+						"LocateX" : 612,
+						"LocateY" : 63,
+						"Break" : true,
+						"BreakBlock" : "Breakblock1"
+					},
+					{
+						"Blockexist" : false,
+						"LocateX" : 680,
+						"LocateY" : 63,
+						"Break" : false,
+						"Block" : "",
+						"BreakBlock" : ""
+					},
+					{
+						"Blockexist" : true,
+						"Block" : "block1",
+						"LocateX" : 748,
+						"LocateY" : 63,
+						"Break" : true,
+						"BreakBlock" : "Breakblock1"
+					},
+					{
+						"Blockexist" : false,
+						"LocateX" : 816,
+						"LocateY" : 63,
+						"Break" : false,
+						"Block" : "",
+						"BreakBlock" : ""
+					},
+					{
+						"Blockexist" : true,
+						"Block" : "block1",
+						"LocateX" : 884,
+						"LocateY" : 63,
+						"Break" : true,
+						"BreakBlock" : "Breakblock1"
+					},
+					{
+						"Blockexist" : false,
+						"LocateX" : 952,
+						"LocateY" : 63,
+						"Break" : false,
+						"Block" : "",
+						"BreakBlock" : ""
+					},
+					{
+						"Blockexist" : true,
+						"Block" : "block1",
+						"LocateX" : 1020,
+						"LocateY" : 63,
+						"Break" : true,
+						"BreakBlock" : "Breakblock1"
+					},
+					{
+						"Blockexist" : false,
+						"LocateX" : 1088,
+						"LocateY" : 63,
+						"Break" : false,
+						"Block" : "",
+						"BreakBlock" : ""
+					}
+				]
+			]
 }

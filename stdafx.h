@@ -42,6 +42,7 @@ enum Direction
 extern POINT ptMouse;
 extern Vector2 myXY;
 extern DWORD currentTime;
+extern RECT rcInter;
 extern float dDT;
 extern float fFrameDelay;
 extern int nPlayerWay, nWay;

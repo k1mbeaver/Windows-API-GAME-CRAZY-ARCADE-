@@ -4,6 +4,9 @@ Player::~Player() {}
 
 void Player::Initialize(HDC hdc)
 {
+	myXY.myX = 500;
+	myXY.myY = 500;
+
 	parseJson.Initialize();
 	myDC = CreateCompatibleDC(hdc);
 	Downbit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("BazziDown").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
@@ -135,3 +138,31 @@ RECT& Player::getPlayerRECT(float fX, float fY)
 
 	return PlayerRECT;
 }
+
+
+// 플레이어와 무언가가 충돌하였을 때 통과시키지 않고 밀어내기
+void Player::pushbackPlayer(Direction myDirection)
+{
+	// 교차된 영역의 가로 세로 크기를 따진다.
+	int nInterW = rcInter.right - rcInter.left;
+	int nInterH = rcInter.bottom - rcInter.top;
+
+	switch (myDirection)
+	{
+	case Up:
+		myXY.myY -= nInterH;
+		break;
+	case Down:
+		myXY.myY += nInterH;
+		break;
+	case Right:
+		myXY.myX += nInterW;
+		break;
+	case Left:
+		myXY.myX -= nInterW;
+		break;
+	case None:
+		break;
+	}
+}
+

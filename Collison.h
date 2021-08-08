@@ -1,9 +1,8 @@
 //충돌 처리
 #include "stdafx.h"
 #include "Define.h"
-#include "Player.h"
-#include "Statue.h"
 
+extern RECT rcInter;
 
 class Collison
 {
