@@ -15,13 +15,13 @@ void GameCore::Initialize()
 {
 	nCurrent = 0; // 0 = main, 1 = GameStart, 2 = GameMenu, 3 = GameOver
 	myHDC = GetDC(g_hWnd);
-	myImageManager.Initialize();
+	//myImageManager.Initialize();
 	myLogin.Initialize(myHDC);
 	myLobby.Initialize(myHDC);
 	myBackGround.Initialize(myHDC);
-	myShadow.Initialize(myHDC);
-	myMark.Initialize(myHDC);
 	myPlayer.Initialize(myHDC);
+	myBlock.Initialize(myHDC);
+	//myStatue.Initialize(myHDC);
 	myDbBuf.Initialize();
 }
 
@@ -46,6 +46,7 @@ void GameCore::Progress()
 
 	else if (nCurrent == 2)
 	{
+		//myPlayer.pushbackPlayer(myCollison.SetNotInterSect(myPlayer.getPlayerRECT(myXY.myX, myXY.myY), myStatue.getStatueRECT("Statue3")));
 	}
 }
 
@@ -54,19 +55,21 @@ void GameCore::Render()
 	if (nCurrent == 0)
 	{
 		myLogin.Render(myDbBuf.ReturnBackDC());
+		//myImageManager.Render("BazziDown1", myDbBuf.ReturnBackDC());
 	}
 
 	else if (nCurrent == 1)
 	{
 		myLobby.Render(myDbBuf.ReturnBackDC());
+		myPlayer.Render(myDbBuf.ReturnBackDC(), 1);
 	}
 
 	else if (nCurrent == 2)
 	{
 		myBackGround.Render(myDbBuf.ReturnBackDC());
-		myShadow.Render(myDbBuf.ReturnBackDC());
-		myMark.Render(myDbBuf.ReturnBackDC());
+		myBlock.Render(myDbBuf.ReturnBackDC());
 		myPlayer.Render(myDbBuf.ReturnBackDC());
+		//myStatue.Render(myDbBuf.ReturnBackDC());
 	}
 	myDbBuf.Render();
 }

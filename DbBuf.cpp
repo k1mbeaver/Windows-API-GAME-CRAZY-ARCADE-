@@ -1,24 +1,16 @@
 #include "DbBuf.h"
-
 DbBuf::DbBuf()
 {
-
 }
-
 DbBuf::~DbBuf()
 {
-
 }
-
-
 bool DbBuf::Initialize()
 {
 	myhWnd = g_hWnd;
 	GetClientRect(myhWnd, &crt); // 너비를 구하기 위함, crt.right, crt.bottom 사용
-
 	if (myhWnd == NULL)
 		return false;
-
 	hDCMain = GetDC(myhWnd); // DC를 가져옴
 	hdcBuffer = CreateCompatibleDC(hDCMain); // BackBuffer에 현재 DC를 저장 
 	hdcBmp = CreateCompatibleBitmap(hDCMain, crt.right, crt.bottom); // 현재의 화면에 있는 모든 색들을 검출
@@ -32,33 +24,26 @@ bool DbBuf::Initialize()
 
 void DbBuf::Progress()
 {
+
 }
 
 void DbBuf::Render()
 {
 	myhWnd = g_hWnd;
 	GetClientRect(myhWnd, &crt); // 너비를 구하기 위함, crt.right, crt.bottom 사용
-
 	hDCMain = GetDC(myhWnd);
-
 	BitBlt(hDCMain, 0, 0, crt.right, crt.bottom, hdcBuffer, 0, 0, SRCCOPY);
 	// 고속 복사 함수 : 메모리 DC의 비트맵을 현재 DC에 고속복사하는 함수
 	// 백버퍼에 저장함
-
-
 	ReleaseDC(myhWnd, hDCMain);
 }
-
 void DbBuf::Destroy()
 {
-
 }
-
 HDC DbBuf::ReturnBackDC()
 {
 	return hdcBuffer;
 }
-
 void DbBuf::DeleteScreen()
 {
 	PatBlt(hdcBuffer, 0, 0, crt.right, crt.bottom, BLACKNESS);

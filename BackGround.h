@@ -1,33 +1,30 @@
+
 #pragma once
 #include "stdafx.h"
 #include "Define.h"
-#include "KeyManager.h"
 #include "myJson.h"
 
-extern HINSTANCE hInst;                               
+extern HINSTANCE hInst;                             
 extern HWND g_hWnd;
 extern RECT crt;
 
-class Login
+class BackGround
 {
 private:
 	HWND myHWND;
 	HDC myDC;
 	HBITMAP hbitmap;
 	HBITMAP holdbitmap;
-	BITMAP bit;
-	RECT clickStart;
-	KeyManager myKey;
 	myJson parseJson;
-	bool checkStart;
+	BITMAP bit;
 	int bx, by;
 	bool myActivation = false;
 	int nConnection = 0;
 public:
-	Login();
-	~Login();
+	BackGround();
+	~BackGround();
 
 	void Initialize(HDC hdc);
-	int Progress(int& m_nCurrent);
+	void Progress();
 	void Render(HDC hdc);
 };

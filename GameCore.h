@@ -4,11 +4,14 @@
 #include "DbBuf.h"
 #include "background.h"
 #include "Player.h"
-#include "Shadow.h"
-#include "Mark.h"
 #include "Login.h"
 #include "Lobby.h"
+#include "Block.h"
+#include "Statue.h"
 #include "ImageManager.h"
+#include "Collison.h"
+#include "myJson.h"
+//#include "ImageManager.h"
 
 //나머지 게임에 관련된 클래스가 있는 헤더를 추가한다.
 extern HINSTANCE hInst;                                // 현재 인스턴스입니다.
@@ -20,14 +23,16 @@ class GameCore
 private:
 	//관련된 클래스들 추가
 	HDC myHDC = GetDC(g_hWnd);
-	ImageManager myImageManager;
 	DbBuf myDbBuf;
 	BackGround myBackGround;
 	Player myPlayer;
-	Shadow myShadow;
-	Mark myMark;
 	Login myLogin;
 	Lobby myLobby;
+	Block myBlock;
+	Statue myStatue;
+	Collison myCollison;
+	//ImageManager myImageManager;
+	myJson parseJson;
 	int nCurrent = 0;
 	int nInitNum = 0;
 
