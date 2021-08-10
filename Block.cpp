@@ -6,7 +6,9 @@ void Block::Initialize(HDC hdc)
 {
 	// 이미지 링크 읽어오기
 	parseJson.Initialize();
-	myBlockManager->Initialize();
+
+	// 맵에 있는 블록 정보 가져 오기
+	getMapPosition();
 	// 빈 DC
 	myDC = CreateCompatibleDC(hdc);
 
@@ -170,3 +172,29 @@ int Block::getBetweenY(const char* chFileName)
 	return nBY;
 }
 
+void Block::getMapPosition()
+{
+	int nCount = 0;
+	for (int nCount1 = 0; nCount1 < 1; nCount1++)
+	{
+		for (int nCount2 = 0; nCount2 < 16; nCount2++)
+		{
+			myMap[nCount1][nCount2] = MapInitialize(parseJson.getMapX(nCount), parseJson.getMapY(nCount),
+				parseJson.getMapExist(nCount), parseJson.getMapBreak(nCount), parseJson.getMapWidth(nCount), parseJson.getMapHeight(nCount));
+			nCount++;
+		}
+	}
+}
+
+MapInfo* Block::MapInitialize(float m_fX, float m_fY, bool m_BlockExist, bool m_BlockBreak, int m_nWidth, int m_nHeight)
+{
+	MapPosition* myBlock = new MapPosition;
+	myBlock->fX = m_fX;
+	myBlock->fY = m_fY;
+	myBlock->BlockExist = m_BlockExist;
+	myBlock->BlockBreak = m_BlockBreak;
+	myBlock->nWidth = m_nWidth;
+	myBlock->nHeight = m_nHeight;
+
+	return myBlock;
+}

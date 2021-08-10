@@ -2,7 +2,10 @@
 
 Map::Map()
 {
-	parseJson.Initialize();
+}
+
+Map::~Map()
+{
 }
 
 HRESULT Map::Initialize(float m_fX, float m_fY, bool m_BlockExist, bool m_BlockBreak, int m_nWidth, int m_nHeight)

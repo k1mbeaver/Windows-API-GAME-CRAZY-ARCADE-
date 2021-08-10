@@ -27,14 +27,12 @@ public:
 	int getMyObjectTopRect(const char* chFileName);
 	int getMyObjectBetweenX(const char* chFileName);
 	int getMyObjectBetweenY(const char* chFileName);
-	bool getMapExist(const char* chFileName, int nCount1, int nCount2);
-	string& getMapBlockLink(const char* chFileName, int nCount1, int nCount2);
-	string& getMapBreakBlockLink(const char* chFileName, int nCount1, int nCount2);
-	float getMapX(const char* chFileName, int nCount1, int nCount2);
-	float getMapY(const char* chFileName, int nCount1, int nCount2);
-	bool getMapBreak(const char* chFileName, int nCount1, int nCount2);
-	int getMapWidth(const char* chFileName, int nCount1, int nCount2);
-	int getMapHeight(const char* chFileName, int nCount1, int nCount2);
+	bool getMapExist(int nCount);
+	float getMapX(int nCount);
+	float getMapY(int nCount);
+	bool getMapBreak(int nCount);
+	int getMapWidth(int nCount);
+	int getMapHeight(int nCount);
 
 	//string getObjectLink();
 };

@@ -1,7 +1,6 @@
 #pragma once
 #include "stdafx.h"
 #include "Define.h"
-#include "myJson.h"
 
 extern HWND g_hWnd;
 extern HINSTANCE hInst;
@@ -18,7 +17,6 @@ class Map
 		int nHeight = 0; // 블럭의 세로
 	} IMAGE_INFO, * LPIMAGE_INFO;
 	LPIMAGE_INFO BlockInformation; // 블록 정보
-	myJson parseJson;
 public:
 	Map();
 	~Map();

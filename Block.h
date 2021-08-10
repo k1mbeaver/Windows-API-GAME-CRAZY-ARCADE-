@@ -1,11 +1,21 @@
 #pragma once
 #include "stdafx.h"
 #include "Define.h"
-#include "BlockManager.h"
+#include "Map.h"
 #include "myJson.h"
 extern HINSTANCE hInst;
 extern HWND g_hWnd;
 extern RECT crt;
+
+typedef struct MapPosition
+{
+	float fX = 0; // x좌표
+	float fY = 0; // y좌표
+	bool BlockExist = false; // 블록 존재 여부
+	bool BlockBreak = false; // 블록 파괴 여부
+	int nWidth = 0; // 블럭의 가로
+	int nHeight = 0; // 블럭의 세로
+}MapInfo;
 class Block
 {
 private:
@@ -13,7 +23,7 @@ private:
 	BITMAP bit;
 	int bx, by;
 	HDC myDC;
-	BlockManager* myBlockManager;
+	MapInfo* myMap[1][16];
 	HBITMAP Block1bit, Block2bit, Block3bit, Block4bit, Block5bit, BlockBreak1bit, BlockBreak2bit, BlockBreak3bit, BlockBreak4bit, BlockBreak5bit;
 	HBITMAP Block1old, Block2old, Block3old, Block4old, Block5old, BlockBreak1old, BlockBreak2old, BlockBreak3old, BlockBreak4old, BlockBreak5old;
 	BITMAP Blockbit, BlockBreakbit;
@@ -42,4 +52,6 @@ public:
 	float getY2(const char* chFileName);
 	int getBetweenX(const char* chFileName);
 	int getBetweenY(const char* chFileName);
+	void getMapPosition();
+	MapInfo* MapInitialize(float m_fX, float m_fY, bool m_BlockExist, bool m_BlockBreak, int m_nWidth, int m_nHeight);
 };

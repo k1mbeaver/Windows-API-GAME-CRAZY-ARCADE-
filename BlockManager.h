@@ -5,7 +5,7 @@
 class BlockManager
 {
 public:
-	Map* BlockList[1][16];
+	Map BlockList[1][16];
 	myJson parseJson;
 	BlockManager();
 	~BlockManager();
