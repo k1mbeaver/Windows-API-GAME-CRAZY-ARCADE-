@@ -132,9 +132,9 @@ float Player::getY(const char* chFileName)
 RECT& Player::getPlayerRECT(float fX, float fY)
 {
 	PlayerRECT.left = fX;
-	PlayerRECT.top = fY;
+	PlayerRECT.top = fY + 40;
 	PlayerRECT.right =  PlayerRECT.left + getWidth("BazziDown");
-	PlayerRECT.bottom = PlayerRECT.top + getHeight("BazziDown");
+	PlayerRECT.bottom = PlayerRECT.top + getHeight("BazziDown") - 40;
 
 	return PlayerRECT;
 }

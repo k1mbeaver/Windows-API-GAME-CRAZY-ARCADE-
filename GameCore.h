@@ -7,7 +7,6 @@
 #include "Login.h"
 #include "Lobby.h"
 #include "Block.h"
-#include "Statue.h"
 #include "ImageManager.h"
 #include "Collison.h"
 #include "myJson.h"
@@ -29,13 +28,12 @@ private:
 	Login myLogin;
 	Lobby myLobby;
 	Block myBlock;
-	Statue myStatue;
 	Collison myCollison;
 	//ImageManager myImageManager;
 	myJson parseJson;
 	int nCurrent = 0;
 	int nInitNum = 0;
-
+	Block* myMap[12][27];
 public:
 	GameCore();
 	~GameCore();
