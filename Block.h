@@ -1,8 +1,8 @@
 #pragma once
 #include "stdafx.h"
 #include "Define.h"
-#include "Map.h"
 #include "myJson.h"
+#include "Collison.h"
 extern HINSTANCE hInst;
 extern HWND g_hWnd;
 extern RECT crt;
@@ -15,6 +15,7 @@ typedef struct MapPosition
 	bool BlockBreak = false; // 블록 파괴 여부
 	int nWidth = 0; // 블럭의 가로
 	int nHeight = 0; // 블럭의 세로
+	RECT BlockRECT;
 }MapInfo;
 class Block
 {
@@ -23,7 +24,7 @@ private:
 	BITMAP bit;
 	int bx, by;
 	HDC myDC;
-	MapInfo* myMap[1][16];
+	MapInfo* myMap[12][27]; // [12][27], 맵의 정보를 담아내기 위한 2차원 배열 
 	HBITMAP Block1bit, Block2bit, Block3bit, Block4bit, Block5bit, BlockBreak1bit, BlockBreak2bit, BlockBreak3bit, BlockBreak4bit, BlockBreak5bit;
 	HBITMAP Block1old, Block2old, Block3old, Block4old, Block5old, BlockBreak1old, BlockBreak2old, BlockBreak3old, BlockBreak4old, BlockBreak5old;
 	BITMAP Blockbit, BlockBreakbit;
@@ -53,5 +54,7 @@ public:
 	int getBetweenX(const char* chFileName);
 	int getBetweenY(const char* chFileName);
 	void getMapPosition();
+	RECT getBlockRect(int nCount1, int nCount2);
 	MapInfo* MapInitialize(float m_fX, float m_fY, bool m_BlockExist, bool m_BlockBreak, int m_nWidth, int m_nHeight);
+	Direction CollisonBlock(RECT& player, RECT block);
 };

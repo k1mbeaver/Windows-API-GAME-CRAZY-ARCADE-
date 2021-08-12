@@ -7,11 +7,9 @@
 #include "Login.h"
 #include "Lobby.h"
 #include "Block.h"
-#include "Statue.h"
-#include "ImageManager.h"
+#include "Shadow.h"
 #include "Collison.h"
 #include "myJson.h"
-//#include "ImageManager.h"
 
 //나머지 게임에 관련된 클래스가 있는 헤더를 추가한다.
 extern HINSTANCE hInst;                                // 현재 인스턴스입니다.
@@ -24,18 +22,18 @@ private:
 	//관련된 클래스들 추가
 	HDC myHDC = GetDC(g_hWnd);
 	DbBuf myDbBuf;
+	Shadow myShadow;
 	BackGround myBackGround;
 	Player myPlayer;
 	Login myLogin;
 	Lobby myLobby;
 	Block myBlock;
-	Statue myStatue;
 	Collison myCollison;
-	//ImageManager myImageManager;
 	myJson parseJson;
 	int nCurrent = 0;
+	int nFrame = 0;
 	int nInitNum = 0;
-
+	Block* myMap[12][27];
 public:
 	GameCore();
 	~GameCore();

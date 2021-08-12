@@ -1,30 +1,59 @@
 #include "Shadow.h"
-
 Shadow::Shadow() {}
 Shadow::~Shadow() {}
 
 void Shadow::Initialize(HDC hdc)
 {
+	// Initialize에서 각 이미지들의 정보를 저장해 놓으면?
+
+	parseJson.Initialize();
 	myDC = CreateCompatibleDC(hdc);
-	hbitmap = (HBITMAP)LoadImage(NULL, L"C:\\Users\\USER\\Desktop\\연구실 공부\\허승찬 선배님 스터디\\크레이지 아케이드\\Crazy Arcade\\Crazy Arcade\\Image\\player\\Shadow.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
-	holdbitmap = (HBITMAP)SelectObject(myDC, hbitmap);
-	myActivation = false;
-	nConnection = 0;
+	Shadowbit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("Shadow").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	Shadowold = (HBITMAP)SelectObject(myDC, Shadowbit);
 }
 
 void Shadow::Progress()
 {
 }
 
-void Shadow::Render(HDC hdc)
+void Shadow::Render(HDC hdc) // 게임 플레이 화면 용
 {
-	GetObject(hbitmap, sizeof(BITMAP), &bit);
-	bx = bit.bmWidth;
-	by = bit.bmHeight;
+	TransparentBlt(hdc, myXY.myX + 10, myXY.myY + 60, getWidth("Shadow"), getHeight("Shadow"), myDC, 0, 0, getWidth("Shadow"), getHeight("Shadow"), RGB(255, 0, 255));
+}
 
-	TransparentBlt(hdc, myXY.myX+10, myXY.myY+60, bx, by, myDC, 0, 0, bx, by, RGB(255, 0, 255));
+void Shadow::Render(HDC hdc, int nState) // 로비용
+{
+	TransparentBlt(hdc, getX("BazziJump") + 10, getY("BazziJump") + 65, getWidth("Shadow"), getHeight("Shadow"), myDC, 0, 0, getWidth("Shadow"), getHeight("Shadow"), RGB(255, 0, 255));
+}
 
-	//SelectObject(myDC, holdbitmap);
-	//DeleteObject(hbitmap);
-	//DeleteDC(myDC);
+int Shadow::getWidth(const char* chFileName)
+{
+	int nWidth;
+	nWidth = parseJson.getMyObjectWidth(chFileName);
+
+	return nWidth;
+}
+
+int Shadow::getHeight(const char* chFileName)
+{
+	int nHeight;
+	nHeight = parseJson.getMyObjectHeight(chFileName);
+
+	return nHeight;
+}
+
+float Shadow::getX(const char* chFileName)
+{
+	float fX;
+	fX = parseJson.getMyObjectX(chFileName);
+
+	return fX;
+}
+
+float Shadow::getY(const char* chFileName)
+{
+	float fY;
+	fY = parseJson.getMyObjectY(chFileName);
+
+	return fY;
 }

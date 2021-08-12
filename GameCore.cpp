@@ -15,13 +15,12 @@ void GameCore::Initialize()
 {
 	nCurrent = 0; // 0 = main, 1 = GameStart, 2 = GameMenu, 3 = GameOver
 	myHDC = GetDC(g_hWnd);
-	//myImageManager.Initialize();
 	myLogin.Initialize(myHDC);
 	myLobby.Initialize(myHDC);
 	myBackGround.Initialize(myHDC);
 	myPlayer.Initialize(myHDC);
+	myShadow.Initialize(myHDC);
 	myBlock.Initialize(myHDC);
-	//myStatue.Initialize(myHDC);
 	myDbBuf.Initialize();
 }
 
@@ -46,7 +45,20 @@ void GameCore::Progress()
 
 	else if (nCurrent == 2)
 	{
-		//myPlayer.pushbackPlayer(myCollison.SetNotInterSect(myPlayer.getPlayerRECT(myXY.myX, myXY.myY), myStatue.getStatueRECT("Statue3")));
+		if (nFrame == 10)
+		{
+			// 블록들과 캐릭터의 충돌
+			for (int nIndex = 0; nIndex < 12; nIndex++)
+			{
+				for (int nJndex = 0; nJndex < 27; nJndex++)
+				{
+					myPlayer.pushbackPlayer(myCollison.SetNotInterSect(myPlayer.getPlayerRECT(myXY.myX, myXY.myY), myBlock.getBlockRect(nIndex, nJndex)));
+				}
+			}
+			nFrame = 0;
+		}
+
+		nFrame++;
 	}
 }
 
@@ -61,15 +73,16 @@ void GameCore::Render()
 	else if (nCurrent == 1)
 	{
 		myLobby.Render(myDbBuf.ReturnBackDC());
+		myShadow.Render(myDbBuf.ReturnBackDC(), 1);
 		myPlayer.Render(myDbBuf.ReturnBackDC(), 1);
 	}
 
 	else if (nCurrent == 2)
 	{
 		myBackGround.Render(myDbBuf.ReturnBackDC());
+		myShadow.Render(myDbBuf.ReturnBackDC());
 		myBlock.Render(myDbBuf.ReturnBackDC());
 		myPlayer.Render(myDbBuf.ReturnBackDC());
-		//myStatue.Render(myDbBuf.ReturnBackDC());
 	}
 	myDbBuf.Render();
 }

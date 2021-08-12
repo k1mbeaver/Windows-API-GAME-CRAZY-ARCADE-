@@ -27,12 +27,12 @@ public:
 	int getMyObjectTopRect(const char* chFileName);
 	int getMyObjectBetweenX(const char* chFileName);
 	int getMyObjectBetweenY(const char* chFileName);
-	bool getMapExist(int nCount);
-	float getMapX(int nCount);
-	float getMapY(int nCount);
-	bool getMapBreak(int nCount);
-	int getMapWidth(int nCount);
-	int getMapHeight(int nCount);
+	bool getMapExist(int nCount); // 블럭의 존재 유무 불러오기
+	float getMapX(int nCount); // 블럭의 X좌표 불러오기
+	float getMapY(int nCount); // 블럭의 Y좌표 불러오기
+	bool getMapBreak(int nCount); // 블럭의 파괴여부 불러오기
+	int getMapWidth(int nCount); // 블럭의 너비 불러오기
+	int getMapHeight(int nCount); // 블럭의 높이 불러오기
 
 	//string getObjectLink();
 };

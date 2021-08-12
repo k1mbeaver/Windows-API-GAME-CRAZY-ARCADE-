@@ -1,4 +1,5 @@
 //충돌 처리
+#pragma once
 #include "stdafx.h"
 #include "Define.h"
 
