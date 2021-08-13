@@ -50,7 +50,7 @@ void GameCore::Progress()
 			// 블록들과 캐릭터의 충돌
 			for (int nIndex = 0; nIndex < 12; nIndex++)
 			{
-				for (int nJndex = 0; nJndex < 27; nJndex++)
+				for (int nJndex = 0; nJndex < 18; nJndex++)
 				{
 					myPlayer.pushbackPlayer(myCollison.SetNotInterSect(myPlayer.getPlayerRECT(myXY.myX, myXY.myY), myBlock.getBlockRect(nIndex, nJndex)));
 				}

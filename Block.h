@@ -24,7 +24,7 @@ private:
 	BITMAP bit;
 	int bx, by;
 	HDC myDC;
-	MapInfo* myMap[12][27]; // [12][27], 맵의 정보를 담아내기 위한 2차원 배열 
+	MapInfo* myMap[12][18]; // [12][18], 맵의 정보를 담아내기 위한 2차원 배열 
 	HBITMAP Block1bit, Block2bit, Block3bit, Block4bit, Block5bit, BlockBreak1bit, BlockBreak2bit, BlockBreak3bit, BlockBreak4bit, BlockBreak5bit;
 	HBITMAP Block1old, Block2old, Block3old, Block4old, Block5old, BlockBreak1old, BlockBreak2old, BlockBreak3old, BlockBreak4old, BlockBreak5old;
 	BITMAP Blockbit, BlockBreakbit;

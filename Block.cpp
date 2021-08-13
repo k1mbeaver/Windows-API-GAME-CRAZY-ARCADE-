@@ -4,7 +4,7 @@ Block::~Block()
 {
 	for (int nIndex = 0; nIndex < 12; nIndex++)
 	{
-		for (int nJndex = 0; nJndex < 27; nJndex++)
+		for (int nJndex = 0; nJndex < 18; nJndex++)
 		{
 			delete myMap[nIndex][nJndex];
 		}
@@ -48,7 +48,7 @@ void Block::Render(HDC hdc)
 	// 블럭 [12][27]까지 다 만들어 보기
 	for (int nIndex = 0; nIndex < 12; nIndex++)
 	{
-		for (int nJndex = 0; nJndex < 27; nJndex++)
+		for (int nJndex = 0; nJndex < 18; nJndex++)
 		{
 			// 블럭이 존재 & 부서지는 블럭
 			if (myMap[nIndex][nJndex] -> BlockExist == true && myMap[nIndex][nJndex] -> BlockBreak == true)
@@ -156,7 +156,7 @@ void Block::getMapPosition()
 	int nCount = 0;
 	for (int nCount1 = 0; nCount1 < 12; nCount1++)
 	{
-		for (int nCount2 = 0; nCount2 < 27; nCount2++)
+		for (int nCount2 = 0; nCount2 < 18; nCount2++)
 		{
 			myMap[nCount1][nCount2] = MapInitialize(parseJson.getMapX(nCount), parseJson.getMapY(nCount),
 				parseJson.getMapExist(nCount), parseJson.getMapBreak(nCount), parseJson.getMapWidth(nCount), parseJson.getMapHeight(nCount));
