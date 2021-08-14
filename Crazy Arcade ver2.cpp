@@ -218,19 +218,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         switch (wParam)
         {
         case VK_LEFT:
-            myXY.myX -= 10.f;
+            myXY.myX -= 5.f;
             nPlayerWay = VK_LEFT;
             break;
         case VK_UP:
-            myXY.myY -= 10.f;
+            myXY.myY -= 5.f;
             nPlayerWay = VK_UP;
             break;
         case VK_RIGHT:
-            myXY.myX += 10.f;
+            myXY.myX += 5.f;
             nPlayerWay = VK_RIGHT;
             break;
         case VK_DOWN:
-            myXY.myY += 10.f;
+            myXY.myY += 5.f;
             nPlayerWay = VK_DOWN;
             break;
         default:

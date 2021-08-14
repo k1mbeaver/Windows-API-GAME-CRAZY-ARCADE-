@@ -39,27 +39,27 @@ public:
 	void Render(HDC hdc, float fX, float fY);
 
 	// DC를 얻어온다
-	HDC getMemDC() { return imageInformation->hMemDC; }
+	HDC getMemDC() { return imageInformation -> hMemDC; }
 
 	// 이미지의 좌표 얻기 및 세팅, 이미지의 센터 좌표 세팅, 이미지의 가로세로 얻기
 	
 	// 이미지의 좌표 
-	float getX() { return imageInformation->fX; }
-	void getX(float fX) { imageInformation->fX = fX; }
-	float getY() { return imageInformation->fY; }
-	void getY(float fY) { imageInformation->fY = fY; }
+	float getX() { return imageInformation -> fX; }
+	void getX(float fX) { imageInformation -> fX = fX; }
+	float getY() { return imageInformation -> fY; }
+	void getY(float fY) { imageInformation -> fY = fY; }
 
 	// 이미지의 센터
 	void setCenter(float fX, float fY)
 	{
-		imageInformation->fX = fX - (imageInformation->nWidth / 2);
-		imageInformation->fY = fY - (imageInformation->nHeight / 2);
+		imageInformation -> fX = fX - (imageInformation->nWidth / 2);
+		imageInformation -> fY = fY - (imageInformation->nHeight / 2);
 	}
 
 	// 중점 X
 	float getCenterX()
 	{
-		return imageInformation->nMaxFrameX <= 0 ? imageInformation->fX + (imageInformation->nWidth / 2) : imageInformation->fX + (imageInformation->nFrameWidth / 2);
+		return imageInformation -> nMaxFrameX <= 0 ? imageInformation -> fX + (imageInformation -> nWidth / 2) : imageInformation -> fX + (imageInformation -> nFrameWidth / 2);
 		/*
 		if (imageInformation->nMaxFrameX <= 0) return imageInformation->fX + (imageInformation->nWidth / 2);
 		else return imageInformation->fX + (imageInformation->nFrameWidth / 2);
@@ -69,7 +69,7 @@ public:
 	// 중점 Y
 	float getCenterY()
 	{
-		return imageInformation->nMaxFrameY <= 0 ? imageInformation->fY + (imageInformation->nHeight / 2) : imageInformation->fY + (imageInformation->nFrameHeight / 2);
+		return imageInformation -> nMaxFrameY <= 0 ? imageInformation -> fY + (imageInformation -> nHeight / 2) : imageInformation -> fY + (imageInformation -> nFrameHeight / 2);
 		/*
 		if (imageInformation->nMaxFrameY <= 0) return imageInformation->fY + (imageInformation->nHeight / 2);
 		else return imageInformation->fY + (imageInformation->nFrameHeight / 2);
@@ -77,21 +77,21 @@ public:
 	}
 
 	// 가로, 세로 크기 얻기
-	int getWidth() { return imageInformation->nWidth; }
-	int getHeight() { return imageInformation->nHeight; }
+	int getWidth() { return imageInformation -> nWidth; }
+	int getHeight() { return imageInformation -> nHeight; }
 
 	// 충돌 처리 (바운딩 박스)
 	RECT getBoundingBOX()
 	{
 		RECT rc;
-		if (imageInformation->nFrameWidth != 0 && imageInformation->nFrameHeight != 0)
+		if (imageInformation -> nFrameWidth != 0 && imageInformation -> nFrameHeight != 0)
 		{
-			rc = makeRect(imageInformation->fX, imageInformation->fY, imageInformation->nFrameWidth, imageInformation->nFrameHeight);
+			rc = makeRect(imageInformation -> fX, imageInformation -> fY, imageInformation -> nFrameWidth, imageInformation -> nFrameHeight);
 		}
 
 		else
 		{
-			rc = makeRect(imageInformation->fX, imageInformation->fY, imageInformation->nWidth, imageInformation->nHeight);
+			rc = makeRect(imageInformation -> fX, imageInformation -> fY, imageInformation -> nWidth, imageInformation -> nHeight);
 		}
 	}
 

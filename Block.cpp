@@ -4,7 +4,7 @@ Block::~Block()
 {
 	for (int nIndex = 0; nIndex < 12; nIndex++)
 	{
-		for (int nJndex = 0; nJndex < 27; nJndex++)
+		for (int nJndex = 0; nJndex < 18; nJndex++)
 		{
 			delete myMap[nIndex][nJndex];
 		}
@@ -18,9 +18,11 @@ void Block::Initialize(HDC hdc)
 
 	// 맵에 있는 블록 정보 가져 오기
 	getMapPosition();
+
 	// 빈 DC
 	myDC = CreateCompatibleDC(hdc);
 
+	// 블럭이미지들 불러오기
 	Block2bit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("block2").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	Block3bit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("block3").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 
@@ -43,27 +45,25 @@ void Block::Progress()
 
 void Block::Render(HDC hdc)
 {
-	Block2old = (HBITMAP)SelectObject(myDC, Block2bit);
-
 	// 블럭 [12][27]까지 다 만들어 보기
 	for (int nIndex = 0; nIndex < 12; nIndex++)
 	{
-		for (int nJndex = 0; nJndex < 27; nJndex++)
+		for (int nJndex = 0; nJndex < 18; nJndex++)
 		{
 			// 블럭이 존재 & 부서지는 블럭
-			if (myMap[nIndex][nJndex]->BlockExist == true && myMap[nIndex][nJndex]->BlockBreak == true)
+			if (myMap[nIndex][nJndex] -> BlockExist == true && myMap[nIndex][nJndex] -> BlockBreak == true)
 			{
 				Block2old = (HBITMAP)SelectObject(myDC, Block2bit);
-				TransparentBlt(hdc, myMap[nIndex][nJndex]->fX, myMap[nIndex][nJndex]->fY, myMap[nIndex][nJndex]->nWidth, myMap[nIndex][nJndex]->nHeight
-					, myDC, 0, 0, myMap[nIndex][nJndex]->nWidth, myMap[nIndex][nJndex]->nHeight, RGB(255, 0, 255));
+				TransparentBlt(hdc, myMap[nIndex][nJndex] -> fX, myMap[nIndex][nJndex] -> fY, myMap[nIndex][nJndex] -> nWidth, myMap[nIndex][nJndex] -> nHeight
+					, myDC, 0, 0, myMap[nIndex][nJndex] -> nWidth, myMap[nIndex][nJndex] -> nHeight, RGB(255, 0, 255));
 			}
 
 			// 블럭이 존재 & 부서지지 않는 블럭
-			else if(myMap[nIndex][nJndex]->BlockExist == true && myMap[nIndex][nJndex]->BlockBreak == false)
+			else if(myMap[nIndex][nJndex] -> BlockExist == true && myMap[nIndex][nJndex] -> BlockBreak == false)
 			{
 				Block3old = (HBITMAP)SelectObject(myDC, Block3bit);
-				TransparentBlt(hdc, myMap[nIndex][nJndex]->fX, myMap[nIndex][nJndex]->fY, myMap[nIndex][nJndex]->nWidth, myMap[nIndex][nJndex]->nHeight
-					, myDC, 0, 0, myMap[nIndex][nJndex]->nWidth, myMap[nIndex][nJndex]->nHeight, RGB(255, 0, 255));
+				TransparentBlt(hdc, myMap[nIndex][nJndex] -> fX, myMap[nIndex][nJndex] -> fY, myMap[nIndex][nJndex] -> nWidth, myMap[nIndex][nJndex] -> nHeight
+					, myDC, 0, 0, myMap[nIndex][nJndex] -> nWidth, myMap[nIndex][nJndex] -> nHeight, RGB(255, 0, 255));
 			}
 		}
 	}	
@@ -152,10 +152,11 @@ int Block::getBetweenY(const char* chFileName)
 
 void Block::getMapPosition()
 {
+	// Json 파일에 있는 0~323 까지 들어있는 블럭의 정보들을 myMap[12][27]에 차곡차곡 넣는다.
 	int nCount = 0;
 	for (int nCount1 = 0; nCount1 < 12; nCount1++)
 	{
-		for (int nCount2 = 0; nCount2 < 27; nCount2++)
+		for (int nCount2 = 0; nCount2 < 18; nCount2++)
 		{
 			myMap[nCount1][nCount2] = MapInitialize(parseJson.getMapX(nCount), parseJson.getMapY(nCount),
 				parseJson.getMapExist(nCount), parseJson.getMapBreak(nCount), parseJson.getMapWidth(nCount), parseJson.getMapHeight(nCount));
@@ -167,16 +168,16 @@ void Block::getMapPosition()
 MapInfo* Block::MapInitialize(float m_fX, float m_fY, bool m_BlockExist, bool m_BlockBreak, int m_nWidth, int m_nHeight)
 {
 	MapPosition* myBlock = new MapPosition;
-	myBlock->fX = m_fX;
-	myBlock->fY = m_fY;
-	myBlock->BlockExist = m_BlockExist;
-	myBlock->BlockBreak = m_BlockBreak;
-	myBlock->nWidth = m_nWidth;
-	myBlock->nHeight = m_nHeight;
-	myBlock->BlockRECT.left = myBlock->fX;
-	myBlock->BlockRECT.top = myBlock->fY;
-	myBlock->BlockRECT.right = myBlock->BlockRECT.left + myBlock->nWidth;
-	myBlock->BlockRECT.bottom = myBlock->BlockRECT.top + myBlock->nHeight;
+	myBlock -> fX = m_fX;
+	myBlock -> fY = m_fY;
+	myBlock -> BlockExist = m_BlockExist;
+	myBlock -> BlockBreak = m_BlockBreak;
+	myBlock -> nWidth = m_nWidth;
+	myBlock -> nHeight = m_nHeight;
+	myBlock -> BlockRECT.left = myBlock -> fX;
+	myBlock -> BlockRECT.top = myBlock -> fY;
+	myBlock -> BlockRECT.right = myBlock -> BlockRECT.left + myBlock -> nWidth;
+	myBlock -> BlockRECT.bottom = myBlock -> BlockRECT.top + myBlock -> nHeight;
 
 	return myBlock;
 }
@@ -185,8 +186,12 @@ RECT Block::getBlockRect(int nCount1, int nCount2)
 {
 	RECT returnRECT;
 
-	returnRECT = myMap[nCount1][nCount2]->BlockRECT;
+	returnRECT = myMap[nCount1][nCount2] -> BlockRECT;
 	return returnRECT;
+}
 
-
+bool Block::getBlockExist(int nCount1, int nCount2)
+{
+	if (myMap[nCount1][nCount2]->BlockExist == true) return true;
+	else { return false; }
 }

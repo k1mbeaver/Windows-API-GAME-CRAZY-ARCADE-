@@ -13,7 +13,7 @@ HRESULT Image::Initialize(string m_strFileName, int m_nWidth, int m_nHeight, flo
 	imageInformation = new IMAGE_INFO;
 	imageInformation -> hMemDC = CreateCompatibleDC(hdc); 
 	imageInformation -> hBit = (HBITMAP)LoadImage(hInst, parseJson.getMyObjectLink(chFileName).c_str(), IMAGE_BITMAP, m_nWidth, m_nHeight, LR_LOADFROMFILE); // 이부분부터 문제가 있음
-	imageInformation -> hObit = (HBITMAP)SelectObject(imageInformation->hMemDC, imageInformation->hBit);
+	imageInformation -> hObit = (HBITMAP)SelectObject(imageInformation -> hMemDC, imageInformation -> hBit);
 	imageInformation -> nWidth = m_nWidth;
 	imageInformation -> nHeight = m_nHeight;
 	imageInformation -> fX = m_fX;
@@ -52,6 +52,6 @@ void Image::Render(HDC hdc, float fX, float fY)
 	// isTrans = false
 	else
 	{
-		BitBlt(hdc, fX, fY, imageInformation -> nWidth, imageInformation->nHeight, imageInformation->hMemDC, 0, 0, SRCCOPY);
+		BitBlt(hdc, fX, fY, imageInformation -> nWidth, imageInformation -> nHeight, imageInformation -> hMemDC, 0, 0, SRCCOPY);
 	}
 }
