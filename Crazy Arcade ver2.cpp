@@ -22,6 +22,7 @@ RECT rcInter; // 충돌처리용 RECT
 float dDT = 0.0f;
 float fFrameDelay = 0.0f;
 int nPlayerWay = 0; // 캐릭터 방향
+int nBomb = 0; // 물풍선 설치 여부
 
 
 
@@ -219,19 +220,22 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
         case VK_LEFT:
             myXY.myX -= 5.f;
-            nPlayerWay = VK_LEFT;
+            nPlayerWay = VK_LEFT; // 캐릭터 왼쪽으로
             break;
         case VK_UP:
             myXY.myY -= 5.f;
-            nPlayerWay = VK_UP;
+            nPlayerWay = VK_UP; // 캐릭터 위로
             break;
         case VK_RIGHT:
             myXY.myX += 5.f;
-            nPlayerWay = VK_RIGHT;
+            nPlayerWay = VK_RIGHT; // 캐릭터 오른쪽
             break;
         case VK_DOWN:
             myXY.myY += 5.f;
-            nPlayerWay = VK_DOWN;
+            nPlayerWay = VK_DOWN; // 캐릭터 아래로
+            break;
+        case VK_SPACE:
+            nBomb = VK_SPACE; // 물풍선 설치를 위함
             break;
         default:
             nPlayerWay = 0;

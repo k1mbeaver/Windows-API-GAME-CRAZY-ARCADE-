@@ -2455,5 +2455,25 @@
 								"Break" : false,
 								"Width" : 52,
 								"Height" : 61
-					}]
+					}],
+		"Bomb" : [
+						{
+							"ImageLink" : "Image\\bomb\\bomb.bmp",
+							"Break" : true,
+							"Width" : 56,
+							"Height" : 54,
+							"BetweenX" : 68,
+							"BetweenY" : 63
+						}
+				],
+		"BombPop" : [
+						{
+							"ImageLink" : "Image\\bomb\\bombpop.bmp",
+							"Break" : true,
+							"Width" : 52,
+							"Height" : 52,
+							"BetweenX" : 52,
+							"BetweenY" : 52
+						}
+				]
 }

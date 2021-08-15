@@ -9,6 +9,7 @@
 #include "Block.h"
 #include "Shadow.h"
 #include "Collison.h"
+#include "Bomb.h"
 #include "myJson.h"
 
 //나머지 게임에 관련된 클래스가 있는 헤더를 추가한다.
@@ -28,12 +29,15 @@ private:
 	Login myLogin;
 	Lobby myLobby;
 	Block myBlock;
+	Bomb myBomb;
 	Collison myCollison;
 	myJson parseJson;
 	int nCurrent = 0;
 	int nFrame = 0;
 	int nInitNum = 0;
+	int nBombCount = 0;
 	Block* myMap[12][27];
+	BombInfo* myCreateBomb;
 public:
 	GameCore();
 	~GameCore();
