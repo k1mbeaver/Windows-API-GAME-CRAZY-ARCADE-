@@ -35,9 +35,9 @@ private:
 	int nCurrent = 0;
 	int nFrame = 0;
 	int nInitNum = 0;
-	int nBombCount = 0;
+	int nBombCount = 0; // 물풍선 타이머
+	int nBombState = 0;
 	Block* myMap[12][27];
-	BombInfo* myCreateBomb;
 public:
 	GameCore();
 	~GameCore();

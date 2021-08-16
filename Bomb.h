@@ -26,12 +26,12 @@ private:
 	int bx, by;
 	int nBombCount = 0;
 	int nBombSecond = 0;
-	bool BombExist;
 	HBITMAP Bombbit, BombPopbit;
 	HBITMAP Bombold, BombPopold;
 	BITMAP Bombbitmap, BombPopbitmap;
 	myJson parseJson;
-	int FrameX;
+	BombInfo myCreateBomb;
+	int FrameX, BombFrameX = 0;
 	bool myActivation = false;
 	int nConnection = 0;
 public:
@@ -39,13 +39,13 @@ public:
 	~Bomb();
 	void Initialize(HDC hdc);
 	void Progress();
-	void Render(HDC hdc, float fX, float fY); // ¹°Ç³¼± ¼³Ä¡
-	void BombRender(HDC hdc, float fX, float fY); // ¹°Ç³¼± ÆøÆÄ½Ã
+	void Render(HDC hdc); // ¹°Ç³¼± ¼³Ä¡
+	void BombRender(HDC hdc); // ¹°Ç³¼± ÆøÆÄ½Ã
 	int getWidth(const char* chFileName);
 	int getHeight(const char* chFileName);
 	float getX();
 	float getY();
-	BombInfo* CreateBomb(float m_fX, float m_fY);
-	void DeleteBomb(BombInfo* m_myCreateBomb);
-	bool ExistBomb(BombInfo* m_myCreateBomb);
+	void CreateBomb(float m_fX, float m_fY);
+	void DeleteBomb();
+	bool ExistBomb();
 };

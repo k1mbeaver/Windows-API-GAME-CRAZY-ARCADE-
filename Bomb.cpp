@@ -18,10 +18,10 @@ void Bomb::Progress()
 {
 }
 
-void Bomb::Render(HDC hdc, float fX, float fY) // 물풍선 설치
+void Bomb::Render(HDC hdc) // 물풍선 설치
 {
 	Bombold = (HBITMAP)SelectObject(myDC, Bombbit);
-	TransparentBlt(hdc, fX, fY, getWidth("Bomb"), getHeight("Bomb"), myDC, FrameX, 0, getWidth("Bomb"), getHeight("Bomb"), RGB(255, 0, 255));
+	TransparentBlt(hdc, myCreateBomb.fX, myCreateBomb.fY, getWidth("Bomb"), getHeight("Bomb"), myDC, FrameX, 0, getWidth("Bomb"), getHeight("Bomb"), RGB(255, 0, 255));
 
 	// 애니메이션 출력을 위한 프레임
 	fFrameDelay += dDT;
@@ -37,21 +37,21 @@ void Bomb::Render(HDC hdc, float fX, float fY) // 물풍선 설치
 	}
 }
 
-void Bomb::BombRender(HDC hdc, float fX, float fY) // 물풍선 폭파
+void Bomb::BombRender(HDC hdc) // 물풍선 폭파
 {
 	BombPopold = (HBITMAP)SelectObject(myDC, BombPopbit);
-	TransparentBlt(hdc, fX, fY, getWidth("BombPop"), getHeight("BombPop"), myDC, FrameX, 0, getWidth("BombPop"), getHeight("BombPop"), RGB(255, 0, 255));
+	TransparentBlt(hdc, myCreateBomb.fX, myCreateBomb.fY, getWidth("BombPop"), getHeight("BombPop"), myDC, BombFrameX, 0, getWidth("BombPop"), getHeight("BombPop"), RGB(255, 0, 255));
 
 	// 애니메이션 출력을 위한 프레임
 	fFrameDelay += dDT;
 	if (fFrameDelay > 0.1f)
 	{
 		fFrameDelay = 0;
-		FrameX += 52;
+		BombFrameX += 52;
 
-		if (FrameX >= 312)
+		if (BombFrameX >= 312)
 		{
-			FrameX = 0;
+			BombFrameX = 0;
 		}
 	}
 }
@@ -72,23 +72,23 @@ int Bomb::getHeight(const char* chFileName)
 	return nHeight;
 }	
 
-BombInfo* Bomb::CreateBomb(float m_fX, float m_fY)
+void Bomb::CreateBomb(float m_fX, float m_fY)
 {
-	BombInfo* myCreateBomb = new BombInfo;
-	myCreateBomb -> fX = m_fX;
-	myCreateBomb -> fY = m_fY;
-	myCreateBomb -> myExist = true;
-	return myCreateBomb;
+	myCreateBomb.fX = m_fX;
+	myCreateBomb.fY = m_fY;
+	myCreateBomb.myExist = true;
 }
 
-void Bomb::DeleteBomb(BombInfo* m_myCreateBomb)
+void Bomb::DeleteBomb()
 {
-	delete m_myCreateBomb;
+	myCreateBomb.fX = 0;
+	myCreateBomb.fY = 0;
+	myCreateBomb.myExist = false;
 }
 
-bool Bomb::ExistBomb(BombInfo* m_myCreateBomb)
+bool Bomb::ExistBomb()
 {
-	if (m_myCreateBomb == nullptr)
+	if (myCreateBomb.myExist == false)
 	{
 		return false;
 	}

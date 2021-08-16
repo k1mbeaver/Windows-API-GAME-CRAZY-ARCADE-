@@ -14,6 +14,7 @@ GameCore::~GameCore()
 void GameCore::Initialize()
 {
 	nCurrent = 0; // 0 = main, 1 = GameStart, 2 = GameMenu, 3 = GameOver
+	nBombState = 1;
 	myHDC = GetDC(g_hWnd);
 	myLogin.Initialize(myHDC);
 	myLobby.Initialize(myHDC);
@@ -63,23 +64,19 @@ void GameCore::Progress()
 		}
 
 		// 플레이중 스페이스 바를 누르고, 화면에 물풍선이 존재하지 않을 때
-		if (nBomb == VK_SPACE && myBomb.ExistBomb(myCreateBomb) == false)
+		if (nBomb == VK_SPACE && nBombState == 1)
 		{
-			// 물풍선 생성
-			myCreateBomb = myBomb.CreateBomb(myXY.myX, myXY.myY);
-
+			myBomb.CreateBomb(myXY.myX, myXY.myY);
+			// 버튼 초기화
+			nBomb = 0;
+			// 물풍선 남은 갯수
+			nBombState = 0;
 			// 타이머 시작
 			nBombCount = 100;
 		}
 
 		// 타이머 줄이기
 		nBombCount--;
-
-		// 만약 타이머가 0 미만으로 떨어지면
-		if (nBombCount < 0)
-		{
-			nBombCount = 0;
-		}
 
 		// 충돌 프레임
 		nFrame++;
@@ -108,22 +105,22 @@ void GameCore::Render()
 		myBlock.Render(myDbBuf.ReturnBackDC());
 
 		// 물풍선 객체가 존재 할때
-		if (myBomb.ExistBomb(myCreateBomb) == true)
+		if (nBombState == 0)
 		{
 			// 물풍선이 터지기 전
-			if (nBombCount > 2)
+			if (nBombCount > 10)
 			{
-				myBomb.Render(myDbBuf.ReturnBackDC(), myCreateBomb -> fX, myCreateBomb -> fY);
+				myBomb.Render(myDbBuf.ReturnBackDC());
 			}
 
 			// 물풍선이 터지는 시점
-			if (nBombCount < 2)
+			if (nBombCount < 10)
 			{
-				myBomb.BombRender(myDbBuf.ReturnBackDC(), myCreateBomb-> fX, myCreateBomb -> fY);
-				// 물풍선이 아예 사라졌을 때
+				myBomb.BombRender(myDbBuf.ReturnBackDC());
 				if (nBombCount == 0)
 				{
-					myBomb.DeleteBomb(myCreateBomb);
+					myBomb.DeleteBomb();
+					nBombState = 1;
 				}
 			}
 		}
