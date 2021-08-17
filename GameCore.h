@@ -11,6 +11,7 @@
 #include "Collison.h"
 #include "Bomb.h"
 #include "myJson.h"
+#include "Wave.h"
 
 //나머지 게임에 관련된 클래스가 있는 헤더를 추가한다.
 extern HINSTANCE hInst;                                // 현재 인스턴스입니다.
@@ -30,6 +31,7 @@ private:
 	Lobby myLobby;
 	Block myBlock;
 	Bomb myBomb;
+	Wave myWave;
 	Collison myCollison;
 	myJson parseJson;
 	int nCurrent = 0;
@@ -37,6 +39,7 @@ private:
 	int nInitNum = 0;
 	int nBombCount = 0; // 물풍선 타이머
 	int nBombState = 0;
+	int nPopFrameX = 0; // 물줄기 프레임
 	Block* myMap[12][27];
 public:
 	GameCore();
@@ -46,5 +49,4 @@ public:
 	void Progress(); // 처리
 	void Render(); // 그리기
 	void Release();
-
 };

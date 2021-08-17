@@ -7,41 +7,25 @@ extern HINSTANCE hInst;
 extern HWND g_hWnd;
 extern RECT crt;
 
-typedef struct BombPosition
-{
-	float fX = 0; // xÁÂÇ¥
-	float fY = 0; // yÁÂÇ¥
-	bool myExist = false;
-}BombInfo;
-
-class Bomb
+class Wave
 {
 private:
 	HWND myHWND;
 	HDC myDC;
 	string filename;
 	int nWidth, nHeight;
-	float fX, fY;
-	BITMAP bit;
-	int bx, by;
-	int nBombCount = 0;
-	int nBombSecond = 0;
-	HBITMAP Bombbit, BombPopbit;
-	HBITMAP Bombold, BombPopold;
-	BITMAP Bombbitmap, BombPopbitmap;
+	HBITMAP PopDownbit, PopUpbit, PopLeftbit, PopRightbit;
+	HBITMAP PopDownold, PopUpold, PopLeftold, PopRightold;
 	myJson parseJson;
-	BombInfo myCreateBomb;
-	int FrameX, BombFrameX = 0;
 	int PopFrameX = 0;
 	bool myActivation = false;
 	int nConnection = 0;
 public:
-	Bomb();
-	~Bomb();
+	Wave();
+	~Wave();
 	void Initialize(HDC hdc);
 	void Progress();
-	void Render(HDC hdc); // ¹°Ç³¼± ¼³Ä¡
-	void BombRender(HDC hdc); // ¹°Ç³¼± ÆøÆÄ½Ã
+	void Render(HDC hdc, float fX, float fY, int m_FrameX); // ¹°Ç³¼± ¼³Ä¡
 	int getWidth(const char* chFileName);
 	int getHeight(const char* chFileName);
 	float getX();

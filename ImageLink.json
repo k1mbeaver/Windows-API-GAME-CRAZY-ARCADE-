@@ -2475,5 +2475,45 @@
 							"BetweenX" : 52,
 							"BetweenY" : 52
 						}
-				]
+				],
+	"DownWave": [
+		{
+			"ImageLink": "Image\\wave\\wavedown1.bmp",
+			"Break": true,
+			"Width": 52,
+			"Height": 52,
+			"BetweenX": 52,
+			"BetweenY": 52
+		}
+	],
+	"UpWave": [
+		{
+			"ImageLink": "Image\\wave\\waveup1.bmp",
+			"Break": true,
+			"Width": 52,
+			"Height": 52,
+			"BetweenX": 52,
+			"BetweenY": 52
+		}
+	],
+	"LeftWave": [
+		{
+			"ImageLink": "Image\\wave\\waveleft1.bmp",
+			"Break": true,
+			"Width": 52,
+			"Height": 52,
+			"BetweenX": 52,
+			"BetweenY": 52
+		}
+	],
+	"RightWave": [
+		{
+			"ImageLink": "Image\\wave\\waveright1.bmp",
+			"Break": true,
+			"Width": 52,
+			"Height": 52,
+			"BetweenX": 52,
+			"BetweenY": 52
+		}
+	]
 }

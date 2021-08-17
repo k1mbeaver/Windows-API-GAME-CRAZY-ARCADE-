@@ -23,6 +23,7 @@ void GameCore::Initialize()
 	myShadow.Initialize(myHDC);
 	myBlock.Initialize(myHDC);
 	myBomb.Initialize(myHDC);
+	myWave.Initialize(myHDC);
 	myDbBuf.Initialize();
 }
 
@@ -49,14 +50,15 @@ void GameCore::Progress()
 	{
 		if (nFrame == 5)
 		{
-			// 블록들과 캐릭터의 충돌
 			for (int nIndex = 0; nIndex < 12; nIndex++)
 			{
 				for (int nJndex = 0; nJndex < 18; nJndex++)
 				{
 					if (myBlock.getBlockExist(nIndex, nJndex) == true)
 					{
+						// 블록들과 캐릭터의 충돌
 						myPlayer.pushbackPlayer(myCollison.SetNotInterSect(myPlayer.getPlayerRECT(myXY.myX, myXY.myY), myBlock.getBlockRect(nIndex, nJndex)));
+
 					}
 				}
 			}
@@ -72,7 +74,9 @@ void GameCore::Progress()
 			// 물풍선 남은 갯수
 			nBombState = 0;
 			// 타이머 시작
-			nBombCount = 100;
+			nBombCount = 150;
+			// 물줄기 프레임 시작
+			nPopFrameX = 0;
 		}
 
 		// 타이머 줄이기
@@ -102,21 +106,31 @@ void GameCore::Render()
 	{
 		myBackGround.Render(myDbBuf.ReturnBackDC());
 		myShadow.Render(myDbBuf.ReturnBackDC());
+		// 물풍선 객체가 존재 할때
+		if (nBombState == 0)
+		{
+			// 물풍선이 터지는 시점
+			if (nBombCount < 15)
+			{
+				myWave.Render(myDbBuf.ReturnBackDC(), myBomb.getX(), myBomb.getY(), nPopFrameX); // 물줄기 4방향
+			}
+		}
+
 		myBlock.Render(myDbBuf.ReturnBackDC());
 
 		// 물풍선 객체가 존재 할때
 		if (nBombState == 0)
 		{
 			// 물풍선이 터지기 전
-			if (nBombCount > 10)
+			if (nBombCount > 15)
 			{
 				myBomb.Render(myDbBuf.ReturnBackDC());
 			}
 
 			// 물풍선이 터지는 시점
-			if (nBombCount < 10)
+			if (nBombCount < 15)
 			{
-				myBomb.BombRender(myDbBuf.ReturnBackDC());
+				myBomb.BombRender(myDbBuf.ReturnBackDC()); // 물줄기 가운데
 				if (nBombCount == 0)
 				{
 					myBomb.DeleteBomb();

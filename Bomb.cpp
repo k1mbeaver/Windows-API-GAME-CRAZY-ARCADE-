@@ -40,14 +40,14 @@ void Bomb::Render(HDC hdc) // 물풍선 설치
 void Bomb::BombRender(HDC hdc) // 물풍선 폭파
 {
 	BombPopold = (HBITMAP)SelectObject(myDC, BombPopbit);
-	TransparentBlt(hdc, myCreateBomb.fX, myCreateBomb.fY, getWidth("BombPop"), getHeight("BombPop"), myDC, BombFrameX, 0, getWidth("BombPop"), getHeight("BombPop"), RGB(255, 0, 255));
+	TransparentBlt(hdc, myCreateBomb.fX, myCreateBomb.fY, getWidth("BombPop"), getHeight("BombPop"), myDC, BombFrameX, 0, getWidth("BombPop"), getHeight("BombPop"), RGB(255, 0, 255)); // 가운데
 
 	// 애니메이션 출력을 위한 프레임
 	fFrameDelay += dDT;
 	if (fFrameDelay > 0.1f)
 	{
 		fFrameDelay = 0;
-		BombFrameX += 52;
+		BombFrameX += 52; // 가운데
 
 		if (BombFrameX >= 312)
 		{
@@ -70,13 +70,17 @@ int Bomb::getHeight(const char* chFileName)
 	nHeight = parseJson.getMyObjectHeight(chFileName);
 
 	return nHeight;
-}	
+}
 
 void Bomb::CreateBomb(float m_fX, float m_fY)
 {
 	myCreateBomb.fX = m_fX;
 	myCreateBomb.fY = m_fY;
 	myCreateBomb.myExist = true;
+
+	// 물풍선 애니메이션 프레임 초기화
+	FrameX = 0;
+	BombFrameX = 0;
 }
 
 void Bomb::DeleteBomb()
@@ -97,4 +101,14 @@ bool Bomb::ExistBomb()
 	{
 		return true;
 	}
+}
+
+float Bomb::getX()
+{
+	return myCreateBomb.fX;
+}
+
+float Bomb::getY()
+{
+	return myCreateBomb.fY;
 }
