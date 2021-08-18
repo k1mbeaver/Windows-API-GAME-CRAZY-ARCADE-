@@ -21,6 +21,7 @@ DWORD prevTime = GetTickCount64();
 RECT rcInter; // 충돌처리용 RECT
 float dDT = 0.0f;
 float fFrameDelay = 0.0f;
+float fFrameDelay2 = 0.0f;
 int nPlayerWay = 0; // 캐릭터 방향
 int nBomb = 0; // 물풍선 설치 여부
 

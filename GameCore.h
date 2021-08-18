@@ -38,8 +38,11 @@ private:
 	int nFrame = 0;
 	int nInitNum = 0;
 	int nBombCount = 0; // 물풍선 타이머
-	int nBombState = 0;
+	int nBombState = 1;
 	int nPopFrameX = 0; // 물줄기 프레임
+	int nGameOverCount = 0; // 게임 오버 카운트
+	int nPlayerState = 0; // 0 : 생존, 1 : 갇힘, 2: 사망
+	int nPlayerTrap = 0; // 갇혀있는 시간 카운트 
 	Block* myMap[12][27];
 public:
 	GameCore();

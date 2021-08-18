@@ -25,12 +25,8 @@ public:
 	~Wave();
 	void Initialize(HDC hdc);
 	void Progress();
-	void Render(HDC hdc, float fX, float fY, int m_FrameX); // 물풍선 설치
+	void Render(HDC hdc, float fX, float fY); // 물풍선 설치
 	int getWidth(const char* chFileName);
 	int getHeight(const char* chFileName);
-	float getX();
-	float getY();
-	void CreateBomb(float m_fX, float m_fY);
-	void DeleteBomb();
-	bool ExistBomb();
+	void InitializeFrameX(); // 물줄기 프레임 초기화하기
 };

@@ -3,7 +3,7 @@
 #include "Define.h"
 #include "myJson.h"
 
-extern HINSTANCE hInst;                              
+extern HINSTANCE hInst;
 extern HWND g_hWnd;
 extern RECT crt;
 extern RECT rcInter;
@@ -17,12 +17,12 @@ private:
 	float fX, fY;
 	BITMAP bit;
 	int bx, by;
-	HBITMAP Downbit, Upbit, Leftbit, Rightbit, Jumpbit, Shadowbit;
-	HBITMAP Downold, Upold, Leftold, Rightold, Jumpold, Shadowold;
+	HBITMAP Downbit, Upbit, Leftbit, Rightbit, Jumpbit, Shadowbit, Trapbit, Diebit;
+	HBITMAP Downold, Upold, Leftold, Rightold, Jumpold, Shadowold, Trapold, Dieold;
 	BITMAP UpDownbit, LeftRightbit, Jumpbitmap, Shadowbitmap;
 	RECT PlayerRECT;
 	myJson parseJson;
-	int UDFrameX, LRFrameX, JumpFrameX;
+	int UDFrameX, LRFrameX, JumpFrameX, TrapFrameX, DieFrameX;
 	int UpDownX, LeftRightX, PlayerY, JumpX, JumpY;
 	bool myActivation = false;
 	int nConnection = 0;
@@ -31,7 +31,7 @@ public:
 	~Player();
 	void Initialize(HDC hdc);
 	void Progress();
-	void Render(HDC hdc); // 게임 플레이 용;
+	void Render(HDC hdc, int nPlayerState, int nState); // 게임 플레이 용;
 	void Render(HDC hdc, int nState); // 로비용;
 	int getWidth(const char* chFileName);
 	int getHeight(const char* chFileName);

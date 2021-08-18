@@ -46,4 +46,5 @@ extern DWORD currentTime;
 extern RECT rcInter;
 extern float dDT;
 extern float fFrameDelay;
+extern float fFrameDelay2;
 extern int nPlayerWay, nWay, nBomb;

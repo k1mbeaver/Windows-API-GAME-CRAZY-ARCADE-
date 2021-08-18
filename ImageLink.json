@@ -334,7 +334,11 @@
 	],
 	"BackGround" : [
 		{
-			"ImageLink" : "Image\\background\\BackGround3.bmp"
+			"ImageLink" : "Image\\background\\BackGround3.bmp",
+			"LocateX" : 676,
+			"LocateY" : 312,
+			"Width" : 52,
+			"Height" : 52
 		}
 	],
 	"block1" : [
@@ -396,7 +400,7 @@
 	],
 	"Breakblock2" : [
 		{
-			"ImageLink" : "Image\\block\\blockpop2.bmp",
+			"ImageLink" : "Image\\block\\block2pop.bmp",
 			"Width" : 68,
 			"Height" : 67,
 			"LocateX" : 270,
@@ -2514,6 +2518,42 @@
 			"Height": 52,
 			"BetweenX": 52,
 			"BetweenY": 52
+		}
+	],
+	"BazziTrap": [
+		{
+			"ImageLink": "Image\\player\\trap.bmp",
+			"Width": 88,
+			"Height": 144,
+			"LocateX": 270,
+			"LocateY": 140
+		}
+	],
+	"BazziDie": [
+		{
+			"ImageLink": "Image\\player\\die.bmp",
+			"Width": 88,
+			"Height": 144,
+			"LocateX": 270,
+			"LocateY": 140
+		}
+	],
+	"Game": [
+		{
+			"ImageLink": "Image\\game_over\\GAME.bmp",
+			"Width": 351,
+			"Height": 78,
+			"LocateX": 500,
+			"LocateY": 140
+		}
+	],
+	"Over": [
+		{
+			"ImageLink": "Image\\game_over\\OVER.bmp",
+			"Width": 443,
+			"Height": 81,
+			"LocateX": 450,
+			"LocateY": 230
 		}
 	]
 }

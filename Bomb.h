@@ -49,4 +49,6 @@ public:
 	void CreateBomb(float m_fX, float m_fY);
 	void DeleteBomb();
 	bool ExistBomb();
+	RECT getWidthPop();
+	RECT getHeightPop();
 };

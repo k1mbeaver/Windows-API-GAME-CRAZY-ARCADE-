@@ -112,3 +112,27 @@ float Bomb::getY()
 {
 	return myCreateBomb.fY;
 }
+
+// 물줄기의 가로를 구한다.
+RECT Bomb::getWidthPop()
+{
+	RECT PopWidth;
+	PopWidth.left = myCreateBomb.fX - 52;
+	PopWidth.top = myCreateBomb.fY;
+	PopWidth.right = myCreateBomb.fX + 104;
+	PopWidth.bottom = myCreateBomb.fY + 52;
+
+	return PopWidth;
+}
+
+// 물줄기의 세로를 구한다.
+RECT Bomb::getHeightPop()
+{
+	RECT PopHeight;
+	PopHeight.left = myCreateBomb.fX;
+	PopHeight.top = myCreateBomb.fY - 52;
+	PopHeight.right = myCreateBomb.fX + 52;
+	PopHeight.bottom = myCreateBomb.fY + 104;
+
+	return PopHeight;
+}

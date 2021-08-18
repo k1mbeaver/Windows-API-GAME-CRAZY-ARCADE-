@@ -15,6 +15,7 @@ typedef struct MapPosition
 	bool BlockBreak = false; // 블록 파괴 여부
 	int nWidth = 0; // 블럭의 가로
 	int nHeight = 0; // 블럭의 세로
+	int BreakCount = 1; // 부서진 횟수
 	RECT BlockRECT;
 }MapInfo;
 class Block
@@ -33,7 +34,7 @@ private:
 	HBITMAP Stone1old, Stone2old, Stone3old, Stone4old;
 	BITMAP StoneBitmap, lowStoneBitmap;
 	int nStoneX, nStoneY;
-	RECT StoneRECT ,BlockRECT;
+	RECT StoneRECT, BlockRECT;
 	int nBreakFrameX;
 	int nBreakX, nBreakY, nGeneralX, nGeneralY;
 	bool myActivation = false;
@@ -57,4 +58,6 @@ public:
 	RECT getBlockRect(int nCount1, int nCount2);
 	MapInfo* MapInitialize(float m_fX, float m_fY, bool m_BlockExist, bool m_BlockBreak, int m_nWidth, int m_nHeight);
 	Direction CollisonBlock(RECT& player, RECT block);
+	bool getBlockExist(int nCount1, int nCount2);
+	void PopBlock(Direction myDirection, int nCount1, int nCount2);
 };

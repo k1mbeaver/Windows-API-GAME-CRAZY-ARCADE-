@@ -16,55 +16,93 @@ void Player::Initialize(HDC hdc)
 	Leftbit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("BazziLeft").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	Rightbit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("BazziRight").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	Jumpbit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("BazziJump").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	Trapbit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("BazziTrap").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	Diebit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("BazziDie").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 }
 
 void Player::Progress()
 {
 }
 
-void Player::Render(HDC hdc) // 게임 플레이 화면 용
+void Player::Render(HDC hdc, int nPlayerState, int nState) // 게임 플레이 화면 용
 {
-	if (nPlayerWay == 0)
+	if (nPlayerState == 0) // 생존
 	{
-		Downold = (HBITMAP)SelectObject(myDC, Downbit);
-		TransparentBlt(hdc, myXY.myX, myXY.myY, getWidth("BazziDown"), getHeight("BazziDown"), myDC, 0, 0, getWidth("BazziDown"), getHeight("BazziDown"), RGB(255, 0, 255));
-	}
-	switch (nPlayerWay)
-	{
-	case VK_LEFT:
-		Leftold = (HBITMAP)SelectObject(myDC, Leftbit);
-		TransparentBlt(hdc, myXY.myX, myXY.myY, getWidth("BazziLeft"), getHeight("BazziLeft"), myDC, LRFrameX, 0, getWidth("BazziLeft"), getHeight("BazziLeft"), RGB(255, 0, 255));
-		break;
-	case VK_UP:
-		Upold = (HBITMAP)SelectObject(myDC, Upbit);
-		TransparentBlt(hdc, myXY.myX, myXY.myY, getWidth("BazziUp"), getHeight("BazziUp"), myDC, UDFrameX, 0, getWidth("BazziUp"), getHeight("BazziUp"), RGB(255, 0, 255));
-		break;
-	case VK_RIGHT:
-		Rightold = (HBITMAP)SelectObject(myDC, Rightbit);
-		TransparentBlt(hdc, myXY.myX, myXY.myY, getWidth("BazziRight"), getHeight("BazziRight"), myDC, LRFrameX, 0, getWidth("BazziRight"), getHeight("BazziRight"), RGB(255, 0, 255));
-		break;
-	case VK_DOWN:
-		Downold = (HBITMAP)SelectObject(myDC, Downbit);
-		TransparentBlt(hdc, myXY.myX, myXY.myY, getWidth("BazziDown"), getHeight("BazziDown"), myDC, UDFrameX, 0, getWidth("BazziDown"), getHeight("BazziDown"), RGB(255, 0, 255));
-
-		break;
-	}
-
-	// 애니메이션 출력을 위한 프레임
-	fFrameDelay += dDT;
-	if (fFrameDelay > 0.1f)
-	{
-		fFrameDelay = 0;
-		UDFrameX += 64;
-		LRFrameX += 64;
-		if (UDFrameX >= 512)
+		if (nPlayerWay == 0)
 		{
-			UDFrameX = 0;
+			Downold = (HBITMAP)SelectObject(myDC, Downbit);
+			TransparentBlt(hdc, myXY.myX, myXY.myY, getWidth("BazziDown"), getHeight("BazziDown"), myDC, 0, 0, getWidth("BazziDown"), getHeight("BazziDown"), RGB(255, 0, 255));
+		}
+		switch (nPlayerWay)
+		{
+		case VK_LEFT:
+			Leftold = (HBITMAP)SelectObject(myDC, Leftbit);
+			TransparentBlt(hdc, myXY.myX, myXY.myY, getWidth("BazziLeft"), getHeight("BazziLeft"), myDC, LRFrameX, 0, getWidth("BazziLeft"), getHeight("BazziLeft"), RGB(255, 0, 255));
+			break;
+		case VK_UP:
+			Upold = (HBITMAP)SelectObject(myDC, Upbit);
+			TransparentBlt(hdc, myXY.myX, myXY.myY, getWidth("BazziUp"), getHeight("BazziUp"), myDC, UDFrameX, 0, getWidth("BazziUp"), getHeight("BazziUp"), RGB(255, 0, 255));
+			break;
+		case VK_RIGHT:
+			Rightold = (HBITMAP)SelectObject(myDC, Rightbit);
+			TransparentBlt(hdc, myXY.myX, myXY.myY, getWidth("BazziRight"), getHeight("BazziRight"), myDC, LRFrameX, 0, getWidth("BazziRight"), getHeight("BazziRight"), RGB(255, 0, 255));
+			break;
+		case VK_DOWN:
+			Downold = (HBITMAP)SelectObject(myDC, Downbit);
+			TransparentBlt(hdc, myXY.myX, myXY.myY, getWidth("BazziDown"), getHeight("BazziDown"), myDC, UDFrameX, 0, getWidth("BazziDown"), getHeight("BazziDown"), RGB(255, 0, 255));
+
+			break;
 		}
 
-		if (LRFrameX >= 384)
+		// 애니메이션 출력을 위한 프레임
+		fFrameDelay += dDT;
+		if (fFrameDelay > 0.1f)
 		{
-			LRFrameX = 0;
+			fFrameDelay = 0;
+			UDFrameX += 64;
+			LRFrameX += 64;
+			if (UDFrameX >= 512)
+			{
+				UDFrameX = 0;
+			}
+
+			if (LRFrameX >= 384)
+			{
+				LRFrameX = 0;
+			}
+		}
+	}
+
+	else if (nPlayerState == 1) // 갇힘
+	{
+		if (TrapFrameX < 1144)
+		{
+			Trapold = (HBITMAP)SelectObject(myDC, Trapbit);
+			TransparentBlt(hdc, myXY.myX, myXY.myY, getWidth("BazziTrap"), getHeight("BazziTrap"), myDC, TrapFrameX, 0, getWidth("BazziTrap"), getHeight("BazziTrap"), RGB(255, 0, 255));
+		}
+
+		// 애니메이션 출력을 위한 프레임
+		fFrameDelay += dDT;
+
+		if (fFrameDelay > 0.15f)
+		{
+
+			fFrameDelay = 0;
+			TrapFrameX += 88;
+		}
+
+		if (TrapFrameX >= 1144)
+		{
+			Dieold = (HBITMAP)SelectObject(myDC, Diebit);
+			TransparentBlt(hdc, myXY.myX, myXY.myY, getWidth("BazziDie"), getHeight("BazziDie"), myDC, DieFrameX, 0, getWidth("BazziDie"), getHeight("BazziDie"), RGB(255, 0, 255));
+
+			// 애니메이션 출력을 위한 프레임
+			fFrameDelay2 += dDT;
+			if (fFrameDelay2 > 0.15f)
+			{
+				fFrameDelay2 = 0;
+				DieFrameX += 88;
+			}
 		}
 	}
 }
@@ -123,7 +161,7 @@ RECT& Player::getPlayerRECT(float fX, float fY)
 {
 	PlayerRECT.left = fX;
 	PlayerRECT.top = fY + 40;
-	PlayerRECT.right =  PlayerRECT.left + getWidth("BazziDown");
+	PlayerRECT.right = PlayerRECT.left + getWidth("BazziDown");
 	PlayerRECT.bottom = PlayerRECT.top + getHeight("BazziDown") - 40;
 
 	return PlayerRECT;
