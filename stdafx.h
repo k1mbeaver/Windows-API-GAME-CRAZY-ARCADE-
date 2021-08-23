@@ -14,6 +14,7 @@
 // 프로그램에 필요한 추가 헤더
 #include <iostream>
 #include <stdio.h>
+#include <ctime>
 #include <vector>
 #include <cassert>
 #include <map>
@@ -45,4 +46,5 @@ extern DWORD currentTime;
 extern RECT rcInter;
 extern float dDT;
 extern float fFrameDelay;
-extern int nPlayerWay, nWay;
+extern float fFrameDelay2;
+extern int nPlayerWay, nPlayerWayBan, nWay, nBomb;

@@ -19,10 +19,7 @@ private:
 	RECT clickStart;
 	KeyManager myKey;
 	myJson parseJson;
-	bool checkStart;
-	int bx, by;
-	bool myActivation = false;
-	int nConnection = 0;
+	int bx, by = 0;
 public:
 	Login();
 	~Login();

@@ -11,9 +11,6 @@ void Lobby::Initialize(HDC hdc)
 	myDC = CreateCompatibleDC(hdc);
 	hbitmap = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("lobbyBackGround").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
 	holdbitmap = (HBITMAP)SelectObject(myDC, hbitmap);
-
-	myActivation = false;
-	nConnection = 0;
 }
 int Lobby::Progress(int& m_nCurrent)
 {

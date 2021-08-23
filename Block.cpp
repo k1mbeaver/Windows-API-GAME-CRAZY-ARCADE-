@@ -1,6 +1,6 @@
 #include "Block.h"
 Block::Block() {}
-Block::~Block() 
+Block::~Block()
 {
 	for (int nIndex = 0; nIndex < 12; nIndex++)
 	{
@@ -30,13 +30,6 @@ void Block::Initialize(HDC hdc)
 	BlockBreak2old = (HBITMAP)SelectObject(myDC, BlockBreak2bit);
 	BlockBreak3bit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("Breakblock3").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	BlockBreak3old = (HBITMAP)SelectObject(myDC, BlockBreak3bit);
-
-	Stone1bit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("Stone1").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	Stone2bit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("Stone2").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	Stone3bit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("Stone3").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	Stone4bit = (HBITMAP)LoadImage(NULL, parseJson.getMyObjectLink("Stone4").c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	myActivation = false;
-	nConnection = 0;
 }
 
 void Block::Progress()
@@ -51,39 +44,44 @@ void Block::Render(HDC hdc)
 		for (int nJndex = 0; nJndex < 18; nJndex++)
 		{
 			// 블럭이 존재 & 부서지는 블럭
-			if (myMap[nIndex][nJndex] -> BlockExist == true && myMap[nIndex][nJndex] -> BlockBreak == true)
+			if (myMap[nIndex][nJndex]->BlockExist == true && myMap[nIndex][nJndex]->BlockBreak == true)
 			{
 				Block2old = (HBITMAP)SelectObject(myDC, Block2bit);
-				TransparentBlt(hdc, myMap[nIndex][nJndex] -> fX, myMap[nIndex][nJndex] -> fY, myMap[nIndex][nJndex] -> nWidth, myMap[nIndex][nJndex] -> nHeight
-					, myDC, 0, 0, myMap[nIndex][nJndex] -> nWidth, myMap[nIndex][nJndex] -> nHeight, RGB(255, 0, 255));
+				TransparentBlt(hdc, myMap[nIndex][nJndex]->fX, myMap[nIndex][nJndex]->fY, myMap[nIndex][nJndex]->nWidth, myMap[nIndex][nJndex]->nHeight
+					, myDC, 0, 0, myMap[nIndex][nJndex]->nWidth, myMap[nIndex][nJndex]->nHeight, RGB(255, 0, 255));
 			}
 
 			// 블럭이 존재 & 부서지지 않는 블럭
-			else if(myMap[nIndex][nJndex] -> BlockExist == true && myMap[nIndex][nJndex] -> BlockBreak == false)
+			else if (myMap[nIndex][nJndex]->BlockExist == true && myMap[nIndex][nJndex]->BlockBreak == false)
 			{
 				Block3old = (HBITMAP)SelectObject(myDC, Block3bit);
-				TransparentBlt(hdc, myMap[nIndex][nJndex] -> fX, myMap[nIndex][nJndex] -> fY, myMap[nIndex][nJndex] -> nWidth, myMap[nIndex][nJndex] -> nHeight
-					, myDC, 0, 0, myMap[nIndex][nJndex] -> nWidth, myMap[nIndex][nJndex] -> nHeight, RGB(255, 0, 255));
+				TransparentBlt(hdc, myMap[nIndex][nJndex]->fX, myMap[nIndex][nJndex]->fY, myMap[nIndex][nJndex]->nWidth, myMap[nIndex][nJndex]->nHeight
+					, myDC, 0, 0, myMap[nIndex][nJndex]->nWidth, myMap[nIndex][nJndex]->nHeight, RGB(255, 0, 255));
+			}
+
+			// 부서지는 애니메이션
+			else if (myMap[nIndex][nJndex]->BlockBreak == true && myMap[nIndex][nJndex]->BreakCount == 1)
+			{
+				BlockBreak2old = (HBITMAP)SelectObject(myDC, BlockBreak2bit);
+				TransparentBlt(hdc, myMap[nIndex][nJndex]->fX, myMap[nIndex][nJndex]->fY, myMap[nIndex][nJndex]->nWidth, myMap[nIndex][nJndex]->nHeight
+					, myDC, nBreakFrameX, 0, myMap[nIndex][nJndex]->nWidth, myMap[nIndex][nJndex]->nHeight, RGB(255, 0, 255));
+
+				// 애니메이션 출력을 위한 프레임
+				PopFrame += dDT;
+				if (PopFrame > 0.01f)
+				{
+					PopFrame = 0;
+					nBreakFrameX += 68;
+
+					if (nBreakFrameX >= 340)
+					{
+						nBreakFrameX = 0;
+						myMap[nIndex][nJndex]->BreakCount = 0;
+					}
+				}
 			}
 		}
-	}	
-	/*
-	fFrameDelay += dDT;
-	if (fFrameDelay > 0.1f)
-	{
-		fFrameDelay = 0;
-
-		if (UDFrameX >= 512)
-		{
-			UDFrameX = 0;
-		}
-
-		if (LRFrameX >= 384)
-		{
-			LRFrameX = 0;
-		}
 	}
-	*/
 }
 
 int Block::getWidth(const char* chFileName)
@@ -168,16 +166,16 @@ void Block::getMapPosition()
 MapInfo* Block::MapInitialize(float m_fX, float m_fY, bool m_BlockExist, bool m_BlockBreak, int m_nWidth, int m_nHeight)
 {
 	MapPosition* myBlock = new MapPosition;
-	myBlock -> fX = m_fX;
-	myBlock -> fY = m_fY;
-	myBlock -> BlockExist = m_BlockExist;
-	myBlock -> BlockBreak = m_BlockBreak;
-	myBlock -> nWidth = m_nWidth;
-	myBlock -> nHeight = m_nHeight;
-	myBlock -> BlockRECT.left = myBlock -> fX;
-	myBlock -> BlockRECT.top = myBlock -> fY;
-	myBlock -> BlockRECT.right = myBlock -> BlockRECT.left + myBlock -> nWidth;
-	myBlock -> BlockRECT.bottom = myBlock -> BlockRECT.top + myBlock -> nHeight;
+	myBlock->fX = m_fX;
+	myBlock->fY = m_fY;
+	myBlock->BlockExist = m_BlockExist;
+	myBlock->BlockBreak = m_BlockBreak;
+	myBlock->nWidth = m_nWidth;
+	myBlock->nHeight = m_nHeight;
+	myBlock->BlockRECT.left = myBlock->fX;
+	myBlock->BlockRECT.top = myBlock->fY;
+	myBlock->BlockRECT.right = myBlock->BlockRECT.left + myBlock->nWidth;
+	myBlock->BlockRECT.bottom = myBlock->BlockRECT.top + myBlock->nHeight;
 
 	return myBlock;
 }
@@ -186,7 +184,7 @@ RECT Block::getBlockRect(int nCount1, int nCount2)
 {
 	RECT returnRECT;
 
-	returnRECT = myMap[nCount1][nCount2] -> BlockRECT;
+	returnRECT = myMap[nCount1][nCount2]->BlockRECT;
 	return returnRECT;
 }
 
@@ -194,4 +192,19 @@ bool Block::getBlockExist(int nCount1, int nCount2)
 {
 	if (myMap[nCount1][nCount2]->BlockExist == true) return true;
 	else { return false; }
+}
+
+void Block::PopBlock(Direction myDirection, int nCount1, int nCount2)
+{
+	// 충돌 반응이 없는 경우
+	if (myDirection == None)
+	{
+		return;
+	}
+
+	// 충돌 반응이 있는 경우
+	else if (myDirection != None && myMap[nCount1][nCount2]->BlockBreak == true)
+	{
+		myMap[nCount1][nCount2]->BlockExist = false;
+	}
 }

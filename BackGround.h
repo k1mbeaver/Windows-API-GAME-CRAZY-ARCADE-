@@ -13,13 +13,11 @@ class BackGround
 private:
 	HWND myHWND;
 	HDC myDC;
-	HBITMAP hbitmap;
-	HBITMAP holdbitmap;
+	HBITMAP hbitmap, Gamebit, Overbit;
+	HBITMAP holdbitmap, Gameold, Overold;
 	myJson parseJson;
 	BITMAP bit;
-	int bx, by;
-	bool myActivation = false;
-	int nConnection = 0;
+	int bx, by = 0;
 public:
 	BackGround();
 	~BackGround();
@@ -27,4 +25,10 @@ public:
 	void Initialize(HDC hdc);
 	void Progress();
 	void Render(HDC hdc);
+	void GameOver(HDC hdc);
+	float getX(const char* chFileName);
+	float getY(const char* chFileName);
+	int getWidth(const char* chFileName);
+	int getHeight(const char* chFileName);
+	RECT GameOverRECT();
 };

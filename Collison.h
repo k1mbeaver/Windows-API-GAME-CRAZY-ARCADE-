@@ -12,5 +12,6 @@ public:
 	void Initialize() {};
 	void Progress();
 	void Render() {};
-	Direction SetNotInterSect(RECT& pRect, RECT pHold); // 사각형 끼리 교차되지 않게 셋팅
+	Direction SetNotCharacter(RECT& pRect, RECT pHold); // 사각형 끼리 교차되지 않게 셋팅, 캐릭터용
+	Direction SetNotInterSect(RECT pRect, RECT pHold); // 나머지
 };

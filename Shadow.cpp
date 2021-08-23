@@ -16,9 +16,24 @@ void Shadow::Progress()
 {
 }
 
-void Shadow::Render(HDC hdc) // 게임 플레이 화면 용
+void Shadow::Render(HDC hdc, int nPlayerState, int nState) // 게임 플레이 화면 용
 {
-	TransparentBlt(hdc, myXY.myX + 10, myXY.myY + 60, getWidth("Shadow"), getHeight("Shadow"), myDC, 0, 0, getWidth("Shadow"), getHeight("Shadow"), RGB(255, 0, 255));
+	if (nPlayerState == 0) // 생존
+	{
+		TransparentBlt(hdc, myXY.myX + 10, myXY.myY + 60, getWidth("Shadow"), getHeight("Shadow"), myDC, 0, 0, getWidth("Shadow"), getHeight("Shadow"), RGB(255, 0, 255));
+	}
+
+	else if (nPlayerState == 1) // 갇힘 & 사망
+	{
+		if (nDieCount == 0)
+		{
+			nDieX = myXY.myX;
+			nDieY = myXY.myY;
+		}
+		TransparentBlt(hdc, nDieX + 23, nDieY + 110, getWidth("Shadow"), getHeight("Shadow"), myDC, 0, 0, getWidth("Shadow"), getHeight("Shadow"), RGB(255, 0, 255));
+
+		nDieCount++;
+	}
 }
 
 void Shadow::Render(HDC hdc, int nState) // 로비용

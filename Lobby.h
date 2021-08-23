@@ -23,8 +23,6 @@ private:
 	bool checkStart;
 	int FrameX = 0, FrameY = 0;
 	int bx, by;
-	bool myActivation = false;
-	int nConnection = 0;
 public:
 	Lobby();
 	~Lobby();
